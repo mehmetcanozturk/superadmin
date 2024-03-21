@@ -12,9 +12,9 @@ const router = createRouter({
                     path: '/',
                     name: 'dashboard',
                     meta: {
-                        breadcrumb: ['Dashboard', '']
+                        breadcrumb: ['Dashboard']
                     },
-                    component: () => import('@/views/dashboards/DashBoard.vue')
+                    component: () => import('@/views/dashboards/Home.vue')
                 },
                 {
                     path: '/domain/extension',
