@@ -4,7 +4,6 @@ import { CountryService } from '@/service/CountryService';
 import { useConfirm } from 'primevue/useconfirm';
 import { useToast } from 'primevue/usetoast';
 
-
 const cities = ref([
     { name: 'New York', code: 'NY' },
     { name: 'Rome', code: 'RM' },
@@ -23,16 +22,10 @@ const apikey = ref([
     { name: 'Trabis' },
     { name: 'Uniregistry' },
     { name: 'Verisign Name Store' },
-    { name: 'Verisign Srs' },
+    { name: 'Verisign Srs' }
 ]);
 
-const extensionGroup = ref([
-    { name: 'Jenerik Domainler' },
-    { name: 'Asya Domainleri' },
-    { name: 'Avrupa Domainleri' },
-    { name: 'Amerika Domainleri' },
-]);
-
+const extensionGroup = ref([{ name: 'Jenerik Domainler' }, { name: 'Asya Domainleri' }, { name: 'Avrupa Domainleri' }, { name: 'Amerika Domainleri' }]);
 
 const value1 = ref(null);
 const value2 = ref(null);
@@ -46,10 +39,8 @@ const value9 = ref(null);
 const value10 = ref(null);
 const value11 = ref(null);
 const value12 = ref(null);
-
-
-
-
+const value13 = ref(null);
+const toggleValue = ref(false);
 const selectedCountry = ref();
 const countries = ref([]);
 const filteredCountries = ref(null);
@@ -77,14 +68,33 @@ const confirm = (event) => {
         target: event.target,
         message: 'Yapılan değişiklikler kaydedilecek, emin misin?',
         icon: 'pi pi-exclamation-triangle',
+        acceptLabel: 'Evet',
+        rejectLabel: 'Hayır',
         accept: () => {
             toast.add({ severity: 'success', summary: 'Başarılı', detail: 'Uzantı Bilgileri başarıyla güncellendi', life: 3000 });
         },
-        reject: () => {
-           
-        }
+        reject: () => {}
     });
 };
+
+const selectedCategories = ref([]);
+const categories = ref([
+    { name: 'Satışına izin veriliyor mu?', key: 'satis' },
+    { name: 'Ön satış desteği var mı?', key: 'onsatis' },
+    { name: 'API desteği var mı?', key: 'api' },
+    { name: 'Jenerik mi?', key: 'jeneric' },
+    { name: 'Kişisel kayıtlara izin veriliyor mu?', key: 'Personal-register' },
+    { name: 'Döküman gerekli mi?', key: 'document' },
+    { name: 'IDN destekliyor mu?', key: 'idn' },
+    { name: 'Transfer edilebilir mi?', key: 'transfer' },
+    { name: 'Transfer kodu gerektiriyor mu?', key: 'transfer-code' },
+    { name: 'Cezalı ödeme (geç yenileme bedeli) destekliyor mu?', key: 'late-renewal' },
+    { name: 'Backorder destekliyor mu?', key: 'backorder' },
+    { name: 'Trustee hizmeti destekliyor mu?', key: 'trustee' },
+
+]);
+
+
 </script>
 
 <template>
@@ -92,7 +102,7 @@ const confirm = (event) => {
         <h5>Uzantı Ekle</h5>
         <TabView>
             <TabPanel header="Uzantı Bilgisi">
-                <div class="grid">
+                <div class="grid gap-5">
                     <div class="grid p-fluid mt-3 col-12 p-0 md:col-8">
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
@@ -172,24 +182,85 @@ const confirm = (event) => {
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputNumber :useGrouping="false" type="text" id="inputtext" v-model="value8" />
+                                <InputNumber :useGrouping="false" type="text" id="inputtext" v-model="value9" />
                                 <label for="inputtext">Max. NS sayısı</label>
                             </span>
                             <small>maksimum kaç DNS gerekli?</small>
                         </div>
                     </div>
+                    <div class="mt-5 col-12 p-0 md:col-4">
+                        <div class="flex flex-column gap-3">
+                            <div v-for="category of categories" :key="category.key" class="flex align-items-center">
+                                <Checkbox v-model="selectedCategories"  :inputId="category.key" name="category" :value="category.name" />
+                                <label class="ml-2" :for="category.key">{{ category.name }}</label>
+                            </div>
+                        </div>
+                        <div v-if="selectedCategories.includes('trustee')">
+                            <input type="text" v-model="trusteeInput" placeholder="Trustee hizmeti destekliyor mu?">
+                        </div>
+                    </div>
                 </div>
             </TabPanel>
             <TabPanel header="Eklenecek">
-                <p class="m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, dolorem qui ullam necessitatibus molestias provident sapiente nam velit aspernatur! A, sequi tenetur exercitationem qui vel similique fugit ipsa perferendis suscipit!</p>
+                <div class="grid gap-5">
+                    <div class="grid p-fluid mt-3 col-12 p-0 md:col-7">
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Domain Önkayıt</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Domain Ödeme Süresi</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Domain Muhasebe Dönemi</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Silinirken Kurtarılabilme Süresi</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Domain Sonlandırma Süresi</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Silme Bekletme Süresi</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <span class="p-float-label">
+                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <label for="inputtext">Domain Hataya Düşme Süresi</label>
+                            </span>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <ToggleButton v-model="toggleValue" onLabel="Kesin Yenileme var" offLabel="Kesin Yenileme yok"  />
+                        </div>
+         
+                    </div>
+                    <div class="mt-5 col-12 p-0 md:col-5">
+                  
+                    
+                    </div>
+                </div>
             </TabPanel>
-           
         </TabView>
-        <div class="grid  border-top-1 border-gray-200 p-2 justify-content-end">
+        <div class="grid border-top-1 border-gray-200 p-2 justify-content-end">
             <ConfirmPopup></ConfirmPopup>
-            <Button ref="popup" @click="confirm($event)" icon="pi pi-check"  severity="success" label="Kaydet" class="mr-2"></Button>
-            
+            <Button ref="popup" @click="confirm($event)" icon="pi pi-check" severity="success" label="Kaydet" class="mr-2"></Button>
         </div>
-
     </div>
 </template>
