@@ -6,13 +6,11 @@ import { DomainExtension } from '@/service/DomainExtension';
 
 const customer1 = ref(null);
 const list = ref(null);
-const customer2 = ref(null);
-const customer3 = ref(null);
 const filters1 = ref(null);
 const loading1 = ref(null);
 const loading2 = ref(null);
-const products = ref(null);
-const expandedRows = ref([]);
+
+
 
 
 const customerService = new CustomerService();
@@ -52,35 +50,6 @@ const initFilters1 = () => {
 const clearFilter1 = () => {
     initFilters1();
 };
-const expandAll = () => {
-    expandedRows.value = products.value.filter((p) => p.id);
-};
-const collapseAll = () => {
-    expandedRows.value = null;
-};
-const formatCurrency = (value) => {
-    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-};
-
-const formatDate = (value) => {
-    return value.toLocaleDateString('en-US', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-};
-const calculateCustomerTotal = (name) => {
-    let total = 0;
-    if (customer3.value) {
-        for (let customer of customer3.value) {
-            if (customer.representative.name === name) {
-                total++;
-            }
-        }
-    }
-
-    return total;
-};
 </script>
 
 <template>
@@ -88,28 +57,24 @@ const calculateCustomerTotal = (name) => {
         <div class="col-12">
             <div class="card">
                 <h5>Filter Menu</h5>
-                <DataTable
-                    :value="list"
-                    :paginator="true"
-                    class="p-datatable-gridlines"
-                    :rowHover="true"
-                    :rows="25"
-                    
-        
-                >
+                <DataTable :value="list" :paginator="true" class="p-datatable-gridlines" :rowHover="true" :rows="25">
                     <template #header>
-                        <div class="flex justify-content-between flex-column sm:flex-row">
+                        <div class="flex justify-content-between flex-column sm:flex-row ">
+                            <div class="flex flex-column sm:flex-row ">
+                                <span class="p-input-icon-left mb-2">
+                                    <i class="pi pi-search" />
+                                    <InputText v-model="filters1['global'].value" placeholder="Uzantı Ara" style="width: 100%" />
+                                </span>
+                                <Dropdown v-model="extensionGroup" :options="extensionGroups" optionLabel="name" class="ml-3 mb-2" placeholder="Uzantı Grubu" />
+                                <Dropdown v-model="extensionGroup" :options="extensionGroups" optionLabel="name" class="ml-3 mb-2" placeholder="API" />
+                            </div>
                             <Button type="button" icon="pi pi-filter-slash" label="Filtreleri Temizle" class="p-button-outlined p-button-danger mb-2" @click="clearFilter1()" />
-                            <span class="p-input-icon-left mb-2">
-                                <i class="pi pi-search" />
-                                <InputText v-model="filters1['global'].value" placeholder="Uzantı Ara" style="width: 100%" />
-                            </span>
                         </div>
                     </template>
                     <template #empty> uzantı bulunamadı. </template>
                     <template #loading> Tablo Yükleniyor Lütfen Bekleyin. </template>
                     <Column field="no" header="NO">
-                        <template  #body="{ data }">
+                        <template #body="{ data }">
                             <span class="font-bold">{{ data.no }}</span>
                         </template>
                     </Column>
@@ -128,30 +93,58 @@ const calculateCustomerTotal = (name) => {
                             {{ data.api }}
                         </template>
                     </Column>
-                    <Column :exportable="false" style="max-width: 40px;" >
-                        <template #body="" >
+                    <Column :exportable="false" style="max-width: 40px">
+                        <template #body="">
                             <div class="flex justify-content-center gap-2">
-                                <Button icon="pi pi-pencil"  rounded size="small" />
+                                <Button icon="pi pi-dollar" rounded size="small" @click="priceListModal = true" />
                                 <Button icon="pi pi-pencil" rounded severity="warning" size="small" />
                                 <Button icon="pi pi-trash" rounded severity="danger" size="small" />
                             </div>
                         </template>
                     </Column>
-
-               
-                
-                   
                 </DataTable>
             </div>
         </div>
-
     </div>
+    <Dialog v-model:visible="priceListModal" maximizable modal header=".COM Fiyat Listesi" :style="{ width: '70vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+        <TabView>
+            <TabPanel>
+                <template #header>
+                    <div class="flex align-items-center gap-2">
+                        <span class="font-bold white-space-nowrap">Reseller</span>
+                    </div>
+                </template>
+            </TabPanel>
+            <TabPanel>
+                <template #header>
+                    <div class="flex align-items-center gap-2">
+                        <span class="font-bold white-space-nowrap">Reseller</span>
+                    </div>
+                </template>
+            </TabPanel>
+            <TabPanel>
+                <template #header>
+                    <div class="flex align-items-center gap-2">
+                        <span class="font-bold white-space-nowrap">Reseller</span>
+                    </div>
+                </template>
+            </TabPanel>
+            <TabPanel>
+                <template #header>
+                    <div class="flex align-items-center gap-2">
+                        <span class="font-bold white-space-nowrap">Özel Tanımlanmış</span>
+                        <Badge value="2"></Badge>
+                    </div>
+                </template>
+            </TabPanel>
+        </TabView>
+    </Dialog>
 </template>
 
 <style scoped lang="scss">
-    .p-button-sm{
-        width: 2rem !important;
-        height: 2rem !important;
-        padding: 0 !important;
-    }
+.p-button-sm {
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+}
 </style>

@@ -34,7 +34,6 @@ const anchor = () => {
         <div class="sidebar-header">
             <router-link :to="{ name: 'dashboard' }" class="app-logo">
                 <img src="https://test1.atakteknoloji.com/dna-2022/assets/images/domain-name-api-logo.webp" width="200"  alt="">
-                
             </router-link>
             <button class="layout-sidebar-anchor p-link z-2 mb-2" type="button" @click="anchor()"></button>
         </div>

@@ -21,9 +21,21 @@ const model = ref([
         icon: 'pi pi-globe',
         items: [
             {
-                label: 'Extension List',
+                label: 'Uzantı',
                 icon: 'pi pi-fw pi-globe',
-                to: '/domain/extension'
+                items: [
+                    {
+                        label:'Uzantı Listesi',
+                        icon: 'pi pi-fw pi-list',
+                        to: '/domain/uzanti'
+                    },
+                    {
+                        label:'Uzantı Ekle',
+                        icon: 'pi pi-fw pi-plus',
+                        to: '/domain/uzanti/uzanti-ekle'
+                    },
+                ]
+                
             }
 
         ]

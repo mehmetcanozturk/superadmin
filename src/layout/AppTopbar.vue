@@ -8,11 +8,17 @@ const { onMenuToggle, onProfileSidebarToggle, onConfigSidebarToggle } = useLayou
 const outsideClickListener = ref(null);
 const topbarMenuActive = ref(false);
 const opDeposit = ref(null);
-const op2 = ref(null);
+const opCurrency= ref(null);
 const toggleDeposit = (event) => {
     opDeposit.value.toggle(event);
 };
-const dollarSvg= ""
+const toggleCurrency = (event) => {
+    opCurrency.value.toggle(event);
+};
+
+
+const activeCurrency = ref('$ Dolar');
+const selectCurrencyValues = ref(['$ Dolar', '₺ TL']);
 
 onMounted(() => {
     bindOutsideClickListener();
@@ -50,9 +56,7 @@ const isOutsideClicked = (event) => {
 const showProfileSidebar = () => {
     onProfileSidebarToggle();
 };
-const onConfigButtonClick = () => {
-    onConfigSidebarToggle();
-};
+
 
 </script>
 
@@ -81,7 +85,7 @@ const onConfigButtonClick = () => {
                     </Button>
                     <OverlayPanel ref="opDeposit" appendTo="body" :showCloseIcon="false" class="min-w-68 text-600">
                         <div>
-                            <div class="font-semibold mb-2  bg-primary text-center border-round">Aktif Depozito</div>
+                            <div class="font-semibold mb-2 bg-blue-50 p-1 text-primary text-center border-round">Aktif Depozito</div>
                             <table>
                                 <tr class="p-3">
                                     <td class="py-1">Dolar($):</td>
@@ -97,12 +101,14 @@ const onConfigButtonClick = () => {
                     </OverlayPanel>
                 </li>
                 <li>
-                    <Button text rounded severity="secondary" type="button" @click="toggle">
-                        <span class="font-bold">$</span>
-                        <span class="ml-1 font-semibold">Dolar</span>
+                    <Button text rounded severity="secondary" type="button" @click="toggleCurrency">
+                        <span class="ml-1 font-semibold">{{ activeCurrency }}</span>
                     </Button>
-                    <OverlayPanel ref="op" appendTo="body" :showCloseIcon="true">
-                        
+                    <OverlayPanel ref="opCurrency" appendTo="body" :showCloseIcon="false">
+                        <div>
+                            <div class="font-semibold mb-3  p-1 px-2 text-primary text-center border-round bg-blue-50">Döviz Kuru</div>
+                            <SelectButton v-model="activeCurrency" unselectable="false" :options="selectCurrencyValues" aria-labelledby="basic" />
+                        </div>
                     </OverlayPanel>
                 </li>
                 <li class="topbar-profile ml-2">

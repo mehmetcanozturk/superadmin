@@ -14,16 +14,26 @@ const router = createRouter({
                     meta: {
                         breadcrumb: ['Dashboard']
                     },
-                    component: () => import('@/views/dashboards/Home.vue')
+                    component: () => import('@/views/dashboards/Dashboard.vue')
                 },
                 {
-                    path: '/domain/extension',
+                    path: '/domain/uzanti',
                     name: 'extension-list',
                     meta: {
                         breadcrumb: ['Domain', 'Extension List']
                     },
-                    component: () => import('@/views/domain/Extension.vue')
+                    component: () => import('@/views/domain/extension/index.vue')
                 },
+                {
+                    path: '/domain/uzanti/uzanti-ekle',
+                    name: 'extension-price',
+                    meta: {
+                        breadcrumb: ['Domain', 'Extension','Add Extension']
+                    },
+                    component: () => import('@/views/domain/extension/AddExtension.vue')
+                },
+
+
                 {
                     path: '/dashboard-banking',
                     name: 'dashboard-banking',

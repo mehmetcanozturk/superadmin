@@ -19,9 +19,9 @@
                 border-top-left-radius: $borderRadius;
                 transition: $listItemTransition;
                 margin: $tabviewHeaderMargin;
-
                 &:not(.p-disabled):focus {
                     @include focused-inset();
+                    box-shadow: none ;
                 }
             }
 
