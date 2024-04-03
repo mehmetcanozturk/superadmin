@@ -247,7 +247,7 @@ const categories = ref([
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
-                            <ToggleButton v-model="toggleValue" onLabel="Kesin Yenileme var" offLabel="Kesin Yenileme yok"  />
+                            <ToggleButton v-model="toggleValue" onLabel="Kesin Yenileme var" severity="success" offLabel="Kesin Yenileme yok"  />
                         </div>
          
                     </div>

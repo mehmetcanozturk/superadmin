@@ -1,43 +1,33 @@
 {
     "data": [
         {
-            "no": 1232,
-            "extension": {
-                "name": "AC.MU",
-                "group": "Afrika Domainler"
-            },
+            "no": 12432,
+            "name": "AC.MU",
+            "group": "Afrika Domainler",
             "api": "Hexonet"
         },
         {
-            "no": 312,
-            "extension": {
-                "name": "AC.MU",
-                "group": "Afrika Domainler"
-            },
+            "no": 122,
+            "name": "COM.TR",
+            "group": "Türkiye Domainleri",
             "api": "Hexonet"
         },
         {
-            "no": 21,
-            "extension": {
-                "name": "AC.MU",
-                "group": "Afrika Domainler"
-            },
-            "api": "Hexonet"
+            "no": 221,
+            "name": "COM",
+            "group": "Jenerik Domainler",
+            "api": "Atakdomain"
         },
         {
-            "no": 314,
-            "extension": {
-                "name": "AC.MU",
-                "group": "Afrika Domainler"
-            },
-            "api": "Hexonet"
+            "no": 221,
+            "name": "COM",
+            "group": "Ortadoğu Domainler",
+            "api": "Atakdomain"
         },
         {
-            "no": 5123,
-            "extension": {
-                "name": "AC.MU",
-                "group": "Afrika Domainler"
-            },
+            "no": 32523,
+            "name": "NET",
+            "group": "Afrika Domainler",
             "api": "Hexonet"
         }
 

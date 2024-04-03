@@ -1,6 +1,6 @@
 $colors: (
     'blue': #3b82f6,
-    'green': #22c55e,
+    'green': #1ccc99,
     'yellow': #eab308,
     'cyan': #06b6d4,
     'pink': #ec4899,
@@ -165,15 +165,15 @@ $infoButtonTextActiveColor: $infoButtonTextColor !default;
 $infoButtonActiveBorderColor: #1d4ed8 !default;
 $infoButtonFocusShadow: 0 0 0 0.2rem #bfdbfe !default;
 
-$successButtonBg: #22c55e !default;
+$successButtonBg: #1ccc99 !default;
 $successButtonTextColor: #ffffff !default;
 $successButtonBorder: 1px solid $successButtonBg !default;
-$successButtonHoverBg: #16a34a !default;
+$successButtonHoverBg: #068662 !default;
 $successButtonTextHoverColor: $successButtonTextColor !default;
-$successButtonHoverBorderColor: #16a34a !default;
-$successButtonActiveBg: #15803d !default;
+$successButtonHoverBorderColor: #068662 !default;
+$successButtonActiveBg: #048862 !default;
 $successButtonTextActiveColor: $successButtonTextColor !default;
-$successButtonActiveBorderColor: #15803d !default;
+$successButtonActiveBorderColor: #048862 !default;
 $successButtonFocusShadow: 0 0 0 0.2rem #bbf7d0 !default;
 
 $warningButtonBg: #f59e0b !default;
@@ -642,11 +642,11 @@ $progressBarBg: $shade300 !default;
 $progressBarValueBg: $primaryColor !default;
 $progressBarValueTextColor: $primaryTextColor !default;
 
-$progressSpinnerStrokeColor:$errorMessageTextColor !default;
-$progressSpinnerColorOne:$errorMessageTextColor !default;
-$progressSpinnerColorTwo:$infoMessageTextColor !default;
-$progressSpinnerColorThree:$successMessageTextColor !default;
-$progressSpinnerColorFour:$warningMessageTextColor !default;
+$progressSpinnerStrokeColor: $errorMessageTextColor !default;
+$progressSpinnerColorOne: $errorMessageTextColor !default;
+$progressSpinnerColorTwo: $infoMessageTextColor !default;
+$progressSpinnerColorThree: $successMessageTextColor !default;
+$progressSpinnerColorFour: $warningMessageTextColor !default;
 
 //menu (e.g. menu, menubar, tieredmenu)
 $menuWidth: 12.5rem !default;
