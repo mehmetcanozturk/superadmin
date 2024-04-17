@@ -1,5 +1,6 @@
 {
     "data": [
+        {"name": "Universal", "code": "0"},
         {"name": "Afghanistan", "code": "AF"},
         {"name": "Albania", "code": "AL"},
         {"name": "Algeria", "code": "DZ"},
@@ -242,5 +243,7 @@
         {"name": "Yemen", "code": "YE"},
         {"name": "Zambia", "code": "ZM"},
         {"name": "Zimbabwe", "code": "ZW"}
+        
+
     ]
 }

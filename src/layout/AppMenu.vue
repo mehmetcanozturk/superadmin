@@ -27,12 +27,39 @@ const model = ref([
                     {
                         label:'Uzantı Listesi',
                         icon: 'pi pi-fw pi-list',
-                        to: '/domain/uzanti'
+                        to: '/uzanti'
                     },
                     {
                         label:'Uzantı Ekle',
                         icon: 'pi pi-fw pi-plus',
-                        to: '/domain/uzanti/uzanti-ekle'
+                        to: '/uzanti/uzanti-ekle'
+                    },
+                ]
+                
+            },
+            {
+                label: 'Domain',
+                icon: 'pi pi-fw pi-globe',
+                items: [
+                    {
+                        label:'Domain Listesi',
+                        icon: 'pi pi-fw pi-list',
+                        to: '/domain'
+                    },
+                    {
+                        label:'İşlemdeki Domain',
+                        icon: 'pi pi-spinner',
+                        to: '/domain/test'
+                    },
+                    {
+                        label:'Yenilenecek Domain',
+                        icon: 'pi pi-fw pi-refresh',
+                        to: '/domain/test'
+                    },
+                    {
+                        label:'Silinen Domain',
+                        icon: 'pi pi-fw pi-trash',
+                        to: '/domain/test'
                     },
                 ]
                 

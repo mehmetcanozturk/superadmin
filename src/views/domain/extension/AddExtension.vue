@@ -4,14 +4,6 @@ import { CountryService } from '@/service/CountryService';
 import { useConfirm } from 'primevue/useconfirm';
 import { useToast } from 'primevue/usetoast';
 
-const cities = ref([
-    { name: 'New York', code: 'NY' },
-    { name: 'Rome', code: 'RM' },
-    { name: 'London', code: 'LDN' },
-    { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' }
-]);
-
 const apikey = ref([
     { name: 'Null' },
     { name: 'Afilias Srs Complex' },
@@ -90,11 +82,20 @@ const categories = ref([
     { name: 'Transfer kodu gerektiriyor mu?', key: 'transfer-code' },
     { name: 'Cezalı ödeme (geç yenileme bedeli) destekliyor mu?', key: 'late-renewal' },
     { name: 'Backorder destekliyor mu?', key: 'backorder' },
-    { name: 'Trustee hizmeti destekliyor mu?', key: 'trustee' },
-
+    { name: 'Trustee hizmeti destekliyor mu?', key: 'trustee' }
 ]);
 
-
+const additionalInfoTable = ref([
+    { id: 1, name: 'Ek Bilgiler (1)', type: 'Metin Giriş' },
+    { id: 1, name: 'Ek Bilgiler (2)', type: 'Açılabilir Liste Girişi' }
+]);
+const additionalInfoCagegories = ref([
+    { name: 'Metin Giriş', value:0 },
+    { name: 'Açılabilir Liste', value:0 },
+    { name: 'Opsiyonel Seçim' },
+    { name: 'Check Seçim' },
+    { name: 'Check Seçim (Sözleşmeli)' },
+]);
 </script>
 
 <template>
@@ -132,6 +133,7 @@ const categories = ref([
                                 </Dropdown>
                                 <label for="country">Ülke</label>
                             </span>
+                            <small>Uzantının ülkesi yoksa lütfen <b>Universal</b>'i seçiniz</small>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
@@ -191,17 +193,17 @@ const categories = ref([
                     <div class="mt-5 col-12 p-0 md:col-4">
                         <div class="flex flex-column gap-3">
                             <div v-for="category of categories" :key="category.key" class="flex align-items-center">
-                                <Checkbox v-model="selectedCategories"  :inputId="category.key" name="category" :value="category.name" />
+                                <Checkbox v-model="selectedCategories" :inputId="category.key" name="category" :value="category.name" />
                                 <label class="ml-2" :for="category.key">{{ category.name }}</label>
                             </div>
                         </div>
                         <div v-if="selectedCategories.includes('trustee')">
-                            <input type="text" v-model="trusteeInput" placeholder="Trustee hizmeti destekliyor mu?">
+                            <input type="text" v-model="trusteeInput" placeholder="Trustee hizmeti destekliyor mu?" />
                         </div>
                     </div>
                 </div>
             </TabPanel>
-            <TabPanel header="Eklenecek">
+            <TabPanel header="RGP Periot Bilgileri">
                 <div class="grid gap-5">
                     <div class="grid p-fluid mt-3 col-12 p-0 md:col-7">
                         <div class="field col-12 md:col-6">
@@ -247,18 +249,45 @@ const categories = ref([
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
-                            <ToggleButton v-model="toggleValue" onLabel="Kesin Yenileme var" severity="success" offLabel="Kesin Yenileme yok"  />
+                            <ToggleButton v-model="toggleValue" onLabel="Kesin Yenileme var" severity="success" offLabel="Kesin Yenileme yok" />
+                            <small>Bu buttona tıklayarak kesin yenilemeyi aktif edip kapatabilirsiniz</small>
                         </div>
-         
                     </div>
-                    <div class="mt-5 col-12 p-0 md:col-5">
-                  
-                    
+                    <div class="mt-5 col-12 p-0 md:col-5"></div>
+                </div>
+            </TabPanel>
+
+            <TabPanel header="Ek Bilgiler">
+                <div class="grid gap-3">
+                    <div class="col-12 mt-5">
+                        <DataTable :value="additionalInfoTable" tableStyle="min-width: 50rem">
+                            <Column field="name" header="Name"></Column>
+                            <Column field="type" header="Giriş Tipi"></Column>
+                            <Column :exportable="false" header="işlem">
+                                <template #body="">
+                                    <div class="flex justify-content-start gap-2">
+                                        <Button icon="pi pi-pencil" rounded size="small" />
+                                        <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                                    </div>
+                                </template>
+                            </Column>
+                        </DataTable>
+                    </div>
+                    <div class="col-12 grid">
+                        <div class="col-4">
+                            <span class="p-float-label w-full">
+                                <Dropdown id="dropdown" :options="additionalInfoCagegories" class="w-full" v-model="value11" optionLabel="name"></Dropdown>
+                                <label for="dropdown">Kontrol Giriş Tipi:</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div ></div>
                     </div>
                 </div>
             </TabPanel>
         </TabView>
-        <div class="grid border-top-1 border-gray-200 p-2 justify-content-end">
+        <div class="grid border-top-1 border-gray-200 p-2 justify-content-end mt-3">
             <ConfirmPopup></ConfirmPopup>
             <Button ref="popup" @click="confirm($event)" icon="pi pi-check" severity="success" label="Kaydet" class="mr-2"></Button>
         </div>

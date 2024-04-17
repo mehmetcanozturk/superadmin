@@ -13,6 +13,7 @@ const filters = ref({
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     group: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     no: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    api: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
 
     'country.name': { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     representative: { value: null, matchMode: FilterMatchMode.IN },
@@ -25,13 +26,37 @@ onBeforeMount(() => {
         list.value = data;
     });
 });
+
+const priceTable = ref([
+    { id: 2, group: 'Reseller', type: 'Yenileme', period: 2, cost: '$19.99', sale: '$24.99' },
+    { id: 3, group: 'Reseller', type: 'Kayıt', period: 1, cost: '$8.99', sale: '$10.99' },
+    { id: 4, group: 'Reseller', type: 'Yenileme', period: 1, cost: '$17.99', sale: '$22.99' },
+    { id: 5, group: 'Reseller', type: 'Transfer', period: 3, cost: '$28.99', sale: '$33.99' },
+    { id: 6, group: 'Reseller', type: 'Kayıt', period: 2, cost: '$10.99', sale: '$12.99' },
+    { id: 7, group: 'Reseller', type: 'Yenileme', period: 3, cost: '$25.99', sale: '$30.99' },
+    { id: 8, group: 'Reseller', type: 'Transfer', period: 1, cost: '$13.99', sale: '$18.99' },
+    { id: 9, group: 'Reseller', type: 'Transfer', period: 2, cost: '$22.99', sale: '$27.99' },
+    { id: 10, group: 'Reseller', type: 'Kayıt', period: 3, cost: '$28.99', sale: '$33.99' },
+    { id: 11, group: 'Reseller', type: 'Yenileme', period: 3, cost: '$26.99', sale: '$31.99' },
+    { id: 12, group: 'Reseller', type: 'Transfer', period: 1, cost: '$15.99', sale: '$20.99' },
+    { id: 13, group: 'Reseller', type: 'Kayıt', period: 3, cost: '$12.99', sale: '$14.99' },
+    { id: 14, group: 'Reseller', type: 'Yenileme', period: 1, cost: '$18.99', sale: '$23.99' },
+    { id: 15, group: 'Reseller', type: 'Transfer', period: 3, cost: '$28.99', sale: '$33.99' },
+    { id: 16, group: 'Reseller', type: 'Kayıt', period: 1, cost: '$7.99', sale: '$9.99' },
+    { id: 17, group: 'Reseller', type: 'Yenileme', period: 2, cost: '$20.99', sale: '$25.99' },
+    { id: 18, group: 'Reseller', type: 'Transfer', period: 2, cost: '$23.99', sale: '$28.99' },
+    { id: 19, group: 'Reseller', type: 'Kayıt', period: 2, cost: '$9.99', sale: '$11.99' },
+    { id: 20, group: 'Reseller', type: 'Yenileme', period: 2, cost: '$21.99', sale: '$26.99' },
+    { id: 21, group: 'Reseller', type: 'Transfer', period: 1, cost: '$14.99', sale: '$19.99' },
+    { id: 22, group: 'Reseller', type: 'Transfer', period: 3, cost: '$30.99', sale: '$35.99' }
+]);
 </script>
 
 <template>
     <div class="grid">
         <div class="col-12">
             <div class="card">
-                <h5>Filter Menu</h5>
+                <h5>Uzantı Listesi</h5>
                 <DataTable :value="list" size="small" class="small p-datatable-gridlines" :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['name', 'group']">
                     <template #header>
                         <div class="flex justify-content-between flex-column sm:flex-row">
@@ -57,7 +82,7 @@ onBeforeMount(() => {
                         </div>
                     </template>
                     <template #loading> Tablo Yükleniyor Lütfen Bekleyin. </template>
-                    <Column field="no" header="NO">
+                    <Column field="no" header="NO" sortable>
                         <template #body="{ data }">
                             <span class="font-bold">{{ data.no }}</span>
                         </template>
@@ -75,19 +100,24 @@ onBeforeMount(() => {
                             {{ data.group }}
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
-                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Uzantı Ara" />
+                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Uzantı Grubu Ara" />
                         </template>
                     </Column>
-                    <Column field="api" header="API">
+                    <Column field="api" header="API" :showFilterMenu="false">
                         <template #body="{ data }">
                             {{ data.api }}
+                        </template>
+                        <template #filter="{ filterModel, filterCallback }">
+                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="API Ara" />
                         </template>
                     </Column>
                     <Column :exportable="false">
                         <template #body="">
                             <div class="flex justify-content-center gap-2">
                                 <Button icon="pi pi-dollar" rounded size="small" severity="success" @click="priceListModal = true" />
-                                <Button icon="pi pi-pencil" rounded size="small" />
+                                <router-link to="/uzanti/uzanti-ekle">
+                                    <Button icon="pi pi-pencil" rounded size="small" />
+                                </router-link>
                                 <Button icon="pi pi-trash" rounded size="small" severity="danger" />
                             </div>
                         </template>
@@ -96,7 +126,7 @@ onBeforeMount(() => {
             </div>
         </div>
     </div>
-    <Dialog v-model:visible="priceListModal" maximizable modal header=".COM Fiyat Listesi" position="top" :style="{ width: '80vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+    <Dialog v-model:visible="priceListModal" maximizable modal header=".COM Fiyat Listesi" :style="{ width: '80vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
         <TabView>
             <TabPanel>
                 <template #header>
@@ -104,21 +134,82 @@ onBeforeMount(() => {
                         <span class="font-bold white-space-nowrap">Reseller</span>
                     </div>
                 </template>
+                <DataTable :value="priceTable" size="small" class="small" scrollable stripedRows showGridlines removableSort :paginator="true" :rowHover="true" :rows="10" dataKey="id">
+                    <template #header>
+                        <div class="flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Reseller Fiyat Listesi</h5>
+                            <InputText v-model="filters['global'].value" placeholder="Ara" />
+                        </div>
+                    </template>
+                    <Column field="type" header="İşlem" sortable class="font-bold"></Column>
+                    <Column field="period" header="Periyot (Yıl)" sortable></Column>
+                    <Column field="cost" header="Maliyet" sortable></Column>
+                    <Column field="sale" header="Satış Fiyatı" sortable></Column>
+                    <Column :exportable="false">
+                        <template #body="">
+                            <div class="flex justify-content-center gap-2">
+                                <Button icon="pi pi-pencil" rounded size="small" />
+                                <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                            </div>
+                        </template>
+                    </Column>
+                </DataTable>
             </TabPanel>
             <TabPanel>
                 <template #header>
                     <div class="flex align-items-center gap-2">
-                        <span class="font-bold white-space-nowrap">Reseller</span>
+                        <span class="font-bold white-space-nowrap">Premium</span>
                     </div>
                 </template>
+                <DataTable :value="priceTable" size="small" class="small" scrollable stripedRows showGridlines removableSort :paginator="true" :rowHover="true" :rows="10" dataKey="id">
+                    <template #header>
+                        <div class="flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Premium Fiyat Listesi</h5>
+                            <InputText v-model="filters['global'].value" placeholder="Ara" />
+                        </div>
+                    </template>
+                    <Column field="type" header="İşlem" sortable class="font-bold"></Column>
+                    <Column field="period" header="Periyot (Yıl)" sortable></Column>
+                    <Column field="cost" header="Maliyet" sortable></Column>
+                    <Column field="sale" header="Satış Fiyatı" sortable></Column>
+                    <Column :exportable="false">
+                        <template #body="">
+                            <div class="flex justify-content-center gap-2">
+                                <Button icon="pi pi-pencil" rounded size="small" />
+                                <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                            </div>
+                        </template>
+                    </Column>
+                </DataTable>
             </TabPanel>
             <TabPanel>
                 <template #header>
                     <div class="flex align-items-center gap-2">
-                        <span class="font-bold white-space-nowrap">Reseller</span>
+                        <span class="font-bold white-space-nowrap">Platium</span>
                     </div>
                 </template>
+                <DataTable :value="priceTable" size="small" class="small" scrollable stripedRows showGridlines removableSort :paginator="true" :rowHover="true" :rows="10" dataKey="id">
+                    <template #header>
+                        <div class="flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Platium Fiyat Listesi</h5>
+                            <InputText v-model="filters['global'].value" placeholder="Ara" />
+                        </div>
+                    </template>
+                    <Column field="type" header="İşlem" sortable class="font-bold"></Column>
+                    <Column field="period" header="Periyot (Yıl)" sortable></Column>
+                    <Column field="cost" header="Maliyet" sortable></Column>
+                    <Column field="sale" header="Satış Fiyatı" sortable></Column>
+                    <Column :exportable="false">
+                        <template #body="">
+                            <div class="flex justify-content-center gap-2">
+                                <Button icon="pi pi-pencil" rounded size="small" />
+                                <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                            </div>
+                        </template>
+                    </Column>
+                </DataTable>
             </TabPanel>
+
             <TabPanel>
                 <template #header>
                     <div class="flex align-items-center gap-2">
@@ -126,6 +217,64 @@ onBeforeMount(() => {
                         <Badge value="2"></Badge>
                     </div>
                 </template>
+                <Accordion :activeIndex="0" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
+                    <AccordionTab>
+                        <template #header>
+                            <span class="flex align-items-center gap-2 w-full">
+                                <Avatar image="/images/user.jpg" shape="circle" />
+                                <span class="font-bold white-space-nowrap">Recep Şerit</span>
+                            </span>
+                        </template>
+                        <DataTable :value="priceTable" size="small" class="small" scrollable stripedRows showGridlines removableSort :paginator="true" :rowHover="true" :rows="10" dataKey="id">
+                            <template #header>
+                                <div class="flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Recep Şerit Fiyat Listesi</h5>
+                                    <InputText v-model="filters['global'].value" placeholder="Ara" />
+                                </div>
+                            </template>
+                            <Column field="type" header="İşlem" sortable class="font-bold"></Column>
+                            <Column field="period" header="Periyot (Yıl)" sortable></Column>
+                            <Column field="cost" header="Maliyet" sortable></Column>
+                            <Column field="sale" header="Satış Fiyatı" sortable></Column>
+                            <Column :exportable="false">
+                                <template #body="">
+                                    <div class="flex justify-content-center gap-2">
+                                        <Button icon="pi pi-pencil" rounded size="small" />
+                                        <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                                    </div>
+                                </template>
+                            </Column>
+                        </DataTable>
+                    </AccordionTab>
+                    <AccordionTab>
+                        <template #header>
+                            <span class="flex align-items-center gap-2 w-full">
+                                <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/onyamalimba.png" shape="circle" />
+                                <span class="font-bold white-space-nowrap">Random User 1</span>
+                            </span>
+                        </template>
+                        <DataTable :value="priceTable" size="small" class="small" scrollable stripedRows showGridlines removableSort :paginator="true" :rowHover="true" :rows="10" dataKey="id">
+                            <template #header>
+                                <div class="flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Random User 1 Fiyat Listesi</h5>
+                                    <InputText v-model="filters['global'].value" placeholder="Ara" />
+                                </div>
+                            </template>
+                            <Column field="type" header="İşlem" sortable class="font-bold"></Column>
+                            <Column field="period" header="Periyot (Yıl)" sortable></Column>
+                            <Column field="cost" header="Maliyet" sortable></Column>
+                            <Column field="sale" header="Satış Fiyatı" sortable></Column>
+                            <Column :exportable="false">
+                                <template #body="">
+                                    <div class="flex justify-content-center gap-2">
+                                        <Button icon="pi pi-pencil" rounded size="small" />
+                                        <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                                    </div>
+                                </template>
+                            </Column>
+                        </DataTable>
+                    </AccordionTab>
+                </Accordion>
             </TabPanel>
         </TabView>
     </Dialog>

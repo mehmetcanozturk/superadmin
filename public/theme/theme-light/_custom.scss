@@ -4,3 +4,13 @@
     }
 }
 
+.p-button-sm {
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+}
+
+input[readonly]{
+    cursor:not-allowed;
+    background-color: var(--surface-100);
+}

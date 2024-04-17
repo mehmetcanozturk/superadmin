@@ -17,7 +17,7 @@ const router = createRouter({
                     component: () => import('@/views/dashboards/Dashboard.vue')
                 },
                 {
-                    path: '/domain/uzanti',
+                    path: '/uzanti',
                     name: 'extension-list',
                     meta: {
                         breadcrumb: ['Domain', 'Extension List']
@@ -25,12 +25,20 @@ const router = createRouter({
                     component: () => import('@/views/domain/extension/index.vue')
                 },
                 {
-                    path: '/domain/uzanti/uzanti-ekle',
+                    path: '/uzanti/uzanti-ekle',
                     name: 'extension-price',
                     meta: {
                         breadcrumb: ['Domain', 'Extension','Add Extension']
                     },
                     component: () => import('@/views/domain/extension/AddExtension.vue')
+                },
+                {
+                    path: '/domain',
+                    name: 'domain-list',
+                    meta: {
+                        breadcrumb: ['Domain', 'Extension','Add Extension']
+                    },
+                    component: () => import('@/views/domain/domain/index.vue')
                 },
 
 

@@ -205,7 +205,7 @@ const checkActiveRoute = (item) => {
         </router-link>
 
         <ul ref="subMenuRef" :class="{ 'layout-root-submenulist': root }" v-if="item.items && item.visible !== false">
-            <app-menu-item v-for="(child, i) in item.items" :key="child" :index="i" :item="child" :parentItemKey="itemKey" :root="false"></app-menu-item>
+            <app-menu-item v-for="(child, i) in item.items" :key="child" :index="i" :item="child" :parentItemKey="itemKey" :root="false" class="text-sm"></app-menu-item>
         </ul>
     </li>
 </template>
