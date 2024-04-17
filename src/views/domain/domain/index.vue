@@ -28,12 +28,12 @@ const filters = ref({
 
 const domainList = ref([
     { id: 102, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'dayzip.com.tr', api: 'Trabis', remainingDay: 363, endDate: '08.04.2025', status: 'Aktif' },
-    { id: 2309, reseller: 'İnternet Hizmetleri A.Ş.', domain: 'example1.com', api: 'Quatrix', remainingDay: 285, endDate: '31.12.2024', status: 'Aktif' },
+    { id: 2309, reseller: 'İnternet Hizmetleri A.Ş.', domain: 'example1.com', api: 'Quatrix', remainingDay: 285, endDate: '31.12.2024', status: 'Ödeme Bekliyor' },
     { id: 645, reseller: 'Digital Solutions', domain: 'sample.net', api: 'Nexio', remainingDay: 172, endDate: '15.08.2024', status: 'Aktif' },
-    { id: 8113, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'testsite.org', api: 'Datum', remainingDay: 10, endDate: '26.04.2024', statusId: 2 },
+    { id: 8113, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'testsite.org', api: 'Datum', remainingDay: 10, endDate: '26.04.2024', status: 'Belge Bekliyor' },
     { id: 5002, reseller: 'Web Services Ltd.', domain: 'example2.com', api: 'OctaWeb', remainingDay: 75, endDate: '20.06.2024', status: 'Aktif' },
-    { id: 719, reseller: 'Hosting Co.', domain: 'demo.org', api: 'Quantum', remainingDay: 150, endDate: '12.09.2024', status: 'Aktif' },
-    { id: 4224, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'trythis.net', api: 'Zephyr', remainingDay: 210, endDate: '05.10.2024', status: 'Aktif' },
+    { id: 719, reseller: 'Hosting Co.', domain: 'demo.org', api: 'Quantum', remainingDay: 150, endDate: '12.09.2024', status: 'İptal Edildi' },
+    { id: 4224, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'trythis.net', api: 'Zephyr', remainingDay: 210, endDate: '05.10.2024', status: 'Belge Bekliyor' },
     { id: 834, reseller: 'Cloud Technologies', domain: 'anotherexample.com', api: 'Helix', remainingDay: 240, endDate: '22.11.2024', status: 'Aktif' },
     { id: 121, reseller: 'Hosting Co.', domain: 'samplepage.org', api: 'Infini', remainingDay: 30, endDate: '10.05.2024', status: 'Aktif' },
     { id: 8126, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'mydomain.com.tr', api: 'MegaAPI', remainingDay: 92, endDate: '02.07.2024', status: 'Aktif' },
@@ -41,14 +41,31 @@ const domainList = ref([
     { id: 778, reseller: 'Hosting Co.', domain: 'example3.com', api: 'CyberNet', remainingDay: 183, endDate: '14.09.2024', status: 'Aktif' },
     { id: 928, reseller: 'Web Services Ltd.', domain: 'trythis.org', api: 'NexGen', remainingDay: 55, endDate: '07.06.2024', status: 'Aktif' },
     { id: 556, reseller: 'Cloud Technologies', domain: 'mysite.com', api: 'SkyLink', remainingDay: 95, endDate: '19.07.2024', status: 'Aktif' },
-    { id: 3921, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'testpage.net', api: 'CloudX', remainingDay: 25, endDate: '15.05.2024', status: 'Aktif' },
+    { id: 3921, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'testpage.net', api: 'CloudX', remainingDay: 25, endDate: '15.05.2024', status: 'İptal Edildi' },
     { id: 2276, reseller: 'Digital Solutions', domain: 'anotherpage.com', api: 'DataPulse', remainingDay: 145, endDate: '28.08.2024', status: 'Aktif' },
     { id: 689, reseller: 'Web Services Ltd.', domain: 'example4.com', api: 'HostEdge', remainingDay: 205, endDate: '30.09.2024', status: 'Aktif' },
-    { id: 578, reseller: 'Hosting Co.', domain: 'testing.org', api: 'XpertWeb', remainingDay: 75, endDate: '20.06.2024', status: 'Aktif' },
+    { id: 578, reseller: 'Hosting Co.', domain: 'testing.org', api: 'XpertWeb', remainingDay: 75, endDate: '20.06.2024', status: 'İptal Edildi' },
     { id: 4304, reseller: 'TEKNO FİRST BİLİŞİM', domain: 'newdomain.com.tr', api: 'WebNinja', remainingDay: 110, endDate: '14.07.2024', status: 'Aktif' },
     { id: 1509, reseller: 'Cloud Technologies', domain: 'trial.net', api: 'AlphaWeb', remainingDay: 150, endDate: '12.09.2024', status: 'Aktif' },
     { id: 871, reseller: 'Digital Solutions', domain: 'example5.com', api: 'CloudWorks', remainingDay: 45, endDate: '03.05.2024', status: 'Aktif' }
 ]);
+
+const getSeverity = (status) => {
+    switch (status) {
+        case 'Aktif':
+            return 'success';
+
+        case 'Belge Bekliyor':
+            return 'info';
+
+        case 'Ödeme Bekliyor':
+            return 'warning';
+
+        case 'İptal Edildi':
+            return 'danger';
+        
+    }
+};
 
 const nameServer = ref([
     { host: 'NS1.RECEPSERIT.COM', ipadress: '185.141.164.88' },
@@ -56,6 +73,7 @@ const nameServer = ref([
     { host: 'NS3.RECEPSERIT.COM', ipadress: '185.141.164.64' },
     { host: 'NS4.RECEPSERIT.COM', ipadress: '185.141.164.32' }
 ]);
+const nsTextarea = ref('NS1.RECEPSERIT.COM\nNS2.RECEPSERIT.COM')
 
 const dropdownApi = ref([
     { id: 55, name: 'Hexonet' },
@@ -141,12 +159,19 @@ const confirm = (event) => {
                     </Column>
                     <Column field="remainingDay" header="Kalan Gün" sortable></Column>
                     <Column field="endDate" header="Bitiş Tarihi"></Column>
+                    <Column field="status" header="Durumu" sortable>
+                        <template #body="{ data }">
+                            <Badge class="w-full" :value="data.status" :severity="getSeverity(data.status)" />
+                        </template>
+                    </Column>
 
-                    <Column :exportable="false">
+                    <Column header="İşlem" :exportable="false">
                         <template #body="">
-                            <div class="flex justify-content-center gap-2">
+                            <div class="flex justify-content-center">
                                 <Button @click="resellerModal = true"  icon="pi pi-user" v-tooltip.top="'Bayi Bilgisi'" rounded size="small" link />
                                 <Button @click="domainModal = true" icon="pi pi-globe" v-tooltip.top="'Domain Bilgisi'" rounded size="small" link />
+                                <Button icon="pi pi-sync" v-tooltip.top="'senkronize et'" rounded size="small" link />
+                                <Button icon="pi pi-trash" v-tooltip.top="'Sil'" rounded size="small" link />
                             </div>
                         </template>
                     </Column>
@@ -165,58 +190,58 @@ const confirm = (event) => {
         <ul class="list-none p-4 m-0">
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi Adı:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">Atak Domain Bilgi Teknolojileri A.Ş.</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">Atak Domain Bilgi Teknolojileri A.Ş.</div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi Referans No:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 select-all">46545</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold select-all">46545</div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi Grubu:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">
                     <Chip label="Platium" icon="pi pi-star-fill" class="bg-indigo-700 text-white"></Chip>
                 </div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi Yetkili:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">Recep Şerit</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">Recep Şerit</div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi Telefon:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">+90 262 325 92 22</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">+90 262 325 92 22</div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi GSM:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">+90 262 325 92 22</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">+90 262 325 92 22</div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Bayi Email:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
-                    <Chip label="domain@atakdomain.com" class="mr-2 select-all"></Chip>
-                    <Chip label="destek@atakdomain.com" class="mr-2 select-all"></Chip>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">
+                    <Chip label="domain@atakdomain.com" class="mr-2 select-all font-semibold"></Chip>
+                    <Chip label="destek@atakdomain.com" class="mr-2 select-all font-semibold"></Chip>
                 </div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Kullanıcı Adı:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 font-semibold">
                     <span class="p-input-icon-right">
                         <i class="pi pi-user" />
-                        <InputText type="text" value="recepserit" disabled class="opacity-100 select-all" />
+                        <InputText type="text" value="recepserit" disabled class="opacity-100 font-semibold select-all" />
                     </span>
                 </div>
             </li>
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Şifre:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
-                    <Password disabled v-model="resellerpw" toggleMask class="opacity-100" />
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 ">
+                    <Password disabled v-model="resellerpw" toggleMask class="opacity-100 font-semibold" />
                 </div>
             </li>
         </ul>
@@ -301,6 +326,10 @@ const confirm = (event) => {
                     <div class="field col-12 md:col-4 py-1">
                         <label>Whois Gizlilik Durumu:</label>
                         <ToggleButton disabled class="opacity-100" v-model="whoisToggle" onLabel="Whois Gizliği Açık" offLabel="Whois Gizliği Kapalı" />
+                    </div>
+                    <div class="field col-12 md:col-4 py-1">
+                        <label>Alan Adı Sunucuları:</label>
+                        <Textarea v-model="nsTextarea" autoResize readonly rows="2" class="font-semibold surface-100" />
                     </div>
                 </div>
             </TabPanel>
