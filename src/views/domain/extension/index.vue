@@ -1,24 +1,25 @@
 <script setup>
 import { ref, onBeforeMount, reactive } from 'vue';
 import { FilterMatchMode, FilterOperator } from 'primevue/api';
-import { CustomerService } from '@/service/CustomerService';
 import { DomainExtension } from '@/service/DomainExtension';
+import { useConfirm } from 'primevue/useconfirm';
+import { useToast } from 'primevue/usetoast';
+
+const confirm = useConfirm();
+const toast = useToast();
 
 const Extension = new DomainExtension();
 const list = ref(null);
 const priceListModal = ref(false);
+const addPriceModal = ref(false);
+const switchValue = ref(false);
 
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     group: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     no: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-    api: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-
-    'country.name': { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-    representative: { value: null, matchMode: FilterMatchMode.IN },
-    status: { value: null, matchMode: FilterMatchMode.EQUALS },
-    verified: { value: null, matchMode: FilterMatchMode.EQUALS }
+    api: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
 });
 
 onBeforeMount(() => {
@@ -50,6 +51,20 @@ const priceTable = ref([
     { id: 21, group: 'Reseller', type: 'Transfer', period: 1, cost: '$14.99', sale: '$19.99' },
     { id: 22, group: 'Reseller', type: 'Transfer', period: 3, cost: '$30.99', sale: '$35.99' }
 ]);
+
+const requireConfirmation = () => {
+    confirm.require({
+            group: 'headless',
+            header: 'Emin misin?',
+            message: 'Otomatik fiyatlandırma modu açık oluduğu için bütün Fiyatları güncelleyeceksin.',
+            acceptLabel: 'Evet',
+            rejectLabel: 'Vazgeç',
+            accept: () => {
+                toast.add({ severity: 'success', summary: 'Toplu Fiyat Güncellemesi', detail: 'Reseller bayilerinin bütün kayıt fiyatları güncellendi', life: 3000 });
+            }
+    });
+    addPriceModal = false;
+};
 </script>
 
 <template>
@@ -57,16 +72,21 @@ const priceTable = ref([
         <div class="col-12">
             <div class="card">
                 <h5>Uzantı Listesi</h5>
-                <DataTable :value="list" size="small" class="small p-datatable-gridlines" :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['name', 'group']">
+                <DataTable :value="list" size="small" class="small p-datatable-gridlines" :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['name', 'group', 'api', 'no']">
                     <template #header>
-                        <div class="flex justify-content-between flex-column sm:flex-row">
-                            <div class="flex flex-column sm:flex-row">
+                        <div class="flex justify-content-between flex-column sm:flex-row gap-3">
+                            <div class="flex flex-column sm:flex-row gap-3">
                                 <span class="p-input-icon-left mb-2">
                                     <i class="pi pi-search" />
-                                    <InputText placeholder="Uzantı Ara" style="width: 100%" />
+                                    <InputText placeholder="Ara" v-model="filters['global'].value" style="width: 100%" />
                                 </span>
+                                <Button type="button" v-tooltip.top="'Filtreyi Temizle'" icon="pi pi-filter-slash" class="p-button-outlined mb-2" />
                             </div>
-                            <Button type="button" icon="pi pi-filter-slash" label="Filtreleri Temizle" class="p-button-outlined p-button-danger mb-2" />
+                            <div class="flex gap-2">
+                                <router-link to="/uzanti/uzanti-ekle">
+                                    <Button type="button" icon="pi pi-plus" label="Yeni Uzantı Ekle" severity="success" class="mb-2" />
+                                </router-link>
+                            </div>
                         </div>
                     </template>
                     <template #empty>
@@ -114,11 +134,11 @@ const priceTable = ref([
                     <Column :exportable="false">
                         <template #body="">
                             <div class="flex justify-content-center gap-2">
-                                <Button icon="pi pi-dollar" rounded size="small" severity="success" @click="priceListModal = true" />
+                                <Button icon="pi pi-dollar" rounded size="small" link v-tooltip.top="'Fiyatı Düzenle'" @click="priceListModal = true" />
                                 <router-link to="/uzanti/uzanti-ekle">
-                                    <Button icon="pi pi-pencil" rounded size="small" />
+                                    <Button icon="pi pi-pencil" rounded size="small" link v-tooltip.top="'Düzenle'" />
                                 </router-link>
-                                <Button icon="pi pi-trash" rounded size="small" severity="danger" />
+                                <Button icon="pi pi-trash" rounded size="small" link v-tooltip.top="'Sil'" />
                             </div>
                         </template>
                     </Column>
@@ -126,8 +146,9 @@ const priceTable = ref([
             </div>
         </div>
     </div>
-    <Dialog v-model:visible="priceListModal" maximizable modal header=".COM Fiyat Listesi" :style="{ width: '80vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-        <TabView>
+    <Dialog v-model:visible="priceListModal" maximizable modal header=".COM Fiyat Listesi" :style="{ width: '80vw' }" :position="'top'" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+        <Button type="button" icon="pi pi-plus" label="Yeni Fiyat Ekle" severity="success" class="mb-2 modal-plus-btn" @click="addPriceModal = true" />
+        <TabView class="sticky-tab">
             <TabPanel>
                 <template #header>
                     <div class="flex align-items-center gap-2">
@@ -141,7 +162,7 @@ const priceTable = ref([
                             <InputText v-model="filters['global'].value" placeholder="Ara" />
                         </div>
                     </template>
-                    <Column field="type" header="İşlem" sortable class="font-bold"></Column>
+                    <Column field="type" header="Türü" sortable class="font-bold"></Column>
                     <Column field="period" header="Periyot (Yıl)" sortable></Column>
                     <Column field="cost" header="Maliyet" sortable></Column>
                     <Column field="sale" header="Satış Fiyatı" sortable></Column>
@@ -278,12 +299,41 @@ const priceTable = ref([
             </TabPanel>
         </TabView>
     </Dialog>
+
+    <Dialog v-model:visible="addPriceModal" maximizable modal header="Yeni Fiyat Ekle" :position="'top'" :style="{ width: '500px' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+        <div class="field">
+            <label for="name">Bayi Türü:</label>
+            <Dropdown v-model="selectedCity" :options="cities" filter optionLabel="name" placeholder="Bayi türü seç" class="w-full" />
+        </div>
+        <div class="field">
+            <label for="name">İşlem Türü:</label>
+            <Dropdown v-model="selectedCity" :options="cities" filter optionLabel="name" placeholder="İşlem türü seç" class="w-full" />
+        </div>
+        <div class="field">
+            <label for="name">Periyot (Yıl):</label>
+            <InputNumber v-model="value232" :useGrouping="false" max="3" class="w-full" />
+        </div>
+        <div class="field">
+            <label for="name">Maliyet:</label>
+            <InputNumber v-model="value123" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
+        </div>
+        <div class="field">
+            <label for="name">Satış:</label>
+            <InputNumber v-model="value321" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
+        </div>
+        <div class="field">
+            <label class="block" for="name">Otomatik Fiyatlandırma:</label>
+            <InputSwitch v-model="switchValue" />
+        </div>
+        <Message severity="info" v-if="switchValue"><b>Otomatik Fiyatlandırma:</b> Bir işlem türünün bütün periyot fiyatlarını otomatik güncellemek için kullanılır.</Message>
+        <template #footer>
+            <ConfirmDialog group="headless"></ConfirmDialog>
+            <Button label="Vazgeç" text @click="addPriceModal = false" />
+            <Button label="Kaydet" icon="pi pi-check" severity="success" @click="switchValue ?  requireConfirmation() : addPriceModal = false" />
+        </template>
+    </Dialog>
 </template>
 
 <style scoped lang="scss">
-.p-button-sm {
-    width: 2rem !important;
-    height: 2rem !important;
-    padding: 0 !important;
-}
+
 </style>

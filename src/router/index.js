@@ -28,13 +28,29 @@ const router = createRouter({
                     path: '/uzanti/uzanti-ekle',
                     name: 'extension-price',
                     meta: {
-                        breadcrumb: ['Domain', 'Extension','Add Extension']
+                        breadcrumb: ['Domain']
                     },
                     component: () => import('@/views/domain/extension/AddExtension.vue')
                 },
                 {
+                    path: '/domain/info',
+                    name: 'domain-info',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/domain/DomainInformation.vue')
+                },
+                {
                     path: '/domain',
                     name: 'domain-list',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/domain/index.vue')
+                },
+                {
+                    path: '/domain/işlemdeki-domain',
+                    name: 'inprocess-domain',
                     meta: {
                         breadcrumb: ['Domain', 'Extension','Add Extension']
                     },

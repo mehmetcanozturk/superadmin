@@ -4,7 +4,7 @@
     font-size: $badgeFontSize;
     font-weight: $badgeFontWeight;
     min-width: $badgeMinWidth;
-    height: $badgeHeight;
+    /* height: $badgeHeight; */
     line-height: $badgeHeight;
 
     &.p-badge-secondary {
@@ -13,23 +13,23 @@
     }
 
     &.p-badge-success {
-        background-color: $successButtonBg;
-        color: $successButtonTextColor;
+        background: var(--green-100);
+        color: var(--green-800);
     }
 
     &.p-badge-info {
-        background-color: $infoButtonBg;
-        color: $infoButtonTextColor;
+        background: var(--blue-100);
+        color: var(--blue-800);
     }
 
     &.p-badge-warning {
-        background-color: $warningButtonBg;
-        color: $warningButtonTextColor;
+        background: var(--orange-200);
+        color: var(--orange-800);
     }
 
     &.p-badge-danger {
-        background-color: $dangerButtonBg;
-        color: $dangerButtonTextColor;
+        background: var(--red-100);
+        color: var(--red-800);
     }
 
     &.p-badge-lg {

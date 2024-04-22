@@ -4,19 +4,11 @@ import { FilterMatchMode, FilterOperator } from 'primevue/api';
 import { useConfirm } from 'primevue/useconfirm';
 import { useToast } from 'primevue/usetoast';
 
-
-
-const resellerModal = ref(false);
-const domainModal = ref(false);
-const resellerpw = ref('*CokGüvenliBirSifre_00!');
-const selectApi = ref({ id: 57, name: 'Domain Name API' });
-const selectStatus = ref({ id: 55, name: 'Aktif' });
-const tranferToggle = ref(true);
-const whoisToggle = ref(true);
-
-const confirmPopup = useConfirm();
+const confirm = useConfirm();
 const toast = useToast();
 
+const resellerModal = ref(false);
+const resellerpw = ref('*CokGüvenliBirSifre_00!');
 
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -63,39 +55,11 @@ const getSeverity = (status) => {
 
         case 'İptal Edildi':
             return 'danger';
-        
     }
 };
 
-const nameServer = ref([
-    { host: 'NS1.RECEPSERIT.COM', ipadress: '185.141.164.88' },
-    { host: 'NS2.RECEPSERIT.COM', ipadress: '185.141.164.59' },
-    { host: 'NS3.RECEPSERIT.COM', ipadress: '185.141.164.64' },
-    { host: 'NS4.RECEPSERIT.COM', ipadress: '185.141.164.32' }
-]);
-const nsTextarea = ref('NS1.RECEPSERIT.COM\nNS2.RECEPSERIT.COM')
 
-const dropdownApi = ref([
-    { id: 55, name: 'Hexonet' },
-    { id: 57, name: 'Domain Name API' },
-    { id: 57, name: 'Trabis' }
-]);
-const dropdownStatus = ref([
-    { id: 55, name: 'Aktif' },
-    { id: 541, name: 'Kayıt İçin Bekleniyor' },
-    { id: 57, name: 'Belge Bekleniyor' }
-]);
 
-const confirm = (event) => {
-    confirmPopup.require({
-        target: event.target,
-        message: 'Bütün Alan Adı Sunucu ayarlarını sıfırlayacaksın. Emin misin?',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-            toast.add({ severity: 'success', summary: 'Sıfırlandı', detail: 'Alan Adı Sunucu Ayarları başarıyla sıfırlandı', life: 3000 });
-        }
-    });
-};
 </script>
 
 <template>
@@ -168,8 +132,10 @@ const confirm = (event) => {
                     <Column header="İşlem" :exportable="false">
                         <template #body="">
                             <div class="flex justify-content-center">
-                                <Button @click="resellerModal = true"  icon="pi pi-user" v-tooltip.top="'Bayi Bilgisi'" rounded size="small" link />
-                                <Button @click="domainModal = true" icon="pi pi-globe" v-tooltip.top="'Domain Bilgisi'" rounded size="small" link />
+                                <Button @click="resellerModal = true" icon="pi pi-user" v-tooltip.top="'Bayi Bilgisi'" rounded size="small" link />
+                                <router-link to="/domain/info" target="_blank" rel="noopener">
+                                    <Button @click="domainModal = true" icon="pi pi-globe" v-tooltip.top="'Domain Bilgisi'" rounded size="small" link />
+                                </router-link>
                                 <Button icon="pi pi-sync" v-tooltip.top="'senkronize et'" rounded size="small" link />
                                 <Button icon="pi pi-trash" v-tooltip.top="'Sil'" rounded size="small" link />
                             </div>
@@ -180,7 +146,7 @@ const confirm = (event) => {
         </div>
     </div>
 
-    <Dialog v-model:visible="resellerModal" maximizable modal :style="{ width: '50vw' }"  :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+    <Dialog v-model:visible="resellerModal" maximizable modal :style="{ width: '50vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
         <template #header>
             <div class="inline-flex align-items-center justify-content-center gap-2">
                 <span class="font-bold white-space-nowrap select-all text-xl">Atak Domain Bilgi Teknolojileri A.Ş.</span>
@@ -240,208 +206,21 @@ const confirm = (event) => {
             <Divider />
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Şifre:</div>
-                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 ">
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
                     <Password disabled v-model="resellerpw" toggleMask class="opacity-100 font-semibold" />
                 </div>
             </li>
+            <Divider />
+            <li class="flex align-items-center px-2 flex-wrap">
+                <div class="text-500 w-6 md:w-2 font-medium">Müşteri Paneli:</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                    <Button severity="success" icon="pi pi-angle-right" iconPos="right" label="Müşteri Paneline Git"></Button>
+                </div>
+            </li>
         </ul>
-    </Dialog>
-
-    <Dialog v-model:visible="domainModal" maximizable modal :style="{ width: '80vw' }" :position="'top'" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-        <template #header>
-            <div class="inline-flex align-items-center justify-content-center gap-2">
-                <span class="font-bold white-space-nowrap select-all text-xl">recepserit.com</span>
-            </div>
-        </template>
-        <TabView>
-            <TabPanel>
-                <template #header>
-                    <div class="flex align-items-center gap-2">
-                        <i class="pi pi-home text-xl"></i>
-                        <span class="font-bold white-space-nowrap">Genel Bilgiler</span>
-                    </div>
-                </template>
-                <div class="grid p-fluid mt-2">
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Domain Ref No:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-code" />
-                            <InputText type="text" value="480400" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Alan Adı:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-globe" />
-                            <InputText type="text" value="recepserit.com" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>IDN:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-globe" />
-                            <InputText type="text" value="recepserit.com" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Uzantı:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-link" />
-                            <InputText type="text" value=".com" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Bayi:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-building" />
-                            <InputText type="text" value="RECEP MEDYA YAZILIM HIZMETLERI LTD STI" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>API:</label>
-                        <Dropdown v-model="selectApi" :options="dropdownApi" filter optionLabel="name" placeholder="Seç" class="font-semibold" />
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Durum:</label>
-                        <Dropdown v-model="selectStatus" :options="dropdownStatus" filter optionLabel="name" placeholder="Seç" class="font-semibold" />
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Alan Adı Durum Kodu (Registry):</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-code" />
-                            <InputText type="text" value="56465465456" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Yenileme Modu:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-refresh" />
-                            <InputText type="text" value="OTOMATİKSONLANDIR" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Transfer Kilidi:</label>
-                        <ToggleButton disabled class="opacity-100" v-model="tranferToggle" onLabel="Transfer Kilidi Açık" offLabel="Transfer Kilidi Kapalı" />
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Whois Gizlilik Durumu:</label>
-                        <ToggleButton disabled class="opacity-100" v-model="whoisToggle" onLabel="Whois Gizliği Açık" offLabel="Whois Gizliği Kapalı" />
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Alan Adı Sunucuları:</label>
-                        <Textarea v-model="nsTextarea" autoResize readonly rows="2" class="font-semibold surface-100" />
-                    </div>
-                </div>
-            </TabPanel>
-            <tabPanel>
-                <template #header>
-                    <div class="flex align-items-center gap-2">
-                        <i class="pi pi-calendar text-xl"></i>
-                        <span class="font-bold white-space-nowrap">Tarih Bilgileri</span>
-                    </div>
-                </template>
-                <div class="grid p-fluid mt-2">
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Kayıt Tarihi:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-calendar-plus" />
-                            <InputText type="text" value="17.04.2020" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Bitiş Tarihi:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-calendar-times" />
-                            <InputText type="text" value="17.04.2023" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Kalan Gün:</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-clock" />
-                            <InputText type="text" value="254" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Transfer Tarihi (Registry):</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-calendar" />
-                            <InputText type="text" value="-" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Güncellenme Tarihi (Registry):</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-calendar" />
-                            <InputText type="text" value="-" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>RGP Bitiş Tarihi (Registry):</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-calendar" />
-                            <InputText type="text" value="-" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Kayıt Tarihi (Veri Tabanı):</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-database" />
-                            <InputText type="text" value="17.04.2020 10:30:56" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                    <div class="field col-12 md:col-4 py-1">
-                        <label>Güncelleme Tarihi (Veri Tabanı):</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-database" />
-                            <InputText type="text" value="17.04.2020 10:30:56" readonly class="font-semibold surface-100" />
-                        </span>
-                    </div>
-                </div>
-            </tabPanel>
-            <TabPanel>
-                <template #header>
-                    <div class="flex align-items-center gap-2">
-                        <i class="pi pi-server text-xl"></i>
-                        <span class="font-bold white-space-nowrap">Alan Adı Sunucusu</span>
-                    </div>
-                </template>
-                <div class="grid p-fluid mt-2">
-                    <DataTable :value="nameServer" size="small" class="small p-datatable-gridlines w-full" stripedRows removableSort :rowHover="true">
-                        <template #header>
-                            <div class="flex justify-content-between align-items-center sm:flex-row gap-3">
-                                <span class="font-bold text-xl">Alan Adı Sunucuları</span>
-                                <div class="flex gap-3">
-                                    <Button type="button" icon="pi pi-list" label="Çoklu NS Ekle" severity="success" class="w-auto" />
-                                    <Button type="button" icon="pi pi-plus" label="Yeni NS Ekle" severity="success" class="w-auto" />
-                                    <ConfirmPopup></ConfirmPopup>
-                                    <Button type="button" ref="popup" @click="confirm($event)" icon="pi pi-cog" label="Varsayılan Ayarlara dön" class="w-auto" />
-                                </div>
-                            </div>
-                        </template>
-                        <Column field="host" header="Host" sortable></Column>
-                        <Column field="ipadress" header="IP" sortable></Column>
-                        <Column :exportable="false" header="İşlem">
-                            <template #body="">
-                                <div class="flex justify-content-center gap-2">
-                                    <Button icon="pi pi-pencil" v-tooltip.top="'Düzenle'" rounded size="small" link />
-                                    <Button icon="pi pi-trash" v-tooltip.top="'sil'" rounded size="small" link />
-                                </div>
-                            </template>
-                        </Column>
-                    </DataTable>
-                </div>
-            </TabPanel>
-        </TabView>
     </Dialog>
 </template>
 
 
 
-<style scoped lang="scss">
-.p-button-sm {
-    width: 2rem !important;
-    height: 2rem !important;
-    padding: 0 !important;
-}
-</style>
+

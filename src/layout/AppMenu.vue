@@ -61,6 +61,11 @@ const model = ref([
                         icon: 'pi pi-fw pi-trash',
                         to: '/domain/test'
                     },
+                    {
+                        label:'Domain Bilgisi',
+                        icon: 'pi pi-fw pi-info-circle',
+                        to: '/domain/info'
+                    },
                 ]
                 
             }

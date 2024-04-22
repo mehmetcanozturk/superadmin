@@ -33,6 +33,8 @@ const value11 = ref(null);
 const value12 = ref(null);
 const value13 = ref(null);
 const toggleValue = ref(false);
+const domainRegister = ref();
+const domainRenew = ref();
 const selectedCountry = ref();
 const countries = ref([]);
 const filteredCountries = ref(null);
@@ -89,13 +91,7 @@ const additionalInfoTable = ref([
     { id: 1, name: 'Ek Bilgiler (1)', type: 'Metin Giriş' },
     { id: 1, name: 'Ek Bilgiler (2)', type: 'Açılabilir Liste Girişi' }
 ]);
-const additionalInfoCagegories = ref([
-    { name: 'Metin Giriş', value:0 },
-    { name: 'Açılabilir Liste', value:0 },
-    { name: 'Opsiyonel Seçim' },
-    { name: 'Check Seçim' },
-    { name: 'Check Seçim (Sözleşmeli)' },
-]);
+const additionalInfoCagegories = ref([{ name: 'Metin Giriş', value: 0 }, { name: 'Açılabilir Liste', value: 0 }, { name: 'Opsiyonel Seçim' }, { name: 'Check Seçim' }, { name: 'Check Seçim (Sözleşmeli)' }]);
 </script>
 
 <template>
@@ -209,42 +205,42 @@ const additionalInfoCagegories = ref([
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
                                 <InputText type="text" id="inputtext" v-model="value10" />
-                                <label for="inputtext">Domain Önkayıt</label>
+                                <label for="inputtext">Domain Önkayıt Süresi</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <InputText type="text" id="inputtext" v-model="value11" />
                                 <label for="inputtext">Domain Ödeme Süresi</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <InputText type="text" id="inputtext" v-model="value12" />
                                 <label for="inputtext">Domain Muhasebe Dönemi</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <InputText type="text" id="inputtext" v-model="value13" />
                                 <label for="inputtext">Silinirken Kurtarılabilme Süresi</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <InputText type="text" id="inputtext" v-model="value14" />
                                 <label for="inputtext">Domain Sonlandırma Süresi</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <InputText type="text" id="inputtext" v-model="value15" />
                                 <label for="inputtext">Silme Bekletme Süresi</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <InputText type="text" id="inputtext" v-model="value10" />
+                                <InputText type="text" id="inputtext" v-model="value16" />
                                 <label for="inputtext">Domain Hataya Düşme Süresi</label>
                             </span>
                         </div>
@@ -253,7 +249,98 @@ const additionalInfoCagegories = ref([
                             <small>Bu buttona tıklayarak kesin yenilemeyi aktif edip kapatabilirsiniz</small>
                         </div>
                     </div>
-                    <div class="mt-5 col-12 p-0 md:col-5"></div>
+                    <div class=" col-12 p-0 md:col-5">
+                        <div class="field col-12">
+                            <label class="block mb-2"> Domain Kayıt Süreleri</label>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="1" />
+                                    <label for="" class="ml-2"> 1 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="2" />
+                                    <label for="" class="ml-2"> 2 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="3" />
+                                    <label for="" class="ml-2"> 3 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="4" />
+                                    <label for="" class="ml-2"> 4 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="5" />
+                                    <label for="" class="ml-2"> 5 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="6" />
+                                    <label for="" class="ml-2"> 6 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="7" />
+                                    <label for="" class="ml-2"> 7 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="8" />
+                                    <label for="" class="ml-2"> 8 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="9" />
+                                    <label for="" class="ml-2"> 9 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRegister" inputId="reg1" name="domainRegister" value="10" />
+                                    <label for="" class="ml-2"> 10 </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field col-12">
+                            <label class="block mb-2"> Domain Yenileme Süreleri</label>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="1" />
+                                    <label for="" class="ml-2"> 1 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="2" />
+                                    <label for="" class="ml-2"> 2 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="3" />
+                                    <label for="" class="ml-2"> 3 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="4" />
+                                    <label for="" class="ml-2"> 4 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="5" />
+                                    <label for="" class="ml-2"> 5 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="6" />
+                                    <label for="" class="ml-2"> 6 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="7" />
+                                    <label for="" class="ml-2"> 7 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="8" />
+                                    <label for="" class="ml-2"> 8 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="9" />
+                                    <label for="" class="ml-2"> 9 </label>
+                                </div>
+                                <div class="flex align-items-center">
+                                    <Checkbox v-model="domainRenew" inputId="reg1" name="domainRenew" value="10" />
+                                    <label for="" class="ml-2"> 10 </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </TabPanel>
 
@@ -282,7 +369,7 @@ const additionalInfoCagegories = ref([
                         </div>
                     </div>
                     <div class="col-12">
-                        <div ></div>
+                        <div></div>
                     </div>
                 </div>
             </TabPanel>

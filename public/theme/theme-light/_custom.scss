@@ -4,14 +4,30 @@
     }
 }
 
-.p-button-sm {
-    width: 2rem !important;
-    height: 2rem !important;
-    padding: 0 !important;
-}
-
 *[readonly]{
     cursor:not-allowed;
     background-color: var(--surface-100);
 }
 
+.sticky-tab .p-tabview-nav-container {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    box-shadow: rgb(255, 255, 255) 0px 10px 15px 0px;
+}
+
+p-dialog-content{
+    position: relative;
+}
+.modal-plus-btn{
+    position: absolute !important;
+    top: 75px;
+    right: 36px;
+    z-index: 6;
+}
+
+.h-full-modal{
+    .p-dialog-content{
+        height: 90dvh;
+    }
+}
