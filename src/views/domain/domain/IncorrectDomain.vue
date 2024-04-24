@@ -33,7 +33,7 @@ const process = ref([{ name: 'Tüm ödemeler' }, { name: 'Kayıt' }, { name: 'Ye
                     <InputNumber v-model="value2" :useGrouping="false" :min="0" :max="12" class="w-full" />
                 </div>
                 <div class="flex mt-2 ">
-                    <Button label="Submit" icon="pi pi-check" />
+                    <Button label="Kaydet" icon="pi pi-check" />
                 </div>
             </div>
         </div>
