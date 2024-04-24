@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onBeforeMount, reactive } from 'vue';
 import { FilterMatchMode, FilterOperator } from 'primevue/api';
 import { useConfirm } from 'primevue/useconfirm';
 import { useToast } from 'primevue/usetoast';
@@ -19,34 +19,40 @@ const filters = ref({
 });
 
 const domainList = ref([
-    { id: 102, reseller: 'Galaktik Teknoloji Firması', domain: 'yenisite.com.tr', api: 'Trabis', remainingDay: 363, endDate: '08.04.2025', status: 'Ödeme Onayı Bekliyor' },
-    { id: 2309, reseller: 'Uzay İnternet Hizmetleri', domain: 'example1.net', api: 'Quatrix', remainingDay: 285, endDate: '31.12.2024', status: 'Ödeme Bekliyor' },
-    { id: 645, reseller: 'Kozmik Dijital Çözümler', domain: 'newsample.com', api: 'Nexio', remainingDay: 172, endDate: '15.08.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 8113, reseller: 'Quantum Web Teknolojileri', domain: 'changedtest.org', api: 'Datum', remainingDay: 10, endDate: '26.04.2024', status: 'Belge Bekliyor' },
-    { id: 5002, reseller: 'Yıldızlararası Web Hizmetleri', domain: 'example2.org', api: 'OctaWeb', remainingDay: 75, endDate: '20.06.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 719, reseller: 'Evrensel Hosting Co.', domain: 'updateddemo.net', api: 'Quantum', remainingDay: 150, endDate: '12.09.2024', status: 'Belge onayı bekliyor' },
-    { id: 4224, reseller: 'Zamanda Yolculuk Teknolojileri', domain: 'newtry.net', api: 'Zephyr', remainingDay: 210, endDate: '05.10.2024', status: 'Belge Bekliyor' },
-    { id: 834, reseller: 'Galaksi Bulut Teknolojileri', domain: 'refreshedexample.com', api: 'Helix', remainingDay: 240, endDate: '22.11.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 121, reseller: 'Paralel Evren Hosting Co.', domain: 'changedsample.org', api: 'Infini', remainingDay: 30, endDate: '10.05.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 8126, reseller: 'Quantum Bilgisayar A.Ş.', domain: 'reviseddomain.com.tr', api: 'MegaAPI', remainingDay: 92, endDate: '02.07.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 6543, reseller: 'Sonsuzluk Dijital Çözümler', domain: 'latestsite.net', api: 'Dyna', remainingDay: 135, endDate: '25.08.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 778, reseller: 'Uzaylılar için Hosting Co.', domain: 'example3.net', api: 'CyberNet', remainingDay: 183, endDate: '14.09.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 928, reseller: 'Yıldız Teknoloji Hizmetleri Ltd.', domain: 'updatedtry.org', api: 'NexGen', remainingDay: 55, endDate: '07.06.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 556, reseller: 'Astral Teknoloji Çözümleri', domain: 'modifiedsite.com', api: 'SkyLink', remainingDay: 95, endDate: '19.07.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 3921, reseller: 'Zaman Tüneli Bilgi Teknolojileri', domain: 'changedtest.net', api: 'CloudX', remainingDay: 25, endDate: '15.05.2024', status: 'Belge onayı bekliyor' },
-    { id: 2276, reseller: 'Yıldızlar Arası Dijital Çözümler', domain: 'revisedpage.com', api: 'DataPulse', remainingDay: 145, endDate: '28.08.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 689, reseller: 'Web Evren Teknoloji Hizmetleri Ltd.', domain: 'example4.org', api: 'HostEdge', remainingDay: 205, endDate: '30.09.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 578, reseller: 'Evrenin Derinlikleri Hosting Co.', domain: 'updatedtesting.net', api: 'XpertWeb', remainingDay: 75, endDate: '20.06.2024', status: 'Belge onayı bekliyor' },
-    { id: 4304, reseller: 'Kara Delik Teknolojileri', domain: 'reviseddomain.com.tr', api: 'WebNinja', remainingDay: 110, endDate: '14.07.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 1509, reseller: 'Uzayın Sınırları Bulut Teknolojileri', domain: 'modifiedtrial.net', api: 'AlphaWeb', remainingDay: 150, endDate: '12.09.2024', status: 'Ödeme Onayı Bekliyor' },
-    { id: 871, reseller: 'Evrensel Dijital Çözümler', domain: 'updatedexample.com', api: 'CloudWorks', remainingDay: 45, endDate: '03.05.2024', status: 'Ödeme Onayı Bekliyor' }
+    { id: 102, reseller: 'Yeni Bir Şirket', domain: 'site.com.tr', api: 'Trabis', remainingDay: 363, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 103, reseller: 'Örnek Bir Firma', domain: 'example.net', api: 'Trabis', remainingDay: 250, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 104, reseller: 'Test Ltd. Şti.', domain: 'test.org', api: 'Trabis', remainingDay: 120, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 105, reseller: 'Deneme A.Ş.', domain: 'sample.com', api: 'Trabis', remainingDay: 30, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 106, reseller: 'Başka Bir Deneme Şirketi', domain: 'demo.net', api: 'Trabis', remainingDay: 180, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 107, reseller: 'Örnek Firması', domain: 'trial.com', api: 'Trabis', remainingDay: 280, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 108, reseller: 'Yeni Firma Ltd.', domain: 'try.org', api: 'Trabis', remainingDay: 90, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 109, reseller: 'Demo AŞ', domain: 'experiment.com', api: 'Trabis', remainingDay: 150, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 110, reseller: 'Başka Bir Şirket Ltd.', domain: 'trial.net', api: 'Trabis', remainingDay: 200, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 111, reseller: 'Örnek A.Ş.', domain: 'example.org', api: 'Trabis', remainingDay: 270, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 112, reseller: 'Deneme Firması', domain: 'sample.net', api: 'Trabis', remainingDay: 100, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 113, reseller: 'Yeni Şirket AŞ', domain: 'demo.org', api: 'Trabis', remainingDay: 60, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 114, reseller: 'Test A.Ş.', domain: 'test.net', api: 'Trabis', remainingDay: 140, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 115, reseller: 'Başka Bir Deneme Şirketi', domain: 'experiment.org', api: 'Trabis', remainingDay: 190, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 116, reseller: 'Örnek Şirketi Ltd.', domain: 'try.com', api: 'Trabis', remainingDay: 80, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 117, reseller: 'Deneme Deneme A.Ş.', domain: 'trial.org', api: 'Trabis', remainingDay: 220, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 118, reseller: 'Yeni Bir Test Firması', domain: 'experiment.net', api: 'Trabis', remainingDay: 130, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 119, reseller: 'Test Test Test', domain: 'demo.com', api: 'Trabis', remainingDay: 240, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 120, reseller: 'Örnek Örnek Şirketi', domain: 'test.org', api: 'Trabis', remainingDay: 110, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 121, reseller: 'Falan Filan A.Ş.', domain: 'try.net', api: 'Trabis', remainingDay: 160, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 122, reseller: 'Deneme Test Ltd.', domain: 'example.com', api: 'Trabis', remainingDay: 70, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 123, reseller: 'Yeni Deneme Şirketi', domain: 'sample.org', api: 'Trabis', remainingDay: 180, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 124, reseller: 'Test Deneme A.Ş.', domain: 'trial.net', api: 'Trabis', remainingDay: 150, endDate: '08.04.2025', status: 'Silindi' },
+    { id: 125, reseller: 'Örnek Test Firması', domain: 'experiment.com', api: 'Trabis', remainingDay: 120, endDate: '08.04.2025', status: 'Silindi' }
 ]);
+
+
+
 
 
 const getSeverity = (status) => {
     switch (status) {
-        case 'Ödeme Onayı Bekliyor':
-            return 'warning';
+        case 'Silindi':
+            return 'danger';
 
         case 'Ödeme Bekliyor':
             return 'warning';
@@ -67,7 +73,7 @@ const getSeverity = (status) => {
     <div class="grid">
         <div class="col-12">
             <div class="card">
-                <h5>İşlemdeki Domainler Listesi</h5>
+                <h5>Domain Listesi</h5>
                 <DataTable :value="domainList" size="small" class="small p-datatable-gridlines" stripedRows removableSort :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row">
                     <template #header>
                         <div class="flex justify-content-between flex-column sm:flex-row">

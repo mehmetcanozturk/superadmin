@@ -33,14 +33,6 @@ const router = createRouter({
                     component: () => import('@/views/domain/extension/AddExtension.vue')
                 },
                 {
-                    path: '/domain/info',
-                    name: 'domain-info',
-                    meta: {
-                        breadcrumb: ['Domain']
-                    },
-                    component: () => import('@/views/domain/domain/DomainInformation.vue')
-                },
-                {
                     path: '/domain',
                     name: 'domain-list',
                     meta: {
@@ -49,13 +41,47 @@ const router = createRouter({
                     component: () => import('@/views/domain/domain/index.vue')
                 },
                 {
-                    path: '/domain/işlemdeki-domain',
-                    name: 'inprocess-domain',
+                    path: '/domain/hatali-domain-ekle',
+                    name: 'hatali-domain-ekle',
                     meta: {
-                        breadcrumb: ['Domain', 'Extension','Add Extension']
+                        breadcrumb: ['Domain']
                     },
-                    component: () => import('@/views/domain/domain/index.vue')
+                    component: () => import('@/views/domain/domain/IncorrectDomain.vue')
                 },
+                {
+                    path: '/domain/islemdeki-domainler',
+                    name: 'islemdeki-domain',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/domain/InprocessDomains.vue')
+                },
+                {
+                    path: '/domain/yenilenecek-domainler',
+                    name: 'yenilenecek-domain',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/domain/RenewDomains.vue')
+                },
+                {
+                    path: '/domain/silinen-domainler',
+                    name: 'silinen-domain',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/domain/DeletedDomains.vue')
+                },
+                {
+                    path: '/domain/info',
+                    name: 'domain-info',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/domain/DomainInformation.vue')
+                },
+
+
 
 
                 {

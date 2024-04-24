@@ -47,19 +47,24 @@ const model = ref([
                         to: '/domain'
                     },
                     {
+                        label:'Hatalı Domain Ekle',
+                        icon: 'pi pi-fw pi-exclamation-triangle',
+                        to: '/domain/hatali-domain-ekle'
+                    },
+                    {
                         label:'İşlemdeki Domain',
                         icon: 'pi pi-spinner',
-                        to: '/domain/test'
+                        to: '/domain/islemdeki-domainler'
                     },
                     {
                         label:'Yenilenecek Domain',
                         icon: 'pi pi-fw pi-refresh',
-                        to: '/domain/test'
+                        to: '/domain/yenilenecek-domainler'
                     },
                     {
                         label:'Silinen Domain',
                         icon: 'pi pi-fw pi-trash',
-                        to: '/domain/test'
+                        to: '/domain/silinen-domainler'
                     },
                     {
                         label:'Domain Bilgisi',

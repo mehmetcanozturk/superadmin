@@ -49,13 +49,20 @@ const dropdownStatus = ref([
 ]);
 
 const eventLogs = ref([
-    {name: 'Kayıt', date: '15/10/2020 10:30'},
-    {name: 'Transfer', date: '15/10/2021 11:30'},
-    {name: 'Yenileme', date: '15/10/2024 16:47'},
-    {name: 'Transfer', date: '15/10/2024 16:47'},
-    {name: 'Yenileme', date: '15/10/2024 16:47'},
+    {type: 'Kayıt', date: '15/10/2020 10:30', description: 'lorem ipsum'},
+    {type: 'Transfer', date: '15/10/2021 11:30', description: 'lorem ipsum'},
+    {type: 'Yenileme', date: '15/10/2024 16:47', description: 'lorem ipsum'},
+    {type: 'Transfer', date: '15/10/2024 16:47', description: 'lorem ipsum'},
+    {type: 'Yenileme', date: '15/10/2024 16:47', description: 'lorem ipsum'},
 
 ]);
+
+const filters = ref({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    date: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    type: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+});
 
 const dropdownRedirect = ref([{ name: 'Standart' }, { name: 'Frame' }]);
 
@@ -352,16 +359,16 @@ const resetAllDNS = () => {
                                 <span class="font-bold white-space-nowrap">Log Kayıtları</span>
                             </div>
                         </template>
-                        <div class="mt-5">
-                            <Timeline :value="eventLogs">
-                                <template #opposite="slotProps">
-                                    <small class="p-text-secondary">{{ slotProps.item.date }}</small>
-                                </template>
-                                <template #content="slotProps">
-                                    {{ slotProps.item.name }}
-                                </template>
-                            </Timeline>
-                        </div>
+                        <DataTable :value="eventLogs" v-model:filters="filters" :globalFilterFields="['type', 'date']" paginator :rows="10" size="small" class="small p-datatable-gridlines w-full" stripedRows removableSort :rowHover="true">
+                            <template #header>
+                                <div class="flex justify-content-between align-items-center sm:flex-row gap-3">
+                                    <span class="font-bold text-xl">Log Kayıtları</span>
+                                </div>
+                            </template>
+                            <Column field="date" header="Tarih" sortable></Column>
+                            <Column field="type" header="İşlem" sortable></Column>
+                            <Column field="description" header="Açıklama" sortable></Column>
+                        </DataTable>
                     </TabPanel>
                 </TabView>
             </div>
