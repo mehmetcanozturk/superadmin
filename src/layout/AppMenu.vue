@@ -17,7 +17,7 @@ const model = ref([
         ]
     },
     {
-        label: 'Domains',
+        label: 'Domain',
         icon: 'pi pi-globe',
         items: [
             {
@@ -52,31 +52,48 @@ const model = ref([
                         to: '/domain/hatali-domain-ekle'
                     },
                     {
-                        label:'İşlemdeki Domain',
-                        icon: 'pi pi-spinner',
-                        to: '/domain/islemdeki-domainler'
-                    },
-                    {
-                        label:'Yenilenecek Domain',
-                        icon: 'pi pi-fw pi-refresh',
-                        to: '/domain/yenilenecek-domainler'
-                    },
-                    {
-                        label:'Silinen Domain',
-                        icon: 'pi pi-fw pi-trash',
-                        to: '/domain/silinen-domainler'
-                    },
-                    {
                         label:'Domain Bilgisi',
                         icon: 'pi pi-fw pi-info-circle',
                         to: '/domain/info'
                     },
                 ]
-                
             }
 
         ]
     },
+    {
+        label: 'SSL',
+        icon: 'pi pi-shield',
+        items: [
+            {
+                label: 'SSL Paketleri',
+                icon: 'pi pi-fw pi-th-large',
+                to: '/ssl/packages'
+            },
+            {
+                label: 'SSL Paketi Ekle',
+                icon: 'pi pi-fw pi-plus',
+                to: '/ssl/add-packages'
+            }
+
+        ]
+    },
+    {
+        label: 'Bayi',
+        icon: 'pi pi-shield',
+        items: [
+            {
+                label: 'Bayi Listesi',
+                icon: 'pi pi-fw pi-list',
+                to: '/reseller/reseller-list'
+            },
+
+        ]
+    },
+
+
+
+
     {
         label: 'Apps',
         icon: 'pi pi-th-large',

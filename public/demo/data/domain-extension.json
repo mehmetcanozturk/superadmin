@@ -1,36 +1,125 @@
 {
     "data": [
         {
-            "no": 12432,
-            "name": "AC.MU",
-            "group": "Afrika Domainler",
-            "api": "Hexonet"
+            "no": 1,
+            "name": "COM",
+            "group": "Jenerik TLD'ler",
+            "api": "Verisign"
         },
         {
-            "no": 122,
+            "no": 2,
+            "name": "NET",
+            "group": "Jenerik TLD'ler",
+            "api": "Verisign"
+        },
+        {
+            "no": 3,
+            "name": "ORG",
+            "group": "Jenerik TLD'ler",
+            "api": "Public Interest Registry"
+        },
+        {
+            "no": 4,
+            "name": "INFO",
+            "group": "Jenerik TLD'ler",
+            "api": "Afilias"
+        },
+        {
+            "no": 5,
+            "name": "BIZ",
+            "group": "Jenerik TLD'ler",
+            "api": "Neustar"
+        },
+        {
+            "no": 6,
+            "name": "EU",
+            "group": "Avrupa Domainleri",
+            "api": "EURid"
+        },
+        {
+            "no": 7,
+            "name": "DE",
+            "group": "Avrupa Domainleri",
+            "api": "DENIC"
+        },
+        {
+            "no": 8,
+            "name": "FR",
+            "group": "Avrupa Domainleri",
+            "api": "AFNIC"
+        },
+        {
+            "no": 9,
+            "name": "IT",
+            "group": "Avrupa Domainleri",
+            "api": "Registro.it"
+        },
+        {
+            "no": 10,
+            "name": "UK",
+            "group": "Avrupa Domainleri",
+            "api": "Nominet"
+        },
+        {
+            "no": 11,
+            "name": "TR",
+            "group": "Türkiye Domainleri",
+            "api": "NIC.TR"
+        },
+        {
+            "no": 12,
             "name": "COM.TR",
             "group": "Türkiye Domainleri",
-            "api": "Hexonet"
+            "api": "NIC.TR"
         },
         {
-            "no": 221,
-            "name": "COM",
-            "group": "Jenerik Domainler",
-            "api": "Atakdomain"
+            "no": 13,
+            "name": "ORG.TR",
+            "group": "Türkiye Domainleri",
+            "api": "NIC.TR"
         },
         {
-            "no": 221,
-            "name": "COM",
-            "group": "Ortadoğu Domainler",
-            "api": "Atakdomain"
+            "no": 14,
+            "name": "NET.TR",
+            "group": "Türkiye Domainleri",
+            "api": "NIC.TR"
         },
         {
-            "no": 32523,
-            "name": "NET",
-            "group": "Afrika Domainler",
-            "api": "Hexonet"
+            "no": 15,
+            "name": "ASIA",
+            "group": "Asya Domainleri",
+            "api": "DotAsia Organisation"
+        },
+        {
+            "no": 16,
+            "name": "CN",
+            "group": "Asya Domainleri",
+            "api": "CNNIC"
+        },
+        {
+            "no": 17,
+            "name": "JP",
+            "group": "Asya Domainleri",
+            "api": "JPRS"
+        },
+        {
+            "no": 18,
+            "name": "IN",
+            "group": "Asya Domainleri",
+            "api": "IN Registry"
+        },
+        {
+            "no": 19,
+            "name": "SG",
+            "group": "Asya Domainleri",
+            "api": "Singapore Network Information Centre (SGNIC)"
+        },
+        {
+            "no": 20,
+            "name": "KR",
+            "group": "Asya Domainleri",
+            "api": "KISA"
         }
-
-      
     ]
+    
 }

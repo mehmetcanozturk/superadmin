@@ -13,7 +13,7 @@ const filters = ref({
     reseller: { value: null, matchMode: FilterMatchMode.IN },
     api: { value: null, matchMode: FilterMatchMode.IN },
     status: { value: null, matchMode: FilterMatchMode.EQUALS },
-    remainingDay:{ value: null, matchMode: FilterMatchMode.LESS_THAN_OR_EQUAL_TO }
+    remainingDay: { value: null, matchMode: FilterMatchMode.LESS_THAN_OR_EQUAL_TO }
 });
 
 const domainList = ref([
@@ -59,20 +59,26 @@ const getSeverity = (status) => {
 const statuses = ref(['Aktif', 'Belge Bekliyor', 'Ödeme Bekliyor', 'İptal Edildi']);
 
 const dayFilter = ref([
-    {day:1, name: '1 günü kaldı'},
-    {day:7, name: '7 günün altındaki'},
-    {day:30, name: '1 ayın altındaki'},
-    {day:364, name: '1 yılın altındaki'},
+    { day: 1, name: '1 günü kaldı' },
+    { day: 7, name: '7 günün altındaki' },
+    { day: 30, name: '1 ayın altındaki' },
+    { day: 364, name: '1 yılın altındaki' },
 ])
 
 const APIs = ref([]);
 const resellers = ref([]);
 
+
 domainList.value.forEach(item => {
-    APIs.value.push(item.api);
+    if (!APIs.value.includes(item.api)) {
+        APIs.value.push(item.api);
+    }
 });
+
 domainList.value.forEach(item => {
-    resellers.value.push(item.reseller );
+    if (!resellers.value.includes(item.reseller)) {
+        resellers.value.push(item.reseller);
+    }
 });
 
 console.log(APIs)
@@ -84,7 +90,7 @@ console.log(APIs)
         <div class="col-12">
             <div class="card">
                 <h5>Domain Listesi</h5>
-                <DataTable :value="domainList" size="small" class="small p-datatable-gridlines" stripedRows removableSort :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['domain']">
+                <DataTable :value="domainList" size="small" scrollable scrollHeight="63dvh" class="small p-datatable-gridlines" stripedRows removableSort :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['domain']">
                     <template #header>
                         <div class="flex justify-content-between flex-column sm:flex-row">
                             <div class="flex flex-column sm:flex-row">
@@ -94,7 +100,7 @@ console.log(APIs)
                                 </span>
                             </div>
                             <div class="flex gap-3">
-                                <Button type="button" icon="pi pi-filter-slash" label="Excel Çıktısı" class="p-button-outlined p-button-info mb-2" />
+                                <Button type="button" icon="pi pi-file-excel" label="Excel Çıktısı" class="p-button-outlined p-button-info mb-2" />
                             </div>
                         </div>
                     </template>
@@ -114,28 +120,28 @@ console.log(APIs)
                             <span class="font-bold">{{ data.id }}</span>
                         </template>
                     </Column>
-                    <Column field="domain" header="Domain" :showFilterMenu="false" sortable class="text-center" >
+                    <Column field="domain" header="Domain" :showFilterMenu="false" sortable class="text-center">
                         <template #body="{ data }">
                             {{ data.domain }}
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
-                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Domain Filtresi" />
+                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
                         </template>
                     </Column>
-                    <Column field="reseller" header="Bayi" :showFilterMenu="false" sortable class="text-center" >
+                    <Column field="reseller" header="Bayi" :showFilterMenu="false" sortable class="text-center">
                         <template #body="{ data }">
                             {{ data.reseller }}
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
-                            <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter :options="resellers" placeholder="Bayi Filtresi" class="p-column-filter max-w-12rem" />
+                            <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter :options="resellers" placeholder="Filtre" class="p-column-filter max-w-12rem" />
                         </template>
                     </Column>
-                    <Column field="api" header="API" :showFilterMenu="false" sortable class="text-center" >
+                    <Column field="api" header="API" :showFilterMenu="false" sortable class="text-center">
                         <template #body="{ data }">
                             {{ data.api }}
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
-                            <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter="" :options="APIs" placeholder="Api Filtresi" class="p-column-filter max-w-12rem" />
+                            <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter="" :options="APIs" placeholder="Filtre" class="p-column-filter max-w-12rem" />
                         </template>
                     </Column>
                     <Column field="remainingDay" header="Kalan Gün" sortable class="text-center" :showFilterMenu="false">
@@ -143,16 +149,16 @@ console.log(APIs)
                             {{ data.remainingDay }}
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
-                            <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="dayFilter" optionLabel="name" optionValue="day" placeholder="Kalan Gün Filtresi" class="p-column-filter"/>
+                            <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="dayFilter" optionLabel="name" optionValue="day" placeholder="Filtre" class="p-column-filter" />
                         </template>
                     </Column>
                     <Column field="endDate" header="Bitiş Tarihi"></Column>
-                    <Column field="status" header="Durumu" :showFilterMenu="false" sortable class="text-center" >
+                    <Column field="status" header="Durumu" :showFilterMenu="false" sortable class="text-center">
                         <template #body="{ data }">
                             <Badge class="w-full" :value="data.status" :severity="getSeverity(data.status)" />
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
-                            <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="statuses" placeholder="Durumu Filtresi" class="p-column-filter">
+                            <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="statuses" placeholder="Filtre" class="p-column-filter">
                                 <template #option="slotProps">
                                     <Badge :value="slotProps.option" :severity="getSeverity(slotProps.option)" />
                                 </template>

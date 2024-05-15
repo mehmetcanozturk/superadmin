@@ -1,8 +1,8 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import AppLayout from '@/layout/AppLayout.vue';
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(import.meta.env.VITE_PUBLIC_PATH),
     routes: [
         {
             path: '/',
@@ -14,8 +14,10 @@ const router = createRouter({
                     meta: {
                         breadcrumb: ['Dashboard']
                     },
-                    component: () => import('@/views/dashboards/Dashboard.vue')
+                    component: () => import('@/views/dashboards/Dashboard.vue'),
                 },
+
+                /* Extension */
                 {
                     path: '/uzanti',
                     name: 'extension-list',
@@ -32,6 +34,8 @@ const router = createRouter({
                     },
                     component: () => import('@/views/domain/extension/AddExtension.vue')
                 },
+
+                /* Domain */
                 {
                     path: '/domain',
                     name: 'domain-list',
@@ -49,30 +53,6 @@ const router = createRouter({
                     component: () => import('@/views/domain/domain/IncorrectDomain.vue')
                 },
                 {
-                    path: '/domain/islemdeki-domainler',
-                    name: 'islemdeki-domain',
-                    meta: {
-                        breadcrumb: ['Domain']
-                    },
-                    component: () => import('@/views/domain/domain/InprocessDomains.vue')
-                },
-                {
-                    path: '/domain/yenilenecek-domainler',
-                    name: 'yenilenecek-domain',
-                    meta: {
-                        breadcrumb: ['Domain']
-                    },
-                    component: () => import('@/views/domain/domain/RenewDomains.vue')
-                },
-                {
-                    path: '/domain/silinen-domainler',
-                    name: 'silinen-domain',
-                    meta: {
-                        breadcrumb: ['Domain']
-                    },
-                    component: () => import('@/views/domain/domain/DeletedDomains.vue')
-                },
-                {
                     path: '/domain/info',
                     name: 'domain-info',
                     meta: {
@@ -81,8 +61,37 @@ const router = createRouter({
                     component: () => import('@/views/domain/domain/DomainInformation.vue')
                 },
 
+                /* SSL */
+                {
+                    path: '/ssl/packages',
+                    name: 'ssl-packages',
+                    meta: {
+                        breadcrumb: ['SSL']
+                    },
+                    component: () => import('@/views/ssl/SslPackages.vue')
+                },
+                {
+                    path: '/ssl/add-packages',
+                    name: 'add-packages',
+                    meta: {
+                        breadcrumb: ['SSL'],
+                        title: "project detail",
+                    },
+                    component: () => import('@/views/ssl/AddPackages.vue'),
 
 
+                },
+
+                /* Reseller */
+                {
+                    path: '/reseller/reseller-list',
+                    name: 'reseller-list',
+                    meta: {
+                        breadcrumb: ['SSL'],
+                        title: ['Bayi Listesi'],
+                    },
+                    component: () => import('@/views/reseller/ResellerList.vue')
+                },
 
                 {
                     path: '/dashboard-banking',
@@ -530,3 +539,7 @@ const router = createRouter({
 });
 
 export default router;
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || 'DNA | Süper Admin';
+    next();
+});

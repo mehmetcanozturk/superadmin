@@ -13,6 +13,7 @@ const Extension = new DomainExtension();
 const list = ref(null);
 const priceListModal = ref(false);
 const addPriceModal = ref(false);
+const bulkPriceUpdateModal = ref(false);
 const addspecialDefinedModal = ref(false);
 const switchValue = ref(false);
 
@@ -23,6 +24,7 @@ const users = ref([
     { id: 4, name: 'Bahadır Topçu' },
     { id: 5, name: 'Tayfun Yılmaz' }
 ])
+
 const selectedUser = ref();
 const filteredUsers = ref();
 const search = (event) => {
@@ -212,6 +214,14 @@ const requireConfirmation = () => {
     });
     addPriceModal = false;
 };
+
+const isUploadSuccessful = ref(false);
+const onUpload = () => {
+    isUploadSuccessful.value = true;
+    toast.add({ severity: 'success', summary: 'Yüklendi', detail: 'Dosya Başarıyla Yüklendi.', life: 3000 });
+
+};
+const bulkPriceUpdateTypes = ref()
 </script>
 
 <template>
@@ -230,6 +240,7 @@ const requireConfirmation = () => {
                                 <Button type="button" v-tooltip.top="'Filtreyi Temizle'" icon="pi pi-filter-slash" class="p-button-outlined mb-2" />
                             </div>
                             <div class="flex gap-2">
+                                <Button type="button" icon="pi pi-sliders-h" label="Toplu Fiyat Güncelle" class="mb-2" @click="bulkPriceUpdateModal = true" />
                                 <router-link to="/uzanti/uzanti-ekle">
                                     <Button type="button" icon="pi pi-plus" label="Yeni Uzantı Ekle" severity="success" class="mb-2" />
                                 </router-link>
@@ -291,6 +302,62 @@ const requireConfirmation = () => {
             </div>
         </div>
     </div>
+
+
+    <Dialog v-model:visible="bulkPriceUpdateModal" maximizable modal header="Toplu Fiyat Güncellemesi" :style="{ width: '600px' }" :position="'center'" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+
+        <div class="flex gap-3 mt-3 justify-content-between">
+            <FileUpload mode="basic" name="demo[]" :chooseLabel="'Excel Yükle'" accept=".xlsx" :maxFileSize="1000000" @uploader="onUpload" customUpload />
+
+            <router-link to="demo/dna-example.xlsx" rel="noopener">
+                <Button label="Örnek Dosyayı İndir" icon="pi pi-download" />
+            </router-link>
+        </div>
+        <div v-if="isUploadSuccessful" class="card mt-3 surface">
+            <h5>Güncellemek istediğin fiyat türlerini seç</h5>
+            <Divider />
+            <div class="flex flex-column gap-3 ">
+                <label class="block">
+                    <Checkbox v-model="bulkPriceUpdateTypes" name="bulkPriceUpdateTypes" value="1"  />
+                    <span class="ml-2 select-none cursor-pointer">satış fiyatlarını güncelle</span>
+                </label>
+                <label class="block">
+                    <Checkbox v-model="bulkPriceUpdateTypes" name="bulkPriceUpdateTypes" value="2" />
+                    <span class="ml-2 select-none cursor-pointer">yenileme fiyatlarını güncelle</span>
+                </label>
+                <label class="block">
+                    <Checkbox v-model="bulkPriceUpdateTypes" name="bulkPriceUpdateTypes" value="3" />
+                    <span class="ml-2 select-none cursor-pointer">transfer fiyatlarını güncelle</span>
+                </label>
+                <label class="block">
+                    <Checkbox v-model="bulkPriceUpdateTypes" name="bulkPriceUpdateTypes" value="4" />
+                    <span class="ml-2 select-none cursor-pointer">satış maliyetlerini güncelle</span>
+                </label>
+                <label class="block">
+                    <Checkbox v-model="bulkPriceUpdateTypes" name="bulkPriceUpdateTypes" value="5" />
+                    <span class="ml-2 select-none cursor-pointer">yenileme maliyetlerini güncelle</span>
+                </label>
+                <label class="block">
+                    <Checkbox v-model="bulkPriceUpdateTypes" name="bulkPriceUpdateTypes" value="6" />
+                    <span class="ml-2 select-none cursor-pointer">transfer maliyetlerini güncelle</span>
+                </label>
+            </div>
+        </div>
+
+        <Message severity="info"  icon="pi">
+            <ul>
+                <li>Yükleyeceğiniz dosyada istediğiniz alan adının istediğiniz fiyat türünü listeleyebilirsiniz.</li>
+                <li>Dosyadaki sütun adları örnek dosyadaki sütun adları ile aynı olmalıdır.</li>
+                <li>Her fiyat türünün sadece 1 yıllık fiyat bilgisini girmelisiniz. Diğer süreler otomatik hesaplanır.</li>
+                <li>Uzantıları yazarken uzantının başında "." işareti olmadan yazınız. Örn:(com.tr)</li>
+            </ul>
+        </Message>
+        <Message severity="error"  icon="pi-exclamation-triangle">İşlemden emin değilseniz yazılım birimine başvurunuz.</Message>
+        <template #footer>
+            <Button label="Kaydet" icon="pi pi-check" severity="success" @click="bulkPriceUpdateModal = false, isUploadSuccessful=false" />
+        </template>
+    </Dialog>
+
     <Dialog v-model:visible="priceListModal" maximizable modal header=".COM Fiyat Listesi" :style="{ width: '80vw' }" :position="'top'" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
         <Button type="button" icon="pi pi-plus" label="Yeni Fiyat Ekle" severity="success" class="mb-2 modal-plus-btn" @click="addPriceModal = true" />
         <TabView class="sticky-tab">
@@ -387,7 +454,7 @@ const requireConfirmation = () => {
         </div>
         <div class="field">
             <label for="name">Periyot (Yıl):</label>
-            <InputNumber v-model="value232" :useGrouping="false" max="3" class="w-full" />
+            <InputNumber v-model="value232" :useGrouping="false" max="10" class="w-full" />
         </div>
         <div class="field">
             <label for="name">Maliyet:</label>
@@ -433,4 +500,12 @@ const requireConfirmation = () => {
 
 </template>
 
-<style scoped></style>
+<style scoped>
+ul {
+    padding-inline-start: 0px;
+}
+
+ul li {
+    margin-top: 10px;
+}
+</style>
