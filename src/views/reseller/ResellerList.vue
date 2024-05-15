@@ -194,7 +194,7 @@ for (let i = 2; i <= 10; i++) {
                         <template #filter="{ filterModel, filterCallback }">
                             <MultiSelect v-model="filterModel.value" @change="filterCallback()" :options="statuses" placeholder="Filtre" class="p-column-filter">
                                 <template #option="slotProps">
-                                    <div class="p-2 border-round-3xl text-center inline-block text-sm w-full font-semibold " :class="getSeverity(slotProps.option)">{{ slotProps.option }}</div>
+                                    <div class="p-2 border-round-3xl text-center inline-block text-sm w-full font-semibold px-4" :class="getSeverity(slotProps.option)">{{ slotProps.option }}</div>
                                 </template>
                             </MultiSelect>
                         </template>
