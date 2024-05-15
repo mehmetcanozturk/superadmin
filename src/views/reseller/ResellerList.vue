@@ -140,7 +140,7 @@ for (let i = 2; i <= 10; i++) {
                                 </span>
                             </div>
                             <div class="flex gap-3">
-                                <router-link to="/ssl/add-packages" target="_blank">
+                                <router-link to="/reseller/null" target="_blank">
                                     <Button type="button" icon="pi pi-plus" label="Bayi Ekle" severity="success" class="mb-2" />
                                 </router-link>
                             </div>
