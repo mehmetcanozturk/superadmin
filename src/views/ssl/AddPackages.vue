@@ -1,6 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { CountryService } from '@/service/CountryService';
+import { ref } from 'vue';
 import { useConfirm } from 'primevue/useconfirm';
 import { useToast } from 'primevue/usetoast';
 

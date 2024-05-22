@@ -40,12 +40,12 @@ const sslPackages = ref([
 
 ]);
 
-const value111 =ref();
-const value112 =ref();
-const value113 =ref();
-const value114 =ref();
-const value115 =ref();
-const value116 =ref();
+const value111 = ref();
+const value112 = ref();
+const value113 = ref();
+const value114 = ref();
+const value115 = ref();
+const value116 = ref();
 
 const brands = ref([]);
 const types = ref([]);
@@ -75,20 +75,36 @@ sslPackages.value.forEach(item => {
 
 const priceListModal = ref(false);
 const priceTable = ref([
-    {period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99' },
+    { type: 'Yeni Kayıt', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99' },
+    { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99' },
 ]);
 
-for (let i = 2; i <= 10; i++) {
-    const row = {
-        period: i,
-        cost: '$' +19*i+'.99' ,
-        resellerSale: '$' +24*i+'.99', 
-        premiumSale: '$' +23*i+'.99', 
-        platiumSale: '$' +22*i+'.99',   
-        vipSale: '$' +20*i+'.49'
-    };
-    priceTable.value.push(row);
-}
+const priceType = ref();
+const priceTypes = ref([
+    { name: 'Yeni Kayıt' },
+    { name: 'Yenileme' }
+]);
+
+const generateRows = (type) => {
+    const rows = [];
+    for (let i = 2; i <= 10; i++) {
+        const row = {
+            type: type,
+            period: i,
+            cost: `$${19 * i + .99}`,
+            resellerSale: `$${24 * i + .99}`,
+            premiumSale: `$${23 * i + .99}`,
+            platiumSale: `$${22 * i + .99}`,
+            vipSale: `$${20 * i + .49}`,
+        };
+        rows.push(row);
+    }
+    return rows;
+};
+
+priceTable.value.push(...generateRows('Yeni Kayıt'));
+priceTable.value.push(...generateRows('Yenileme'));
+
 
 
 </script>
@@ -176,7 +192,7 @@ for (let i = 2; i <= 10; i++) {
                         <template #body="">
                             <div class="flex justify-content-center">
                                 <Button @click="priceListModal = true" icon="pi pi-dollar" v-tooltip.top="'Fiyatları'" rounded size="small" link />
-                                <router-link to="/ssl/add-packages" target="_blank" >
+                                <router-link to="/ssl/add-packages" target="_blank">
                                     <Button @click="domainModal = true" icon="pi pi-pencil" v-tooltip.top="'Düzenle'" rounded size="small" link />
                                 </router-link>
                                 <Button icon="pi pi-trash" v-tooltip.top="'Sil'" rounded size="small" link />
@@ -190,7 +206,7 @@ for (let i = 2; i <= 10; i++) {
     </div>
 
     <Dialog v-model:visible="priceListModal" maximizable modal header="Comodo Positive SSL" :style="{ width: '80vw' }" :position="'top'" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-        
+
         <DataTable :value="priceTable" scrollable scrollHeight="55dvh" size="small" class="small" stripedRows showGridlines removableSort :paginator="true" :rowHover="false" :rows="10" dataKey="id">
             <template #header>
                 <div class="flex justify-content-between align-items-center">
@@ -198,9 +214,10 @@ for (let i = 2; i <= 10; i++) {
                     <Button type="button" icon="pi pi-plus" label="Yeni Fiyat Ekle" severity="success" class="mb-2" @click="addPriceModal = true" />
                 </div>
             </template>
+            <Column field="type" header="Türü" sortable></Column>
             <Column field="period" header="Periyot (Yıl)" sortable>
                 <template #body="{ data }">
-                    <span class="font-bold">{{ data.period }} yıl</span>
+                    <span>{{ data.period }} yıl</span>
                 </template>
             </Column>
             <Column field="cost" header="Maliyet" sortable></Column>
@@ -220,35 +237,41 @@ for (let i = 2; i <= 10; i++) {
 
     </Dialog>
 
-    <Dialog v-model:visible="addPriceModal" maximizable modal header="Yeni Fiyat Ekle" :position="'top'" :style="{ width: '500px' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+    <Dialog v-model:visible="addPriceModal" maximizable modal header="Yeni Fiyat Ekle" :position="'top'" :style="{ width: '60dvw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
 
-        <div class="field">
-            <label for="name">Periyot (Yıl):</label>
-            <InputNumber v-model="value111" :useGrouping="false" max="10" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Maliyet:</label>
-            <InputNumber v-model="value112" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Reseller Satış:</label>
-            <InputNumber v-model="value113" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Premium Satış:</label>
-            <InputNumber v-model="value114" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Platium Satış:</label>
-            <InputNumber v-model="value115" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">VIP Satış:</label>
-            <InputNumber v-model="value116" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label class="block" for="name">Otomatik Fiyatlandırma:</label>
-            <InputSwitch v-model="switchValue" />
+        <div class="grid mt-3">
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Periyot (Yıl):</label>
+                <InputNumber v-model="value111" :useGrouping="false" max="10" class="w-full" placeholder="3" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Fiyat Türü</label>
+                <Dropdown v-model="priceType" :options="priceTypes" optionLabel="name" class="w-full" placeholder="Fiyat Türü Seç:" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Maliyet:</label>
+                <InputNumber v-model="value112" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$8.00" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Reseller Satış:</label>
+                <InputNumber v-model="value113" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$13.99" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Premium Satış:</label>
+                <InputNumber v-model="value114" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$12.99" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Platium Satış:</label>
+                <InputNumber v-model="value115" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$11.49" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">VIP Satış:</label>
+                <InputNumber v-model="value116" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$10.49" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1 mt-4">
+                <label class="block" for="name">Otomatik Fiyatlandırma:</label>
+                <InputSwitch v-model="switchValue" />
+            </div>
         </div>
         <Message severity="info" v-if="switchValue"><b>Otomatik Fiyatlandırma:</b> Bir işlem türünün bütün periyot fiyatlarını otomatik güncellemek için kullanılır.</Message>
         <template #footer>

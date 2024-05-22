@@ -87,6 +87,29 @@ const model = ref([
                 icon: 'pi pi-fw pi-list',
                 to: '/reseller/reseller-list'
             },
+            {
+                label: 'Bayi Düzenle',
+                icon: 'pi pi-fw pi-pencil',
+                to: '/reseller/edit'
+            },
+
+        ]
+    },
+    {
+        label: 'Finans',
+        icon: 'pi pi-shield',
+        items: [
+            {
+                label: 'Hesap Hareketleri',
+                icon: 'pi pi-fw pi-chart-line',
+                to: '/finance/AccountTransactions'
+            },
+            {
+                label: 'Fatura Hareketleri',
+                icon: 'pi pi-fw pi-file',
+                to: '/finance/InvoiceTransactions'
+            },
+
 
         ]
     },

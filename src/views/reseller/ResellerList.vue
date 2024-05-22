@@ -18,31 +18,32 @@ const filters = ref({
 });
 
 const resellerList = ref([
-    { id: 18255, reseller: "Atak Domain Bilgi Teknolojileri A.Ş.", authorized: "Recep Şerit", phone: '+905526819681', mail: 'recep@atakdomain.com', reseller_type: 'VIP', domain_count: '500', country: 'Türkiye' },
-    { id: 18256, reseller: "Tekno Alan", authorized: "Ayşe Yılmaz", phone: '+905553276543', mail: 'ayse@teknoalan.com', reseller_type: 'Reseller', domain_count: '250', country: 'Türkiye' },
-    { id: 18257, reseller: "NetPro", authorized: "Emre Gündüz", phone: '+905328764510', mail: 'emre@netpro.com', reseller_type: 'Premium', domain_count: '120', country: 'Türkiye' },
-    { id: 18258, reseller: "WebSquare", authorized: "Mehmet Doğan", phone: '+905447892345', mail: 'mehmet@websquare.com', reseller_type: 'Platium', domain_count: '80', country: 'Türkiye' },
-    { id: 18259, reseller: "HostSpace", authorized: "Zeynep Kaya", phone: '+905309876543', mail: 'zeynep@hostspace.com', reseller_type: 'Reseller', domain_count: '200', country: 'Türkiye' },
-    { id: 18260, reseller: "DataPlus", authorized: "Fatih Arslan", phone: '+905545673412', mail: 'fatih@dataplus.com', reseller_type: 'Reseller', domain_count: '150', country: 'Türkiye' },
-    { id: 18261, reseller: "CloudLabs", authorized: "Deniz Karadeniz", phone: '+905542356789', mail: 'deniz@cloudlabs.com', reseller_type: 'VIP', domain_count: '450', country: 'Türkiye' },
-    { id: 182356, reseller: "SmartServe", authorized: "Gizem Şahin", phone: '+905304561278', mail: 'gizem@smartserve.com', reseller_type: 'Platium', domain_count: '90', country: 'Türkiye' },
-    { id: 182256, reseller: "WebMasters", authorized: "Burak Güneş", phone: '+905543218765', mail: 'burak@webmasters.com', reseller_type: 'Reseller', domain_count: '110', country: 'Türkiye' },
-    { id: 18256, reseller: "NetCrew", authorized: "Selma Aydın", phone: '+905552345678', mail: 'selma@netcrew.com', reseller_type: 'Reseller', domain_count: '180', country: 'Türkiye' },
-    { id: 182556, reseller: "WebSphere", authorized: "Canan Korkmaz", phone: '+905309876543', mail: 'canan@websphere.com', reseller_type: 'Premium', domain_count: '160', country: 'Türkiye' },
-    { id: 18596, reseller: "SkyHosting", authorized: "Oğuzhan Şimşek", phone: '+905509876543', mail: 'oguzhan@skyhosting.com', reseller_type: 'VIP', domain_count: '400', country: 'Türkiye' },
-    { id: 18026, reseller: "GlobalTech", authorized: "Ebru Kaya", phone: '+905306789012', mail: 'ebru@globaltech.com', reseller_type: 'Reseller', domain_count: '220', country: 'Türkiye' },
-    { id: 12563, reseller: "NetProPlus", authorized: "Ahmet Çelik", phone: '+905307654321', mail: 'ahmet@netproplus.com', reseller_type: 'Reseller', domain_count: '130', country: 'Türkiye' },
-    { id: 18263, reseller: "SuperHost", authorized: "Pelin Demir", phone: '+905555432176', mail: 'pelin@superhost.com', reseller_type: 'Reseller', domain_count: '70', country: 'Türkiye' },
-    { id: 182533, reseller: "DataNet", authorized: "Mert Yıldız", phone: '+905305678901', mail: 'mert@datanet.com', reseller_type: 'Reseller', domain_count: '240', country: 'Türkiye' },
-    { id: 18263, reseller: "ServerSphere", authorized: "Yasin Şahin", phone: '+905543217890', mail: 'yasin@serversphere.com', reseller_type: 'Reseller', domain_count: '190', country: 'Türkiye' },
-    { id: 18263, reseller: "TechHub", authorized: "Selin Çetin", phone: '+905309876543', mail: 'selin@techhub.com', reseller_type: 'Reseller', domain_count: '140', country: 'Türkiye' },
-    { id: 182563, reseller: "CloudMasters", authorized: "İrem Aslan", phone: '+905544567890', mail: 'irem@cloudmasters.com', reseller_type: 'VIP', domain_count: '600', country: 'Türkiye' },
-    { id: 9263, reseller: "DigitalLink", authorized: "Efe Aktaş", phone: '+905533219876', mail: 'efe@digitallink.com', reseller_type: 'Reseller', domain_count: '100', country: 'Türkiye' },
-    { id: 55563, reseller: "TechSolutions", authorized: "John Smith", phone: '+14165551234', mail: 'john@techsolutions.com', reseller_type: 'Reseller', domain_count: '300', country: 'USA' },
-    { id: 162563, reseller: "WebWizards", authorized: "Emily Johnson", phone: '+14165559876', mail: 'emily@webwizards.com', reseller_type: 'Reseller', domain_count: '180', country: 'Canada' },
-    { id: 11253, reseller: "NetGurus", authorized: "David Williams", phone: '+447700123456', mail: 'david@netgurus.co.uk', reseller_type: 'VIP', domain_count: '700', country: 'UK' },
-    { id: 13563, reseller: "DigitalEdge", authorized: "Sophie Martin", phone: '+442089765432', mail: 'sophie@digitaledge.eu', reseller_type: 'Reseller', domain_count: '250', country: 'France' },
+  { id: 18255, reseller: "Atak Domain Bilgi Teknolojileri A.Ş.", authorized: "Recep Şerit", phone: "+905526819681", mail: "recep@atakdomain.com", reseller_type: "VIP", domain_count: "500", country: "Türkiye", created_date: "2023-01-01" },
+  { id: 18256, reseller: "Tekno Alan", authorized: "Ayşe Yılmaz", phone: "+905532765434", mail: "ayse@teknoalan.com", reseller_type: "Reseller", domain_count: "250", country: "Türkiye", created_date: "2023-01-05" },
+  { id: 18257, reseller: "NetPro", authorized: "Emre Gündüz", phone: "+905327864510", mail: "emre@netpro.com", reseller_type: "Premium", domain_count: "120", country: "Türkiye", created_date: "2023-01-10" },
+  { id: 18258, reseller: "WebSquare", authorized: "Mehmet Doğan", phone: "+905447892345", mail: "mehmet@websquare.com", reseller_type: "Platinum", domain_count: "80", country: "Türkiye", created_date: "2023-01-15" },
+  { id: 18259, reseller: "HostSpace", authorized: "Zeynep Kaya", phone: "+90539876543", mail: "zeynep@hostspace.com", reseller_type: "Reseller", domain_count: "200", country: "Türkiye", created_date: "2023-01-20" },
+  { id: 18260, reseller: "DataPlus", authorized: "Fatih Arslan", phone: "+905427819654", mail: "fatih@dataplus.com", reseller_type: "VIP", domain_count: "150", country: "Türkiye", created_date: "2023-01-25" },
+  { id: 18261, reseller: "CloudLabs", authorized: "Deniz Karadeniz", phone: "+905543256794", mail: "deniz@cloudlabs.com", reseller_type: "VIP", domain_count: "450", country: "Türkiye", created_date: "2023-01-30" },
+  { id: 18256, reseller: "SmartServe", authorized: "Gizem Şahin", phone: "+905348612178", mail: "gizem@smartserve.com", reseller_type: "Reseller", domain_count: "90", country: "Türkiye", created_date: "2023-02-04" },
+  { id: 18257, reseller: "WebMasters", authorized: "Burak Güneş", phone: "+905342187654", mail: "burak@webmasters.com", reseller_type: "Reseller", domain_count: "110", country: "Türkiye", created_date: "2023-02-09" },
+  { id: 18256, reseller: "NetCrew", authorized: "Selma Aydın", phone: "+905552345678", mail: "selma@netcrew.com", reseller_type: "Reseller", domain_count: "180", country: "Türkiye", created_date: "2023-02-14" },
+  { id: 18256, reseller: "WebSphere", authorized: "Canan Korkmaz", phone: "+90539876543", mail: "canan@websphere.com", reseller_type: "Premium", domain_count: "160", country: "Türkiye", created_date: "2023-02-19" },
+  { id: 18956, reseller: "SkyHosting", authorized: "Oğuzhan Şimşek", phone: "+90539876543", mail: "oguzhan@skyhosting.com", reseller_type: "VIP", domain_count: "400", country: "Türkiye", created_date: "2023-02-24" },
+  { id: 16254, reseller: "Globaltech", authorized: "Ebru Kaya", phone: "+905398765432", mail: "ebru@globaltech.com", reseller_type: "Reseller", domain_count: "220", country: "Türkiye", created_date: "2023-03-01" },
+  { id: 15263, reseller: "NetProPlus", authorized: "Murat Çelik", phone: "+905347897654", mail: "murat@netproplus.com", reseller_type: "Reseller", domain_count: "130", country: "Türkiye", created_date: "2023-03-06" },
+  { id: 18263, reseller: "SuperHost", authorized: "Pelin Demir", phone: "+905554321076", mail: "pelin@superhost.com", reseller_type: "Reseller", domain_count: "70", country: "Türkiye", created_date: "2023-03-11" },
+  { id: 18260, reseller: "DataNet", authorized: "Mert Yıldız", phone: "+905547897654", mail: "mert@datanet.com", reseller_type: "Reseller", domain_count: "240", country: "Türkiye", created_date: "2023-03-16" },
+  { id: 18256, reseller: "ServerSphere", authorized: "Yasin Şahin", phone: "+905542167894", mail: "yasin@serversphere.com", reseller_type: "Reseller", domain_count: "190", country: "Türkiye", created_date: "2023-03-21" },
+  { id: 18257, reseller: "TechHub", authorized: "Selin Erbaş", phone: "+90539876543", mail: "selin@techhub.com", reseller_type: "Reseller", domain_count: "140", country: "Türkiye", created_date: "2023-03-26" },
+  { id: 18263, reseller: "CloudMasters", authorized: "İrem Aslan", phone: "+905454567890", mail: "irem@cloudmasters.com", reseller_type: "VIP", domain_count: "300", country: "Türkiye", created_date: "2023-03-31" },
+  { id: 9263, reseller: "DigitalLink", authorized: "Efe Aktaş", phone: "+90539219876", mail: "efe@digitallink.com", reseller_type: "Reseller", domain_count: "200", country: "Türkiye", created_date: "2023-04-05" },
+  { id: 18563, reseller: "TechSolutions", authorized: "John Smith", phone: "+14155551234", mail: "john@techsolutions.com", reseller_type: "VIP", domain_count: "450", country: "USA", created_date: "2023-04-10" },
+  { id: 16253, reseller: "WebWizards", authorized: "Emily Johnson", phone: "+441655321098", mail: "emily@webwizards.com", reseller_type: "Reseller", domain_count: "180", country: "Canada", created_date: "2023-04-15" },
+  { id: 18652, reseller: "NetGurus", authorized: "David Williams", phone: "+447855321456", mail: "david@netgurus.co.uk", reseller_type: "VIP", domain_count: "700", country: "UK", created_date: "2023-04-20" },
+  { id: 13563, reseller: "DigitalEdge", authorized: "Sophie Martin", phone: "+442089765432", mail: "sophie@digitaledge.eu", reseller_type: "Reseller", domain_count: "250", country: "France", created_date: "2023-04-25" }
 ]);
+
 
 const value111 = ref();
 const value112 = ref();
@@ -93,7 +94,7 @@ const getSeverity = (status) => {
         case 'Premium':
             return 'bg-teal-200 text-teal-800';
 
-        case 'Platium':
+        case 'Platinum':
             return 'bg-orange-200 text-orange-800';
 
         case 'VIP':
@@ -139,11 +140,7 @@ for (let i = 2; i <= 10; i++) {
                                     <InputText placeholder="Ara" style="width: 100%" v-model="filters['global'].value" />
                                 </span>
                             </div>
-                            <div class="flex gap-3">
-                                <router-link to="/reseller/null" target="_blank">
-                                    <Button type="button" icon="pi pi-plus" label="Bayi Ekle" severity="success" class="mb-2" />
-                                </router-link>
-                            </div>
+                    
                         </div>
                     </template>
                     <template #empty>
@@ -215,13 +212,20 @@ for (let i = 2; i <= 10; i++) {
                             <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter :options="countrys" placeholder="Filtre" class="p-column-filter max-w-12rem" />
                         </template>
                     </Column>
+                    <Column field="created_date" header="Kayıt" sortable :showFilterMenu="false">
+                        <template #body="{ data }">
+                            <span class="white-space-nowrap">{{ data.created_date }}</span>
+                        </template>
+                    </Column>
 
 
                     <Column header="İşlem" :exportable="false">
                         <template #body="">
                             <div class="flex justify-content-center">
                                 <Button @click="resellerModal = true" icon="pi pi-search" v-tooltip.top="'Bayi Bilgileri'" rounded size="small" link />
-                                <Button  icon="pi pi-pencil" v-tooltip.top="'Düzenle'" rounded size="small" link />
+                                <router-link to="/reseller/edit">
+                                    <Button  icon="pi pi-pencil" v-tooltip.top="'Düzenle'" rounded size="small" link />
+                                </router-link>
                                 <Button icon="pi pi-trash" v-tooltip.top="'Sil'" rounded size="small" link />
                             </div>
                         </template>

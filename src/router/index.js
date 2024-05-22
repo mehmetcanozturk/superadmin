@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter,createWebHashHistory} from 'vue-router';
 import AppLayout from '@/layout/AppLayout.vue';
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.VITE_PUBLIC_PATH),
+    history: createWebHashHistory(),
     routes: [
         {
             path: '/',
@@ -87,11 +87,41 @@ const router = createRouter({
                     path: '/reseller/reseller-list',
                     name: 'reseller-list',
                     meta: {
-                        breadcrumb: ['SSL'],
+                        breadcrumb: ['Bayi'],
                         title: ['Bayi Listesi'],
                     },
                     component: () => import('@/views/reseller/ResellerList.vue')
                 },
+                {
+                    path: '/reseller/edit',
+                    name: 'edit-reseller',
+                    meta: {
+                        breadcrumb: ['Bayi'],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/reseller/Edit.vue')
+                },
+
+                /* Finance */
+                {
+                    path: '/finance/AccountTransactions',
+                    name: 'account-transactions',
+                    meta: {
+                        breadcrumb: ['Finans'],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/finance/AccountTransactions.vue')
+                },
+                {
+                    path: '/finance/InvoiceTransactions',
+                    name: 'invoice-transactions',
+                    meta: {
+                        breadcrumb: ['Finans','Fatura Hareketleri'],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/finance/InvoiceTransactions.vue')
+                },
+
 
                 {
                     path: '/dashboard-banking',
@@ -485,15 +515,17 @@ const router = createRouter({
             ]
         },
         {
+            path: '/:catchAll(.*)',
+            name: 'notfound',
+            component: () => import('@/views/pages/NotFound.vue')
+        },
+
+        {
             path: '/landing',
             name: 'landing',
             component: () => import('@/views/pages/Landing.vue')
         },
-        {
-            path: '/pages/notfound',
-            name: 'notfound',
-            component: () => import('@/views/pages/NotFound.vue')
-        },
+
 
         {
             path: '/auth/login',
@@ -539,7 +571,3 @@ const router = createRouter({
 });
 
 export default router;
-router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || 'DNA | Süper Admin';
-    next();
-});
