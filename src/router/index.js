@@ -121,6 +121,15 @@ const router = createRouter({
                     },
                     component: () => import('@/views/finance/InvoiceTransactions.vue')
                 },
+                {
+                    path: '/finance/PriceList',
+                    name: 'price-list',
+                    meta: {
+                        breadcrumb: ['Finans','Fatura Hareketleri'],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/finance/PriceList.vue')
+                },
 
 
                 {

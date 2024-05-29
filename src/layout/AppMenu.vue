@@ -100,7 +100,7 @@ const model = ref([
         icon: 'pi pi-shield',
         items: [
             {
-                label: 'Hesap Hareketleri',
+                label: 'Parasal Hareketleri',
                 icon: 'pi pi-fw pi-chart-line',
                 to: '/finance/AccountTransactions'
             },
@@ -108,6 +108,11 @@ const model = ref([
                 label: 'Fatura Hareketleri',
                 icon: 'pi pi-fw pi-file',
                 to: '/finance/InvoiceTransactions'
+            },
+            {
+                label: 'Fiyat Listeleri',
+                icon: 'pi pi-fw pi-dollar',
+                to: '/finance/PriceList'
             },
 
 
