@@ -160,7 +160,9 @@ const promotionList = ref([
                             <template #loading> Tablo Yükleniyor Lütfen Bekleyin. </template>
                             <ColumnGroup type="header">
                                 <Row>
-                                    <Column header="Genel bilgiler" :colspan="4" />
+                                    <Column header="Genel bilgiler" :colspan="3" />
+                                    <Column header="Maliyetler" :colspan="3" />
+
                                     <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Reseller" :colspan="3" />
                                     <Column class="bg-green-100 border-green-300 text-green-900" header="Premium" :colspan="3" />
                                     <Column class="bg-orange-100 border-orange-200 text-orange-900" header="Platinum" :colspan="3" />
@@ -171,7 +173,10 @@ const promotionList = ref([
                                     <Column header="Domain" field="domain" />
                                     <Column header="Grup" field="domain_group" />
                                     <Column header="Döviz" field="currency" />
-                                    <Column header="Maliyet" field="cost" />
+
+                                    <Column header="Kayıt" field="cost" />
+                                    <Column header="Trustee" field="trustee" />
+                                    <Column header="Restore" field="backorder" />
 
                                     <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Kayıt" field="reseller_register" />
                                     <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Transfer" field="reseller_transfer" />
@@ -227,6 +232,9 @@ const promotionList = ref([
                                     <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
                                 </template>
                             </Column>
+                            <Column field="cost" header="Default"></Column>
+                            <Column field="cost" header="Default"></Column>
+
 
                             <Column class="surface-100 border-bluegray-200 text-bluegray-900 text-center" field="reseller_register" header="Default"></Column>
                             <Column class="surface-100 border-bluegray-200 text-bluegray-900 text-center" field="reseller_transfer" header="Default"></Column>
@@ -307,13 +315,11 @@ const promotionList = ref([
                             <Column field="domain" header="Domain" sortable></Column>
                             <Column field="start_date" header="Başlangıç" sortable></Column>
                             <Column field="finish_date" header="Bitiş" sortable></Column>
-                            <Column field="remaining" header="Kalan Süre" sortable></Column>
                             <Column field="cost" header="Maliyet" sortable></Column>
                             <Column field="resellerSale" class="surface-100 border-bluegray-200 text-bluegray-900" header="Reseller" sortable></Column>
                             <Column field="premiumSale" class="bg-green-100 border-green-300 text-green-900" header="Premium" sortable></Column>
                             <Column field="platiumSale" class="bg-orange-100 border-orange-200 text-orange-900" header="Platium" sortable></Column>
                             <Column field="vipSale" class="bg-purple-100 border-purple-200 text-purple-900" header="VIP" sortable></Column>
-                            
                         </DataTable>
                     </TabPanel>
 

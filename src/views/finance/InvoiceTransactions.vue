@@ -28,34 +28,29 @@ const Invoices = ref([
 
 
 const Transactions = ref([
-    { type: 'Yeni Kayıt', id: 697105, category: 'Domain', desc: 'coldwellbankerpelican.com domaini satın alındı', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$8,69', currency_type: 'Dolar Hesabı ($)', date: '23.03.2023 - 17:15' },
-    { type: 'Depozito', id: 7456, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$500,00', currency_type: 'Dolar Hesabı ($)', date: '23.03.2022 - 15:04' },
-    { type: 'Yenileme', id: 231045, category: 'SSL', desc: 'example.com SSL sertifikası yenilendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$12,00', currency_type: 'Dolar Hesabı ($)', date: '24.03.2023 - 12:00' },
-    { type: 'Yeni Kayıt', id: 347820, category: 'Domain', desc: 'mynewwebsite.com domaini satın alındı', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$10,99', currency_type: 'Dolar Hesabı ($)', date: '25.03.2023 - 14:45' },
-    { type: 'Depozito', id: 459001, category: 'Depozito', desc: '200$ depozito yüklendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$200,00', currency_type: 'Dolar Hesabı ($)', date: '26.03.2023 - 10:30' },
-    { type: 'Yeni Kayıt', id: 564982, category: 'SSL', desc: 'securewebsite.com için SSL sertifikası alındı', reseller: 'SSL Güvenlik A.Ş.', quantity: '1', amount: '-$15,00', currency_type: 'Dolar Hesabı ($)', date: '27.03.2023 - 09:20' },
-    { type: 'Yenileme', id: 671235, category: 'Domain', desc: 'oldwebsite.com domaini yenilendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$9,99', currency_type: 'Dolar Hesabı ($)', date: '28.03.2023 - 16:50' },
-    { type: 'Depozito', id: 784516, category: 'Depozito', desc: '300$ depozito yüklendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$300,00', currency_type: 'Dolar Hesabı ($)', date: '29.03.2023 - 11:00' },
-    { type: 'Yeni Kayıt', id: 895427, category: 'SSL', desc: 'securepayment.com için SSL sertifikası alındı', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$14,00', currency_type: 'Dolar Hesabı ($)', date: '30.03.2023 - 13:30' },
-    { type: 'Yenileme', id: 902316, category: 'Domain', desc: 'mybusiness.com domaini yenilendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$11,00', currency_type: 'Dolar Hesabı ($)', date: '31.03.2023 - 15:20' },
-    { type: 'Depozito', id: 103457, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$100,00', currency_type: 'Dolar Hesabı ($)', date: '01.04.2023 - 10:45' },
-    { type: 'Yeni Kayıt', id: 114678, category: 'Domain', desc: 'newstartup.com domaini satın alındı', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$8,50', currency_type: 'Dolar Hesabı ($)', date: '02.04.2023 - 11:15' },
-    { type: 'Yenileme', id: 125789, category: 'SSL', desc: 'safecommerce.com SSL sertifikası yenilendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$13,50', currency_type: 'Dolar Hesabı ($)', date: '03.04.2023 - 14:00' },
-    { type: 'Depozito', id: 136890, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$150,00', currency_type: 'Dolar Hesabı ($)', date: '04.04.2023 - 09:10' },
-    { type: 'Yeni Kayıt', id: 147901, category: 'SSL', desc: 'mysafesite.com için SSL sertifikası alındı', reseller: 'SSL Güvenlik A.Ş.', quantity: '1', amount: '-$16,00', currency_type: 'Dolar Hesabı ($)', date: '05.04.2023 - 12:35' },
-    { type: 'Yenileme', id: 158902, category: 'Domain', desc: 'coolproject.com domaini yenilendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$7,50', currency_type: 'Dolar Hesabı ($)', date: '06.04.2023 - 16:40' },
-    { type: 'Depozito', id: 169903, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$250,00', currency_type: 'Dolar Hesabı ($)', date: '07.04.2023 - 11:55' },
-    { type: 'Yeni Kayıt', id: 180904, category: 'Domain', desc: 'techworld.com domaini satın alındı', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$12,00', currency_type: 'Dolar Hesabı ($)', date: '08.04.2023 - 13:20' },
-    { type: 'Yenileme', id: 191905, category: 'SSL', desc: 'secureconnect.com SSL sertifikası yenilendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '-$10,00', currency_type: 'Dolar Hesabı ($)', date: '09.04.2023 - 15:10' },
-    { type: 'Depozito', id: 202906, category: 'Depozito', desc: '400$ depozito yüklendi', reseller: 'Atak Domain Bilgi Teknolojileri Aş.', quantity: '1', amount: '+$400,00', currency_type: 'Dolar Hesabı ($)', date: '10.04.2023 - 10:20' }
+    { id: 697105, date: '2024-01-01', created_date: '2024-01-01', amount: '$2,562.59' },
+    { id: 697106, date: '2024-02-02', created_date: '2024-02-02', amount: '$1,245.00' },
+    { id: 697107, date: '2024-03-03', created_date: '2024-03-03', amount: '$3,678.45' },
+    { id: 697108, date: '2024-04-04', created_date: '2024-04-04', amount: '$987.65' },
+    { id: 697109, date: '2024-05-05', created_date: '2024-05-05', amount: '$4,321.10' },
+    { id: 697110, date: '2024-06-06', created_date: '2024-06-06', amount: '$5,432.20' },
+    { id: 697111, date: '2024-07-07', created_date: '2024-07-07', amount: '$654.32' },
+    { id: 697112, date: '2024-08-08', created_date: '2024-08-08', amount: '$3,210.98' },
+    { id: 697113, date: '2024-09-09', created_date: '2024-09-09', amount: '$1,987.65' },
+    { id: 697114, date: '2024-10-10', created_date: '2024-10-10', amount: '$2,345.67' },
+    { id: 697115, date: '2024-11-11', created_date: '2024-11-11', amount: '$6,789.01' },
+    { id: 697116, date: '2024-12-12', created_date: '2024-12-12', amount: '$7,654.32' },
+    { id: 697117, date: '2024-01-13', created_date: '2024-01-13', amount: '$432.10' },
+    { id: 697118, date: '2024-02-14', created_date: '2024-02-14', amount: '$5,678.90' },
+    { id: 697119, date: '2024-03-15', created_date: '2024-03-15', amount: '$4,321.12' },
+    { id: 697120, date: '2024-04-16', created_date: '2024-04-16', amount: '$3,456.78' },
+    { id: 697121, date: '2024-05-17', created_date: '2024-05-17', amount: '$2,098.76' },
+    { id: 697122, date: '2024-06-18', created_date: '2024-06-18', amount: '$1,234.56' },
+    { id: 697123, date: '2024-07-19', created_date: '2024-07-19', amount: '$5,432.10' },
+    { id: 697124, date: '2024-08-20', created_date: '2024-08-20', amount: '$3,210.09' },
+    { id: 697125, date: '2024-09-21', created_date: '2024-09-21', amount: '$6,543.21' },
 ]);
 
-const getSeverity = (amount) => {
-    return {
-        'text-green-500': amount.startsWith('+'),
-        'text-red-500': amount.startsWith('-')
-    };
-};
 
 
 
@@ -66,6 +61,7 @@ const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     type: { value: null, matchMode: FilterMatchMode.IN },
     id: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    date: { value: null, matchMode: FilterMatchMode.CONTAINS },
     category: { value: null, matchMode: FilterMatchMode.IN },
     desc: { value: null, matchMode: FilterMatchMode.CONTAINS },
     reseller: { value: null, matchMode: FilterMatchMode.IN },
@@ -82,18 +78,6 @@ const dates = ref([]);
 
 
 
-const getCategory = (category) => {
-    switch (category) {
-        case 'Depozito':
-            return 'success';
-
-        case 'Domain':
-            return 'info';
-
-        case 'SSL':
-            return 'warning';
-    }
-};
 
 
 
@@ -115,7 +99,7 @@ const lastInvoiceModal = ref(false);
     <div class="grid">
         <div class="col-12">
             <div class="card">
-                <h5>Fatura Hareketleri</h5>
+                <h5>Faturalar</h5>
                 <DataTable :value="Invoices" size="small" scrollable scrollHeight="63dvh" class="small p-datatable-gridlines" stripedRows removableSort :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['type', 'reseller', 'desc', 'id']">
                     <template #header>
                         <div class="flex justify-content-between flex-column sm:flex-row">
@@ -191,17 +175,17 @@ const lastInvoiceModal = ref(false);
             </div>
         </div>
     </div>
-    <Dialog v-model:visible="lastInvoiceModal" header=" Atak Domain Bilgi Teknolojileri Aş.	" maximizable modal :style="{ width: '80dvw' }" :breakpoints="{ '1199px': '100dvw', '575px': '100dvw' }">
+    <Dialog v-model:visible="lastInvoiceModal" header=" Atak Domain Bilgi Teknolojileri Aş.	" maximizable modal :style="{ width: '60dvw' }" :breakpoints="{ '1199px': '100dvw', '575px': '100dvw' }">
         <template #header>
             <div class="inline-flex align-items-center justify-content-center gap-2">
-                <span class="font-bold white-space-nowrap select-all text-xl">Atak Domain Bilgi Teknolojileri Aş.</span>
-                <Tag severity="secondary" value="Son Faturalar"></Tag>
+                <span class="font-bold white-space-nowrap select-all text-xl">Atak Domain Bilgi Teknolojileri Aş. - Faturalar</span>
+
             </div>
 
         </template>
-        <DataTable :value="Transactions" size="small" scrollable class="small p-datatable-gridlines" stripedRows removableSort :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['type', 'reseller', 'desc', 'id']">
+        <DataTable :value="Transactions" size="small" scrollable class="small p-datatable-gridlines" stripedRows removableSort :paginator="true" :rowHover="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['id']">
             <template #header>
-                <div class="flex justify-content-between flex-column sm:flex-row">
+                <div class="flex justify-content-between align-items-center flex-column sm:flex-row">
                     <div class="flex flex-column sm:flex-row">
                         <span class="p-input-icon-left mb-2">
                             <i class="pi pi-search" />
@@ -224,60 +208,13 @@ const lastInvoiceModal = ref(false);
                 </div>
             </template>
             <template #loading> Tablo Yükleniyor Lütfen Bekleyin. </template>
-            <Column field="type" header="İşlem Türü" :showFilterMenu="false" sortable>
-                <template #body="{ data }">
-                    {{ data.type }}
-                </template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter="" :options="types" placeholder="Filtre" class="p-column-filter max-w-12rem" />
-                </template>
-            </Column>
-            <Column field="id" header="NO" sortable :showFilterMenu="false">
+
+            <Column field="id" header="Fatura no" sortable :showFilterMenu="false">
                 <template #body="{ data }">
                     <span class="font-bold">{{ data.id }}</span>
                 </template>
                 <template #filter="{ filterModel, filterCallback }">
                     <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
-                </template>
-            </Column>
-            <Column field="category" header="Kategori" :showFilterMenu="false" sortable>
-                <template #body="{ data }">
-                    <Badge class="w-full" :value="data.category" :severity="getCategory(data.category)" />
-                </template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter :options="categories" placeholder="Filtre" class="p-column-filter max-w-12rem" />
-                </template>
-            </Column>
-            <Column field="desc" header="Açıklama" :showFilterMenu="false" sortable>
-                <template #body="{ data }">
-                    {{ data.desc }}
-                </template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
-                </template>
-            </Column>
-            <Column field="reseller" header="Bayi" :showFilterMenu="false" sortable>
-                <template #body="{ data }">
-                    {{ data.reseller }}
-                </template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <MultiSelect v-model="filterModel.value" disabled="true" @change="filterCallback()" filter :options="resellers" placeholder="Filtre" class="p-column-filter max-w-12rem" />
-                </template>
-            </Column>
-            <Column field="amount" header="Tutar" :showFilterMenu="false" sortable>
-                <template #body="{ data }">
-                    <span class="font-semibold" :class="getSeverity(data.amount)">{{ data.amount }}</span>
-                </template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
-                </template>
-            </Column>
-            <Column field="currency_type" header="Hesap Türü" :showFilterMenu="false" sortable>
-                <template #body="{ data }">
-                    {{ data.currency_type }}
-                </template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter :options="currency" placeholder="Filtre" class="p-column-filter max-w-12rem" />
                 </template>
             </Column>
             <Column field="date" header="Tarih" :showFilterMenu="false" sortable>
@@ -294,6 +231,44 @@ const lastInvoiceModal = ref(false);
                     </OverlayPanel>
                 </template>
             </Column>
+            <Column field="created_date" header="Oluşturulma Tarihi" :showFilterMenu="false" sortable>
+                <template #body="{ data }">
+                    {{ data.created_date }}
+                </template>
+                <template #filter="{ }">
+                    <Button type="button" label="filtre" @click="toggle" outlined />
+                    <OverlayPanel ref="op" appendTo="body" :showCloseIcon="true">
+                        <div class="flex gap-2">
+                            <Calendar v-model="dates" placeholder="Tarih Aralığı Gir" selectionMode="range" :manualInput="false" />
+                            <Button icon="pi pi-search" label="ara" />
+                        </div>
+                    </OverlayPanel>
+                </template>
+            </Column>
+
+            <Column field="amount" header="Tutar" sortable :showFilterMenu="false">
+                <template #body="{ data }">
+                    <span class="font-bold">{{ data.amount }}</span>
+                </template>
+                <template #filter="{ filterModel, filterCallback }">
+                    <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
+                </template>
+            </Column>
+
+            <Column header="İndir" :exportable="false" alignFrozen="right" :frozen="true">
+                <template #body="">
+                    <div class="flex justify-content-center">
+                        <Button icon="pi pi-download" v-tooltip.top="'Excel Fatura indir'" rounded  link />
+                        <Button icon="pi pi-file-export" v-tooltip.top="'PDF Fatura indir'" rounded link  />
+                    </div>
+                </template>
+            </Column>
+
+
+
+
+
+
         </DataTable>
 
     </Dialog>
