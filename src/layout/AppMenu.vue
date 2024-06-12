@@ -137,10 +137,24 @@ const model = ref([
 
         ]
     },
+    {
+        label: 'Raporlar',
+        icon: 'pi pi-user',
+        items: [
+            {
+                label: 'Günün Özeti',
+                icon: 'pi pi-fw pi-chart-line',
+                to: '/reports/daily'
+            },
 
 
 
+        ]
+    },
 
+
+
+/* 
     {
         label: 'Apps',
         icon: 'pi pi-th-large',
@@ -584,7 +598,7 @@ const model = ref([
                 to: '/documentation'
             }
         ]
-    }
+    } */
 ]);
 </script>
 

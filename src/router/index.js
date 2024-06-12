@@ -148,6 +148,17 @@ const router = createRouter({
                     },
                     component: () => import('@/views/user/roles.vue')
                 },
+
+                /* reports */
+                {
+                    path: '/reports/daily',
+                    name: 'daily',
+                    meta: {
+                        breadcrumb: ['Finans',],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/reports/SummaryDaily.vue')
+                },
          
 
 
