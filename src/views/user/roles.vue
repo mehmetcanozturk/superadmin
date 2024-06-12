@@ -79,7 +79,7 @@ watch(supportAll, newVal => { supportSelected.value = newVal ? support.value.map
                             </div>
                             <div class="flex gap-3">
                     
-                                <Button type="button" icon="pi pi-plus" label="Yeni Kullanıcı Ekle" severity="success" @click="addRoleModal = true" class="mb-2" />
+                                <Button type="button" icon="pi pi-plus" label="Yeni Yetki Grubu" severity="success" @click="addRoleModal = true" class="mb-2" />
 
                             </div>
                         </div>
