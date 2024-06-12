@@ -78,8 +78,6 @@ const router = createRouter({
                         title: "project detail",
                     },
                     component: () => import('@/views/ssl/AddPackages.vue'),
-
-
                 },
 
                 /* Reseller */
@@ -125,11 +123,32 @@ const router = createRouter({
                     path: '/finance/PriceList',
                     name: 'price-list',
                     meta: {
-                        breadcrumb: ['Finans','Fatura Hareketleri'],
+                        breadcrumb: ['Finans',],
                         title: ['Bayi Ekle'],
                     },
                     component: () => import('@/views/finance/PriceList.vue')
                 },
+
+                /* user */
+                {
+                    path: '/user/users',
+                    name: 'users',
+                    meta: {
+                        breadcrumb: ['Finans',],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/user/users.vue')
+                },
+                {
+                    path: '/user/roles',
+                    name: 'roles',
+                    meta: {
+                        breadcrumb: ['Finans',],
+                        title: ['Bayi Ekle'],
+                    },
+                    component: () => import('@/views/user/roles.vue')
+                },
+         
 
 
                 {

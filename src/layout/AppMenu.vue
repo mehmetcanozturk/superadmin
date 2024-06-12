@@ -118,6 +118,25 @@ const model = ref([
 
         ]
     },
+    {
+        label: 'Kullanıcı',
+        icon: 'pi pi-user',
+        items: [
+            {
+                label: 'Kullanıcılar',
+                icon: 'pi pi-fw pi-users',
+                to: '/user/users'
+            },
+            {
+                label: 'Roller',
+                icon: 'pi pi-fw pi-users',
+                to: '/user/roles'
+            },
+
+
+
+        ]
+    },
 
 
 
