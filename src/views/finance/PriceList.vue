@@ -133,7 +133,7 @@ const promotionList = ref([
                                 <span class="font-bold white-space-nowrap">Domain Fiyatları</span>
                             </div>
                         </template>
-                        <DataTable :value="list" size="small" class="small p-datatable-gridlines text-sm custom-hover" stripedRows removableSort :paginator="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['domain', 'domain_group']">
+                        <DataTable :value="list" size="small" class="small p-datatable-gridlines text-sm custom-hover header-center" stripedRows removableSort :paginator="true" :rows="25" v-model:filters="filters" dataKey="id" filterDisplay="row" :globalFilterFields="['domain', 'domain_group']">
                             <template #header>
                                 <div class="flex justify-content-between flex-column sm:flex-row">
                                     <div class="flex flex-column sm:flex-row">
@@ -161,7 +161,7 @@ const promotionList = ref([
                             <ColumnGroup type="header">
                                 <Row>
                                     <Column header="Genel bilgiler" :colspan="3" />
-                                    <Column header="Maliyetler" :colspan="3" />
+                                    <Column header="Maliyetler" :colspan="4" />
 
                                     <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Reseller" :colspan="3" />
                                     <Column class="bg-green-100 border-green-300 text-green-900" header="Premium" :colspan="3" />
@@ -175,6 +175,7 @@ const promotionList = ref([
                                     <Column header="Döviz" field="currency" />
 
                                     <Column header="Kayıt" field="cost" />
+                                    <Column header="Yenileme" field="backorder" />
                                     <Column header="Trustee" field="trustee" />
                                     <Column header="Restore" field="backorder" />
 
@@ -234,6 +235,7 @@ const promotionList = ref([
                             </Column>
                             <Column field="cost" header="Default"></Column>
                             <Column field="cost" header="Default"></Column>
+                            <Column field="cost" header="Default"></Column>
 
 
                             <Column class="surface-100 border-bluegray-200 text-bluegray-900 text-center" field="reseller_register" header="Default"></Column>
@@ -266,7 +268,7 @@ const promotionList = ref([
                                 <span class="font-bold white-space-nowrap">SSL Fiyatları</span>
                             </div>
                         </template>
-                        <DataTable :value="sslList" size="small" class="small custom-hover text-sm" stripedRows showGridlines removableSort :paginator="true" :rowHover="false" :rows="25" dataKey="id">
+                        <DataTable :value="sslList" size="small" class="small custom-hover text-sm header-center" stripedRows showGridlines removableSort :paginator="true" :rowHover="false" :rows="25" dataKey="id">
                             <template #header>
                                 <div class="flex justify-content-between flex-column sm:flex-row">
                                     <div class="flex flex-column sm:flex-row">
@@ -298,7 +300,7 @@ const promotionList = ref([
                                 <span class="font-bold white-space-nowrap">Promosyon</span>
                             </div>
                         </template>
-                        <DataTable :value="promotionList" size="small" class="small custom-hover text-sm" stripedRows showGridlines removableSort :paginator="true" :rowHover="false" :rows="25" dataKey="id">
+                        <DataTable :value="promotionList" size="small" class="small custom-hover text-sm header-center" stripedRows showGridlines removableSort :paginator="true" :rowHover="false" :rows="25" dataKey="id">
                             <template #header>
                                 <div class="flex justify-content-between flex-column sm:flex-row">
                                     <div class="flex flex-column sm:flex-row">
