@@ -1,7 +1,31 @@
 <script setup>
 import { ref, onBeforeMount, reactive } from 'vue';
 import { FilterMatchMode, FilterOperator } from 'primevue/api';
+import { useConfirm } from "primevue/useconfirm";
+import { useToast } from "primevue/usetoast";
 
+const confirm = useConfirm();
+const toast = useToast();
+const deleteDomain = () => {
+    confirm.require({
+        message: 'X Domaini Silmek istediğine emin misin?',
+        header: 'Domain Siliniyor',
+        icon: 'pi pi-info-circle',
+        rejectLabel: 'Vazgeç',
+        acceptLabel: 'Domaini Sil',
+        rejectClass: 'p-button-secondary p-button-outlined',
+        acceptClass: 'p-button-danger',
+        accept: () => {
+            toast.add({ severity: 'success', summary: 'Silindi', detail: 'X domaini başarıyla silindi', life: 2000 });
+        },
+        reject: () => {
+        }
+    });
+};
+
+const syncDomain = () => {
+    toast.add({ severity: 'Success', summary: 'Info', detail: 'Message Content', life: 3000 });
+};
 
 const resellerModal = ref(false);
 const resellerpw = ref('*CokGüvenliBirSifre_00!');
@@ -81,11 +105,25 @@ domainList.value.forEach(item => {
     }
 });
 
-console.log(APIs)
+const blocked = ref(false);
+const blockDocument = (a) => {
+    blocked.value = true;
+    setTimeout(() => {
+        blocked.value = false;
+    }, a);
+}
+
+
 
 </script>
 
 <template>
+    <!-- import -->
+    <Toast />
+    <ConfirmDialog></ConfirmDialog>
+    <!-- import -->
+    <ProgressSpinner v-if="blocked" class="bg-white" style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%);z-index: 99999999;border-radius: 100%;" />
+    <BlockUI :blocked="blocked" fullScreen />
     <div class="grid">
         <div class="col-12">
             <div class="card">
@@ -173,8 +211,9 @@ console.log(APIs)
                                 <router-link to="/domain/info" target="_blank" rel="noopener">
                                     <Button @click="domainModal = true" icon="pi pi-globe" v-tooltip.top="'Domain Bilgisi'" rounded size="small" link />
                                 </router-link>
-                                <Button icon="pi pi-sync" v-tooltip.top="'senkronize et'" rounded size="small" link />
-                                <Button icon="pi pi-trash" v-tooltip.top="'Sil'" rounded size="small" link />
+                                <Button icon="pi pi-sync" @click="blockDocument(5000)" v-tooltip.top="'senkronize et'" rounded size="small" link />
+                                
+                                <Button icon="pi pi-trash" v-tooltip.top="'Sil'" @click="deleteDomain()" rounded size="small" link />
                             </div>
                         </template>
                     </Column>
@@ -251,7 +290,7 @@ console.log(APIs)
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Müşteri Paneli:</div>
                 <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
-                    <Button severity="success" icon="pi pi-angle-right" iconPos="right" label="Müşteri Paneline Git"></Button>
+                    <Button severity="success" icon="pi pi-angle-right" iconPos="right" label="Bayi Paneline Git"></Button>
                 </div>
             </li>
         </ul>

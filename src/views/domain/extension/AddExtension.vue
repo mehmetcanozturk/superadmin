@@ -73,18 +73,11 @@ const confirm = (event) => {
 
 const selectedCategories = ref([]);
 const categories = ref([
-    { name: 'Satışına izin veriliyor mu?', key: 'satis' },
-    { name: 'Ön satış desteği var mı?', key: 'onsatis' },
-    { name: 'API desteği var mı?', key: 'api' },
-    { name: 'Jenerik mi?', key: 'jeneric' },
-    { name: 'Kişisel kayıtlara izin veriliyor mu?', key: 'Personal-register' },
-    { name: 'Döküman gerekli mi?', key: 'document' },
-    { name: 'IDN destekliyor mu?', key: 'idn' },
-    { name: 'Transfer edilebilir mi?', key: 'transfer' },
-    { name: 'Transfer kodu gerektiriyor mu?', key: 'transfer-code' },
-    { name: 'Cezalı ödeme (geç yenileme bedeli) destekliyor mu?', key: 'late-renewal' },
-    { name: 'Backorder destekliyor mu?', key: 'backorder' },
-    { name: 'Trustee hizmeti destekliyor mu?', key: 'trustee' }
+    { name: 'Transfer Desteği', key: 'a' },
+    { name: 'IDN Desteği', key: 'b' },
+    { name: 'Döküman Gerekliliği', key: 'c' },
+    { name: 'Trustee Hizmeti Desteği', key: 'd' }
+    
 ]);
 
 const additionalInfoTable = ref([
@@ -92,12 +85,13 @@ const additionalInfoTable = ref([
     { id: 1, name: 'Ek Bilgiler (2)', type: 'Açılabilir Liste Girişi' }
 ]);
 const additionalInfoCagegories = ref([{ name: 'Metin Giriş', value: 0 }, { name: 'Açılabilir Liste', value: 0 }, { name: 'Opsiyonel Seçim' }, { name: 'Check Seçim' }, { name: 'Check Seçim (Sözleşmeli)' }]);
+const active = ref(0);
 </script>
 
 <template>
     <div class="card">
         <h5>Uzantı Ekle</h5>
-        <TabView>
+        <TabView v-model:activeIndex="active">
             <TabPanel header="Uzantı Bilgisi">
                 <div class="grid gap-5">
                     <div class="grid p-fluid mt-3 col-12 p-0 md:col-8">
@@ -133,14 +127,14 @@ const additionalInfoCagegories = ref([{ name: 'Metin Giriş', value: 0 }, { name
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <Dropdown id="dropdown" :options="apikey" filter v-model="value2" optionLabel="name"></Dropdown>
-                                <label for="dropdown">API Key</label>
+                                <Dropdown id="dropdown" :options="extensionGroup" filter v-model="value3" optionLabel="name"></Dropdown>
+                                <label for="dropdown">Uzantı Grubu</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <span class="p-float-label">
-                                <Dropdown id="dropdown" :options="extensionGroup" filter v-model="value3" optionLabel="name"></Dropdown>
-                                <label for="dropdown">Uzantı Grubu</label>
+                                <Dropdown id="dropdown" :options="apikey" filter v-model="value2" optionLabel="name"></Dropdown>
+                                <label for="dropdown">API Key</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
@@ -198,8 +192,11 @@ const additionalInfoCagegories = ref([{ name: 'Metin Giriş', value: 0 }, { name
                         </div>
                     </div>
                 </div>
+                <div class="flex justify-content-end">
+                    <Button @click="active = 1" label="İleri" icon="pi pi-angle-right" iconPos="right" severity="success"  />
+                </div>
             </TabPanel>
-            <TabPanel header="RGP Periot Bilgileri">
+            <TabPanel header="Periot Bilgileri">
                 <div class="grid gap-5">
                     <div class="grid p-fluid mt-3 col-12 p-0 md:col-7">
                         <div class="field col-12 md:col-6">
@@ -342,6 +339,9 @@ const additionalInfoCagegories = ref([{ name: 'Metin Giriş', value: 0 }, { name
                         </div>
                     </div>
                 </div>
+                <div class="flex justify-content-end">
+                    <Button @click="active = 2" label="İleri" icon="pi pi-angle-right" iconPos="right" severity="success"  />
+                </div>
             </TabPanel>
 
             <TabPanel header="Ek Bilgiler">
@@ -372,9 +372,10 @@ const additionalInfoCagegories = ref([{ name: 'Metin Giriş', value: 0 }, { name
                         <div></div>
                     </div>
                 </div>
+      
             </TabPanel>
         </TabView>
-        <div class="grid border-top-1 border-gray-200 p-2 justify-content-end mt-3">
+        <div class="grid border-top-1 border-gray-200 p-2 justify-content-end mt-3" v-if="active === 2">
             <ConfirmPopup></ConfirmPopup>
             <Button ref="popup" @click="confirm($event)" icon="pi pi-check" severity="success" label="Kaydet" class="mr-2"></Button>
         </div>

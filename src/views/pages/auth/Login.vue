@@ -17,7 +17,7 @@ const navigateToDashboard = () => {
 </script>
 
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" class="fixed left-0 top-0 min-h-screen min-w-screen" preserveAspectRatio="none">
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" class="fixed left-0 top-0 min-h-screen min-w-screen" preserveAspectRatio="none">
         <rect :fill="darkMode ? 'var(--primary-900)' : 'var(--primary-500)'" width="1600" height="800" />
         <path
             :fill="darkMode ? 'var(--primary-800)' : 'var(--primary-400)'"
@@ -33,11 +33,11 @@ const navigateToDashboard = () => {
             d="M454.9 86.3C600.7 177 751.6 269.3 924.1 325c208.6 67.4 431.3 60.8 637.9-5.3c12.8-4.1 25.4-8.4 38.1-12.9V0H288.1c56 21.3 108.7 50.6 159.7 82C450.2 83.4 452.5 84.9 454.9 86.3z"
         />
         <path :fill="darkMode ? 'var(--primary-500)' : 'var(--primary-100)'" d="M1397.5 154.8c47.2-10.6 93.6-25.3 138.6-43.8c21.7-8.9 43-18.8 63.9-29.5V0H643.4c62.9 41.7 129.7 78.2 202.1 107.4C1020.4 178.1 1214.2 196.1 1397.5 154.8z" />
-    </svg>
+    </svg> -->
     <div class="px-5 min-h-screen flex justify-content-center align-items-center">
         <div class="border-1 surface-border surface-card border-round py-7 px-4 md:px-7 z-1">
             <div class="mb-4">
-                <div class="text-900 text-xl font-bold mb-2">Log in</div>
+                <div class="text-900 text-xl font-bold mb-2">Giriş Yap</div>
                 <span class="text-600 font-medium">Please enter your details</span>
             </div>
             <div class="flex flex-column">
@@ -51,10 +51,10 @@ const navigateToDashboard = () => {
                 </span>
                 <div class="mb-4 flex flex-wrap gap-3">
                     <div>
-                        <Checkbox name="checkbox" v-model="rememberMe" binary class="mr-2"></Checkbox>
-                        <label htmlFor="checkbox" class="text-900 font-medium mr-8"> Remember Me </label>
+                        
+                        <label  class="text-900 font-medium mr-8"><Checkbox  v-model="rememberMe" binary class="mr-2"></Checkbox> Beni Hatırla </label>
                     </div>
-                    <a class="text-600 cursor-pointer hover:text-primary cursor-pointer ml-auto transition-colors transition-duration-300">Reset password</a>
+                    <a class="text-600 cursor-pointer hover:text-primary cursor-pointer ml-auto transition-colors transition-duration-300">Şifremi Sıfırla</a>
                 </div>
                 <Button label="Log In" class="w-full" @click="navigateToDashboard"></Button>
             </div>

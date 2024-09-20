@@ -554,22 +554,14 @@ const router = createRouter({
             ]
         },
         {
-            path: '/:catchAll(.*)',
-            name: 'notfound',
-            component: () => import('@/views/pages/NotFound.vue')
+            path: '/auth/login',
+            name: 'login',
+            component: () => import('@/views/auth/Login.vue')
         },
-
         {
             path: '/landing',
             name: 'landing',
             component: () => import('@/views/pages/Landing.vue')
-        },
-
-
-        {
-            path: '/auth/login',
-            name: 'login',
-            component: () => import('@/views/pages/auth/Login.vue')
         },
         {
             path: '/auth/access',
@@ -605,7 +597,12 @@ const router = createRouter({
             path: '/auth/lockscreen',
             name: 'lockscreen',
             component: () => import('@/views/pages/auth/LockScreen.vue')
-        }
+        },
+        {
+            path: '/:catchAll(.*)',
+            name: 'notfound',
+            component: () => import('@/views/pages/NotFound.vue')
+        },
     ]
 });
 

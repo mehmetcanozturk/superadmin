@@ -5,14 +5,18 @@ import AppSubMenu from './AppSubMenu.vue';
 
 const model = ref([
     {
-        label: 'Dashboards',
         icon: 'pi pi-home',
         items: [
             {
                 label: 'Dashboard',
                 icon: 'pi pi-fw pi-home',
                 to: '/'
-            }
+            },
+            {
+                label: 'Giriş Yap',
+                icon: 'pi pi-fw pi-user',
+                to: '/auth/login'
+            },
 
         ]
     },
@@ -145,6 +149,21 @@ const model = ref([
                 label: 'Günün Özeti',
                 icon: 'pi pi-fw pi-chart-line',
                 to: '/reports/daily'
+            },
+
+
+
+        ]
+    },
+
+    {
+        label: 'dev',
+        icon: 'pi pi-dev',
+        items: [
+            {
+                label: 'icon',
+                icon: 'pi pi-code',
+                to: '/utilities/icons'
             },
 
 

@@ -22,22 +22,12 @@ const { layoutState } = useLayout();
                             <i class="pi pi-user text-xl text-primary"></i>
                         </span>
                         <div class="ml-3">
-                            <span class="mb-2 font-semibold">Profile</span>
-                            <p class="text-color-secondary m-0">Lorem ipsum date visale</p>
+                            <span class="mb-2 font-semibold">Profil</span>
+                            <p class="text-color-secondary m-0">Kullanıcı Ayarlarını</p>
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a class="cursor-pointer flex surface-border mb-3 p-3 align-items-center border-1 surface-border border-round hover:surface-hover transition-colors transition-duration-150">
-                        <span>
-                            <i class="pi pi-money-bill text-xl text-primary"></i>
-                        </span>
-                        <div class="ml-3">
-                            <span class="mb-2 font-semibold">Billing</span>
-                            <p class="text-color-secondary m-0">Amet mimin mıollit</p>
-                        </div>
-                    </a>
-                </li>
+
                 <li>
                     <a class="cursor-pointer flex surface-border mb-3 p-3 align-items-center border-1 surface-border border-round hover:surface-hover transition-colors transition-duration-150">
                         <span>
@@ -55,8 +45,8 @@ const { layoutState } = useLayout();
                             <i class="pi pi-power-off text-xl text-primary"></i>
                         </span>
                         <div class="ml-3">
-                            <span class="mb-2 font-semibold">Sign Out</span>
-                            <p class="text-color-secondary m-0">Sed ut perspiciatis</p>
+                            <span class="mb-2 font-semibold">Çıkış Yap</span>
+                            <p class="text-color-secondary m-0">Güvenli çıkış</p>
                         </div>
                     </a>
                 </li>

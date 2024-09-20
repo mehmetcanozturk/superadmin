@@ -273,7 +273,7 @@ const toggle = (event) => {
             <li class="flex align-items-center px-2 flex-wrap">
                 <div class="text-500 w-6 md:w-2 font-medium">Müşteri Paneli:</div>
                 <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
-                    <Button severity="success" icon="pi pi-angle-right" iconPos="right" label="Müşteri Paneline Git"></Button>
+                    <Button severity="success" icon="pi pi-angle-right" iconPos="right" label="Bayi Paneline Git"></Button>
                 </div>
             </li>
         </ul>

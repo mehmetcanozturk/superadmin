@@ -1,3 +1,4 @@
+
 <script setup>
 import { ref } from 'vue';
 import { FilterMatchMode } from 'primevue/api';
@@ -85,25 +86,7 @@ const priceTypes = ref([
     { name: 'Yenileme' }
 ]);
 
-const generateRows = (type) => {
-    const rows = [];
-    for (let i = 2; i <= 10; i++) {
-        const row = {
-            type: type,
-            period: i,
-            cost: `$${19 * i + .99}`,
-            resellerSale: `$${24 * i + .99}`,
-            premiumSale: `$${23 * i + .99}`,
-            platiumSale: `$${22 * i + .99}`,
-            vipSale: `$${20 * i + .49}`,
-        };
-        rows.push(row);
-    }
-    return rows;
-};
 
-priceTable.value.push(...generateRows('Yeni Kayıt'));
-priceTable.value.push(...generateRows('Yenileme'));
 
 
 
@@ -257,23 +240,19 @@ priceTable.value.push(...generateRows('Yenileme'));
                 <InputNumber v-model="value113" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$13.99" />
             </div>
             <div class="field col-12 md:col-6 px-3 p-1">
-                <label for="name">Premium Satış:</label>
+                <label for="name" class="text-green-600">Premium Satış:</label>
                 <InputNumber v-model="value114" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$12.99" />
             </div>
             <div class="field col-12 md:col-6 px-3 p-1">
-                <label for="name">Platium Satış:</label>
+                <label for="name" class="text-orange-600">Platium Satış:</label>
                 <InputNumber v-model="value115" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$11.49" />
             </div>
             <div class="field col-12 md:col-6 px-3 p-1">
-                <label for="name">VIP Satış:</label>
+                <label for="name" class="text-purple-600">VIP Satış:</label>
                 <InputNumber v-model="value116" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$10.49" />
             </div>
-            <div class="field col-12 md:col-6 px-3 p-1 mt-4">
-                <label class="block" for="name">Otomatik Fiyatlandırma:</label>
-                <InputSwitch v-model="switchValue" />
-            </div>
+       
         </div>
-        <Message severity="info" v-if="switchValue"><b>Otomatik Fiyatlandırma:</b> Bir işlem türünün bütün periyot fiyatlarını otomatik güncellemek için kullanılır.</Message>
         <template #footer>
             <ConfirmDialog group="headless"></ConfirmDialog>
             <Button label="Vazgeç" text @click="addPriceModal = false" />
@@ -281,3 +260,13 @@ priceTable.value.push(...generateRows('Yenileme'));
         </template>
     </Dialog>
 </template>
+
+<style>
+    .p-inputwrapper{
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .p-inputtext{
+        background:none;
+    }
+</style>
