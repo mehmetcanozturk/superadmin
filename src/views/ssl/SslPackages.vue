@@ -101,10 +101,7 @@ const priceTypes = ref([
                     <template #header>
                         <div class="flex justify-content-between flex-column sm:flex-row">
                             <div class="flex flex-column sm:flex-row">
-                                <span class="p-input-icon-left mb-2">
-                                    <i class="pi pi-search" />
-                                    <InputText placeholder="SSL Ara" style="width: 100%" v-model="filters['global'].value" />
-                                </span>
+                   
                             </div>
                             <div class="flex gap-3">
                                 <router-link to="/ssl/add-packages" target="_blank">
@@ -211,7 +208,8 @@ const priceTypes = ref([
             <Column :exportable="false">
                 <template #body="">
                     <div class="flex justify-content-center">
-                        <Button icon="pi pi-pencil" rounded link size="small" v-tooltip.top="'Düzenle'" />
+                  
+                        <Button icon="pi pi-pencil" rounded link size="small" v-tooltip.top="'Düzenle'" @click="addPriceModal = true"  />
                         <Button icon="pi pi-trash" rounded link size="small" v-tooltip.top="'Sil'" />
                     </div>
                 </template>
@@ -251,7 +249,7 @@ const priceTypes = ref([
                 <label for="name" class="text-purple-600">VIP Satış:</label>
                 <InputNumber v-model="value116" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$10.49" />
             </div>
-       
+
         </div>
         <template #footer>
             <ConfirmDialog group="headless"></ConfirmDialog>
@@ -269,4 +267,5 @@ const priceTypes = ref([
     .p-inputtext{
         background:none;
     }
+
 </style>

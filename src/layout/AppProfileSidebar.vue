@@ -17,18 +17,20 @@ const { layoutState } = useLayout();
 
             <ul class="list-none m-0 p-0">
                 <li>
-                    <a class="cursor-pointer flex surface-border mb-3 p-3 align-items-center border-1 surface-border border-round hover:surface-hover transition-colors transition-duration-150">
-                        <span>
-                            <i class="pi pi-user text-xl text-primary"></i>
-                        </span>
-                        <div class="ml-3">
-                            <span class="mb-2 font-semibold">Profil</span>
-                            <p class="text-color-secondary m-0">Kullanıcı Ayarlarını</p>
-                        </div>
-                    </a>
+                    <router-link to="/user/change-profile" class="nav-link">
+                        <a class="cursor-pointer flex surface-border mb-3 p-3 align-items-center border-1 surface-border border-round hover:surface-hover transition-colors transition-duration-150">
+                            <span>
+                                <i class="pi pi-user text-xl text-primary"></i>
+                            </span>
+                            <div class="ml-3">
+                                <span class="mb-2 font-semibold text-900">Profil</span>
+                                <p class="text-color-secondary m-0">Kullanıcı Ayarlarını</p>
+                            </div>
+                        </a>
+                    </router-link>
                 </li>
 
-                <li>
+                <!-- <li>
                     <a class="cursor-pointer flex surface-border mb-3 p-3 align-items-center border-1 surface-border border-round hover:surface-hover transition-colors transition-duration-150">
                         <span>
                             <i class="pi pi-cog text-xl text-primary"></i>
@@ -38,7 +40,7 @@ const { layoutState } = useLayout();
                             <p class="text-color-secondary m-0">Exercitation veniam</p>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a class="cursor-pointer flex surface-border mb-3 p-3 align-items-center border-1 surface-border border-round hover:surface-hover transition-colors transition-duration-150">
                         <span>

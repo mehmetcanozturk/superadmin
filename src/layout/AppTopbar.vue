@@ -106,7 +106,7 @@ const showProfileSidebar = () => {
                         </div>
                     </OverlayPanel>
                 </li>
-                <li>
+                <!-- <li>
                     <Button text rounded severity="secondary" type="button" @click="toggleCurrency">
                         <span class="ml-1 font-semibold">{{ activeCurrency }}</span>
                     </Button>
@@ -116,7 +116,7 @@ const showProfileSidebar = () => {
                             <SelectButton v-model="activeCurrency" unselectable="false" :options="selectCurrencyValues" aria-labelledby="basic" />
                         </div>
                     </OverlayPanel>
-                </li>
+                </li> -->
                 <li class="topbar-profile ml-2">
                     <Button type="button" class="p-link border-2  border-gray-600 hover:border-primary transition-all transition-duration-500  w-3rem h-3rem" @click="showProfileSidebar"><img src="/images/user.jpg" class="w-3rem h-3rem" alt="Profile" /></Button>
                 </li>

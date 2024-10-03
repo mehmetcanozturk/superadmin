@@ -2,10 +2,12 @@
 import { ref } from 'vue';
 import { FilterMatchMode } from 'primevue/api';
 
+const value99 = ref();
+
 const Transactions = ref([
     { type: 'Yeni Kayıt', id: 697105, category: 'Domain', desc: 'coldwellbankerpelican.com domaini satın alındı', reseller: 'Woy Teknoloji Ltd. Şti.', quantity: '1', amount: '-$8,69', currency_type: 'Dolar Hesabı ($)', date: '23.03.2023 - 17:15' },
     { type: 'Depozito', id: 7456, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'GoViralHost', quantity: '1', amount: '+$500,00', currency_type: 'Dolar Hesabı ($)', date: '23.03.2022 - 15:04' },
-    { type: 'Yenileme', id: 231045, category: 'SSL', desc: 'example.com SSL sertifikası yenilendi', reseller: 'SSL Sertifika A.Ş.', quantity: '1', amount: '-$12,00', currency_type: 'Dolar Hesabı ($)', date: '24.03.2023 - 12:00' },
+    { type: 'SSL', id: 231045, category: 'SSL', desc: 'example.com SSL sertifikası yenilendi', reseller: 'SSL Sertifika A.Ş.', quantity: '1', amount: '-$12,00', currency_type: 'Dolar Hesabı ($)', date: '24.03.2023 - 12:00' },
     { type: 'Yeni Kayıt', id: 347820, category: 'Domain', desc: 'mynewwebsite.com domaini satın alındı', reseller: 'Netlify', quantity: '1', amount: '-$10,99', currency_type: 'Dolar Hesabı ($)', date: '25.03.2023 - 14:45' },
     { type: 'Depozito', id: 459001, category: 'Depozito', desc: '200$ depozito yüklendi', reseller: 'GoViralHost', quantity: '1', amount: '+$200,00', currency_type: 'Dolar Hesabı ($)', date: '26.03.2023 - 10:30' },
     { type: 'Yeni Kayıt', id: 564982, category: 'SSL', desc: 'securewebsite.com için SSL sertifikası alındı', reseller: 'SSL Güvenlik A.Ş.', quantity: '1', amount: '-$15,00', currency_type: 'Dolar Hesabı ($)', date: '27.03.2023 - 09:20' },
@@ -14,15 +16,16 @@ const Transactions = ref([
     { type: 'Yeni Kayıt', id: 895427, category: 'SSL', desc: 'securepayment.com için SSL sertifikası alındı', reseller: 'SSL Güvenlik A.Ş.', quantity: '1', amount: '-$14,00', currency_type: 'Dolar Hesabı ($)', date: '30.03.2023 - 13:30' },
     { type: 'Yenileme', id: 902316, category: 'Domain', desc: 'mybusiness.com domaini yenilendi', reseller: 'Domain Experts Inc.', quantity: '1', amount: '-$11,00', currency_type: 'Dolar Hesabı ($)', date: '31.03.2023 - 15:20' },
     { type: 'Depozito', id: 103457, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'WebHost LLC', quantity: '1', amount: '+$100,00', currency_type: 'Dolar Hesabı ($)', date: '01.04.2023 - 10:45' },
-    { type: 'Yeni Kayıt', id: 114678, category: 'Domain', desc: 'newstartup.com domaini satın alındı', reseller: 'Startup Domains Co.', quantity: '1', amount: '-$8,50', currency_type: 'Dolar Hesabı ($)', date: '02.04.2023 - 11:15' },
+    { type: 'Restore', id: 114678, category: 'Domain', desc: 'newstartup.com domaini satın alındı', reseller: 'Startup Domains Co.', quantity: '1', amount: '-$8,50', currency_type: 'Dolar Hesabı ($)', date: '02.04.2023 - 11:15' },
     { type: 'Yenileme', id: 125789, category: 'SSL', desc: 'safecommerce.com SSL sertifikası yenilendi', reseller: 'SSL Sertifika A.Ş.', quantity: '1', amount: '-$13,50', currency_type: 'Dolar Hesabı ($)', date: '03.04.2023 - 14:00' },
     { type: 'Depozito', id: 136890, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'Hosting Solutions', quantity: '1', amount: '+$150,00', currency_type: 'Dolar Hesabı ($)', date: '04.04.2023 - 09:10' },
-    { type: 'Yeni Kayıt', id: 147901, category: 'SSL', desc: 'mysafesite.com için SSL sertifikası alındı', reseller: 'SSL Güvenlik A.Ş.', quantity: '1', amount: '-$16,00', currency_type: 'Dolar Hesabı ($)', date: '05.04.2023 - 12:35' },
+    { type: 'Backorder', id: 147901, category: 'SSL', desc: 'mysafesite.com için SSL sertifikası alındı', reseller: 'SSL Güvenlik A.Ş.', quantity: '1', amount: '-$16,00', currency_type: 'Dolar Hesabı ($)', date: '05.04.2023 - 12:35' },
     { type: 'Yenileme', id: 158902, category: 'Domain', desc: 'coolproject.com domaini yenilendi', reseller: 'Cool Domains Ltd.', quantity: '1', amount: '-$7,50', currency_type: 'Dolar Hesabı ($)', date: '06.04.2023 - 16:40' },
-    { type: 'Depozito', id: 169903, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'GoViralHost', quantity: '1', amount: '+$250,00', currency_type: 'Dolar Hesabı ($)', date: '07.04.2023 - 11:55' },
+    { type: 'Bayi Ödeme', id: 169903, category: 'Depozito', desc: 'Payment by : CreditCard With3dSecure (Param Pos) PAYDNPPOS1452167N7', reseller: 'GoViralHost', quantity: '1', amount: '+$250,00', currency_type: 'Dolar Hesabı ($)', date: '07.04.2023 - 11:55' },
     { type: 'Yeni Kayıt', id: 180904, category: 'Domain', desc: 'techworld.com domaini satın alındı', reseller: 'Tech Domains Co.', quantity: '1', amount: '-$12,00', currency_type: 'Dolar Hesabı ($)', date: '08.04.2023 - 13:20' },
-    { type: 'Yenileme', id: 191905, category: 'SSL', desc: 'secureconnect.com SSL sertifikası yenilendi', reseller: 'SSL Sertifika A.Ş.', quantity: '1', amount: '-$10,00', currency_type: 'Dolar Hesabı ($)', date: '09.04.2023 - 15:10' },
-    { type: 'Depozito', id: 202906, category: 'Depozito', desc: '400$ depozito yüklendi', reseller: 'WebHost LLC', quantity: '1', amount: '+$400,00', currency_type: 'Dolar Hesabı ($)', date: '10.04.2023 - 10:20' }
+    { type: 'İade', id: 191905, category: 'SSL', desc: 'secureconnect.com SSL sertifikası yenilendi', reseller: 'SSL Sertifika A.Ş.', quantity: '1', amount: '-$10,00', currency_type: 'Dolar Hesabı ($)', date: '09.04.2023 - 15:10' },
+    { type: 'Depozito', id: 202906, category: 'Depozito', desc: '400$ depozito yüklendi', reseller: 'WebHost LLC', quantity: '1', amount: '+$400,00', currency_type: 'Dolar Hesabı ($)', date: '10.04.2023 - 10:20' },
+    { type: 'Ön kayıt', id: 202906, category: 'Depozito', desc: '5.000₺ depozito yüklendi', reseller: 'WebHost LLC', quantity: '1', amount: '+$400,00', currency_type: 'TL Hesabı (₺)', date: '10.04.2023 - 10:20' }
 ]);
 
 
@@ -66,9 +69,66 @@ const getCategory = (category) => {
     }
 };
 
+const selectReseller = ref();
+const selectedCategory = ref();
+const selectCurrency = ref({ name:'Dolar Hesabı ($)', code:'USD' });
+const category_domain = ref();
+const resellerList = ref([
+    { id: 18255, reseller: "Atak Domain Bilgi Teknolojileri A.Ş.", authorized: "Recep Şerit", phone: "+905526819681", mail: "recep@atakdomain.com", reseller_type: "VIP", domain_count: "500", country: "Türkiye", created_date: "2023-01-01" },
+    { id: 18256, reseller: "Tekno Alan", authorized: "Ayşe Yılmaz", phone: "+905532765434", mail: "ayse@teknoalan.com", reseller_type: "Reseller", domain_count: "250", country: "Türkiye", created_date: "2023-01-05" },
+    { id: 18257, reseller: "NetPro", authorized: "Emre Gündüz", phone: "+905327864510", mail: "emre@netpro.com", reseller_type: "Premium", domain_count: "120", country: "Türkiye", created_date: "2023-01-10" },
+    { id: 18258, reseller: "WebSquare", authorized: "Mehmet Doğan", phone: "+905447892345", mail: "mehmet@websquare.com", reseller_type: "Platinum", domain_count: "80", country: "Türkiye", created_date: "2023-01-15" },
+    { id: 18259, reseller: "HostSpace", authorized: "Zeynep Kaya", phone: "+90539876543", mail: "zeynep@hostspace.com", reseller_type: "Reseller", domain_count: "200", country: "Türkiye", created_date: "2023-01-20" },
+    { id: 18260, reseller: "DataPlus", authorized: "Fatih Arslan", phone: "+905427819654", mail: "fatih@dataplus.com", reseller_type: "VIP", domain_count: "150", country: "Türkiye", created_date: "2023-01-25" },
+    { id: 18261, reseller: "CloudLabs", authorized: "Deniz Karadeniz", phone: "+905543256794", mail: "deniz@cloudlabs.com", reseller_type: "VIP", domain_count: "450", country: "Türkiye", created_date: "2023-01-30" },
+    { id: 18256, reseller: "SmartServe", authorized: "Gizem Şahin", phone: "+905348612178", mail: "gizem@smartserve.com", reseller_type: "Reseller", domain_count: "90", country: "Türkiye", created_date: "2023-02-04" },
+    { id: 18257, reseller: "WebMasters", authorized: "Burak Güneş", phone: "+905342187654", mail: "burak@webmasters.com", reseller_type: "Reseller", domain_count: "110", country: "Türkiye", created_date: "2023-02-09" },
+    { id: 18256, reseller: "NetCrew", authorized: "Selma Aydın", phone: "+905552345678", mail: "selma@netcrew.com", reseller_type: "Reseller", domain_count: "180", country: "Türkiye", created_date: "2023-02-14" },
+    { id: 18256, reseller: "WebSphere", authorized: "Canan Korkmaz", phone: "+90539876543", mail: "canan@websphere.com", reseller_type: "Premium", domain_count: "160", country: "Türkiye", created_date: "2023-02-19" },
+    { id: 18956, reseller: "SkyHosting", authorized: "Oğuzhan Şimşek", phone: "+90539876543", mail: "oguzhan@skyhosting.com", reseller_type: "VIP", domain_count: "400", country: "Türkiye", created_date: "2023-02-24" },
+    { id: 16254, reseller: "Globaltech", authorized: "Ebru Kaya", phone: "+905398765432", mail: "ebru@globaltech.com", reseller_type: "Reseller", domain_count: "220", country: "Türkiye", created_date: "2023-03-01" },
+    { id: 15263, reseller: "NetProPlus", authorized: "Murat Çelik", phone: "+905347897654", mail: "murat@netproplus.com", reseller_type: "Reseller", domain_count: "130", country: "Türkiye", created_date: "2023-03-06" },
+    { id: 18263, reseller: "SuperHost", authorized: "Pelin Demir", phone: "+905554321076", mail: "pelin@superhost.com", reseller_type: "Reseller", domain_count: "70", country: "Türkiye", created_date: "2023-03-11" },
+    { id: 18260, reseller: "DataNet", authorized: "Mert Yıldız", phone: "+905547897654", mail: "mert@datanet.com", reseller_type: "Reseller", domain_count: "240", country: "Türkiye", created_date: "2023-03-16" },
+    { id: 18256, reseller: "ServerSphere", authorized: "Yasin Şahin", phone: "+905542167894", mail: "yasin@serversphere.com", reseller_type: "Reseller", domain_count: "190", country: "Türkiye", created_date: "2023-03-21" },
+    { id: 18257, reseller: "TechHub", authorized: "Selin Erbaş", phone: "+90539876543", mail: "selin@techhub.com", reseller_type: "Reseller", domain_count: "140", country: "Türkiye", created_date: "2023-03-26" },
+    { id: 18263, reseller: "CloudMasters", authorized: "İrem Aslan", phone: "+905454567890", mail: "irem@cloudmasters.com", reseller_type: "VIP", domain_count: "300", country: "Türkiye", created_date: "2023-03-31" },
+    { id: 9263, reseller: "DigitalLink", authorized: "Efe Aktaş", phone: "+90539219876", mail: "efe@digitallink.com", reseller_type: "Reseller", domain_count: "200", country: "Türkiye", created_date: "2023-04-05" },
+    { id: 18563, reseller: "TechSolutions", authorized: "John Smith", phone: "+14155551234", mail: "john@techsolutions.com", reseller_type: "VIP", domain_count: "450", country: "USA", created_date: "2023-04-10" },
+    { id: 16253, reseller: "WebWizards", authorized: "Emily Johnson", phone: "+441655321098", mail: "emily@webwizards.com", reseller_type: "Reseller", domain_count: "180", country: "Canada", created_date: "2023-04-15" },
+    { id: 18652, reseller: "NetGurus", authorized: "David Williams", phone: "+447855321456", mail: "david@netgurus.co.uk", reseller_type: "VIP", domain_count: "700", country: "UK", created_date: "2023-04-20" },
+    { id: 13563, reseller: "DigitalEdge", authorized: "Sophie Martin", phone: "+442089765432", mail: "sophie@digitaledge.eu", reseller_type: "Reseller", domain_count: "250", country: "France", created_date: "2023-04-25" }
+]);
+const categoryList = ref([
+    { name:'Domain' },
+    { name:'SSL' },
+    { name:'Depozito' }
+]);
+const category_domainlist = ref([
+    { name:'Yeni Kayıt' },
+    { name:'Yenileme' },
+    { name:'Restore' },
+    { name:'Backorder' },
+    { name:'İade' },
+    { name:'Ön kayıt' },
+]);
+
+const currencyList = ref([
+    { name:'Dolar Hesabı ($)', code:'USD' },
+    { name:'TL Hesabı (₺)', code:'TRY' },
+]);
+
+
+
+
+
+function tick (){
+    console.log(selectedCategory); 
+}
 
 
 const resellerModal = ref(false);
+const addTransactionsModal = ref(false);
 const resellerpw = ref('*CokGüvenliBirSifre_00!');
 
 const op = ref(null);
@@ -94,7 +154,8 @@ const toggle = (event) => {
                                 </span>
                             </div>
                             <div class="flex gap-3">
-                                <Button type="button" icon="pi pi-file-excel" label="Excel Çıktısı" class="p-button-outlined p-button-info mb-2" />
+                                <Button type="button" icon="pi pi-file-excel" label="Excel Çıktısı" class="p-button p-button-primary mb-2" />
+                                <Button type="button" icon="pi pi-plus" label="Yeni İşlem Ekle" class="p-button p-button-success mb-2" @click="addTransactionsModal = true" />
                             </div>
                         </div>
                     </template>
@@ -149,14 +210,14 @@ const toggle = (event) => {
                             <MultiSelect v-model="filterModel.value" @change="filterCallback()" filter :options="resellers" placeholder="Filtre" class="p-column-filter max-w-12rem" />
                         </template>
                     </Column>
-                    <Column field="quantity" header="Miktar" :showFilterMenu="false" sortable>
+                    <!-- <Column field="quantity" header="Miktar" :showFilterMenu="false" sortable>
                         <template #body="{ data }">
                             <div class="text-center">{{ data.quantity }}</div>
                         </template>
                         <template #filter="{ filterModel, filterCallback }">
                             <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Filtre" />
                         </template>
-                    </Column>
+                    </Column> -->
                     <Column field="amount" header="Tutar" :showFilterMenu="false" sortable>
                         <template #body="{ data }">
                             <span class="font-semibold" :class="getSeverity(data.amount)">{{ data.amount }}</span>
@@ -177,7 +238,7 @@ const toggle = (event) => {
                         <template #body="{ data }">
                             {{ data.date }}
                         </template>
-                        <template #filter="{ }">
+                        <template #filter="{}">
                             <Button type="button" label="filtre" @click="toggle" outlined />
                             <OverlayPanel ref="op" appendTo="body" :showCloseIcon="true">
                                 <div class="flex gap-2">
@@ -187,9 +248,6 @@ const toggle = (event) => {
                             </OverlayPanel>
                         </template>
                     </Column>
-
-
-
                     <Column header="İşlem" :exportable="false" alignFrozen="right" :frozen="true">
                         <template #body="">
                             <div class="flex justify-content-center">
@@ -278,4 +336,66 @@ const toggle = (event) => {
             </li>
         </ul>
     </Dialog>
+
+    <Dialog v-model:visible="addTransactionsModal" maximizable modal header="Yeni İşlem Ekle" :position="'top'" :style="{ width: '700px', maxWidth:'100%' }">
+
+        <div class="grid mt-3">
+            <div class="field col-12 px-3 p-1">
+                <label for="name" class="block">Bayi:</label>
+                <Dropdown v-model="selectReseller" :options="resellerList" filter optionLabel="name" placeholder="Bayi Seç" class="w-full">
+                    <template #value="slotProps">
+                        <div v-if="slotProps.value" class="flex align-items-center">
+                            <Tag :value='slotProps.value.id' severity="success" class="mr-2"></Tag>
+                            <div>{{ slotProps.value.reseller }}</div>
+                        </div>
+                        <span v-else>
+                            {{ slotProps.placeholder }}
+                        </span>
+                    </template>
+                    <template #option="slotProps">
+                        <div class="flex align-items-center">
+                            <Tag :value='slotProps.option.id' severity="success" class="mr-2"></Tag>
+                            <div>{{ slotProps.option.reseller }}</div>
+                        </div>
+                    </template>
+                </Dropdown>
+            </div>
+
+            <div class="field col-12 px-3 p-1">
+                <label for="name">Kategori:</label>
+                <Dropdown v-model="selectedCategory" :options="categoryList" optionLabel="name" placeholder="Domain , SSL" class="w-full" />
+            </div>
+
+            <div class="field col-12 px-3 p-1" v-if="selectedCategory && selectedCategory.name === 'Domain'">
+                <label for="name">Domain İşlemleri:</label>
+                <Dropdown v-model="category_domain" filter filterPlaceholder="İşlem Ara" :options="category_domainlist" optionLabel="name" placeholder="İşlemi Seçiniz" class="w-full" />
+            </div>
+
+            <div class="field col-12 px-3 p-1" v-else-if="selectedCategory && selectedCategory.name === 'SSL'">
+                <label for="name">SSL İşlemi:</label>
+                <InputText type="text" class="w-full p-input-filled" value="SSL Ekle" readonly />
+                <small>Bu işlem bayiden SSL fiyatı kesecektir.</small>
+            </div>
+
+            <div class="field col-12 px-3 p-1" v-else-if="selectedCategory && selectedCategory.name === 'Depozito'">
+                <label for="name">Depozito İşlemi:</label>
+                <InputText type="text" class="w-full p-input-filled" value="Depozito Ekle" readonly />
+                <small>Bu işlem bayiye depozito ekleyecektir.</small>
+            </div>
+
+            <div class="field col-12 px-3 p-1" v-if="selectedCategory">
+                <label for="name" class="block">Tutar:</label>
+                <InputNumber v-model="value112" inputId="currency-us" mode="currency" :currency="selectCurrency.code" locale="en-US" placeholder="8.00" />
+                <Dropdown v-model="selectCurrency" class="ml-3" filterPlaceholder="İşlem Ara" :options="currencyList" optionLabel="name" placeholder="İşlemi Seçiniz" />
+            </div>
+
+        </div>
+        <template #footer>
+            <ConfirmDialog group="headless"></ConfirmDialog>
+            <Button label="Vazgeç" text @click="addTransactionsModal = false" />
+            <Button label="Kaydet" icon="pi pi-check" severity="success" @click=" tick" />
+        </template>
+    </Dialog>
+
+
 </template>

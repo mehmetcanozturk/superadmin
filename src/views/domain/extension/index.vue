@@ -84,18 +84,18 @@ const specialDefined = ref([
         name: 'Recep Şerit',
         group: 'VIP',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', },
-            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49' },
-            { type: 'Yenileme', period: 5, cost: '$79.99', resellerSale: '$82.49', premiumSale: '$81.99', platiumSale: '$80.99', vipSale: '$79.49' },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
-            { type: 'Transfer', period: 8, cost: '$122.99', resellerSale: '$125.49', premiumSale: '$124.99', platiumSale: '$123.99', vipSale: '$122.49' },
-            { type: 'Transfer', period: 9, cost: '$137.99', resellerSale: '$140.49', premiumSale: '$139.99', platiumSale: '$138.99', vipSale: '$137.49' },
-            { type: 'Kayıt', period: 8, cost: '$42.99', resellerSale: '$45.49', premiumSale: '$44.99', platiumSale: '$43.99', vipSale: '$42.49' },
-            { type: 'Kayıt', period: 9, cost: '$47.99', resellerSale: '$50.49', premiumSale: '$49.99', platiumSale: '$48.99', vipSale: '$47.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49' , startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 5, cost: '$79.99', resellerSale: '$82.49', premiumSale: '$81.99', platiumSale: '$80.99', vipSale: '$79.49' , startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' , startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' , startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 8, cost: '$122.99', resellerSale: '$125.49', premiumSale: '$124.99', platiumSale: '$123.99', vipSale: '$122.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 9, cost: '$137.99', resellerSale: '$140.49', premiumSale: '$139.99', platiumSale: '$138.99', vipSale: '$137.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 8, cost: '$42.99', resellerSale: '$45.49', premiumSale: '$44.99', platiumSale: '$43.99', vipSale: '$42.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 9, cost: '$47.99', resellerSale: '$50.49', premiumSale: '$49.99', platiumSale: '$48.99', vipSale: '$47.49' , startingDate:'15/04/2024' , endDate:'01/01/2025'},
         ]
     },
     {
@@ -103,9 +103,9 @@ const specialDefined = ref([
         name: 'Mehmet Can Öztürk',
         group: 'Reseller',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -113,11 +113,11 @@ const specialDefined = ref([
         name: 'Çağrı Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', },
-            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -125,11 +125,11 @@ const specialDefined = ref([
         name: 'Bahadır Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -137,11 +137,11 @@ const specialDefined = ref([
         name: 'Bahadır Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -149,11 +149,11 @@ const specialDefined = ref([
         name: 'Bahadır Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -161,11 +161,11 @@ const specialDefined = ref([
         name: 'Bahadır Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -173,11 +173,11 @@ const specialDefined = ref([
         name: 'Bahadır Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     },
     {
@@ -185,11 +185,11 @@ const specialDefined = ref([
         name: 'Bahadır Topçu',
         group: 'Platium',
         specialPrice: [
-            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', },
-            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', },
-            { type: 'Transfer', period: 4, cost: '$62.99', resellerSale: '$65.49', premiumSale: '$64.99', platiumSale: '$63.99', vipSale: '$62.49' },
-            { type: 'Transfer', period: 5, cost: '$77.99', resellerSale: '$80.49', premiumSale: '$79.99', platiumSale: '$78.99', vipSale: '$77.49' },
-            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49' },
+            { type: 'Yenileme', period: 1, cost: '$19.99', resellerSale: '$24.99', premiumSale: '$23.99', platiumSale: '$22.99', vipSale: '$20.99', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Kayıt', period: 1, cost: '$6.99', resellerSale: '$9.49', premiumSale: '$8.99', platiumSale: '$7.99', vipSale: '$7.49', startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Transfer', period: 1, cost: '$17.99', resellerSale: '$20.49', premiumSale: '$19.99', platiumSale: '$18.99', vipSale: '$18.49', startingDate:'15/04/2024' , endDate:'01/01/2025'},
+            { type: 'Yenileme', period: 4, cost: '$64.99', resellerSale: '$67.49', premiumSale: '$66.99', platiumSale: '$65.99', vipSale: '$64.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
+            { type: 'Kayıt', period: 4, cost: '$22.99', resellerSale: '$25.49', premiumSale: '$24.99', platiumSale: '$23.99', vipSale: '$22.49',startingDate:'15/04/2024' , endDate:'01/01/2025' },
         ]
     }
 
@@ -398,7 +398,7 @@ const bulkPriceUpdateTypes = ref()
                         <Badge :value="specialDefined.length"></Badge>
                     </div>
                 </template>
-                <DataTable :value="specialDefined" :paginator="true" :rowHover="false" scrollable scrollHeight="55dvh" :rows="10" dataKey="id" stripedRows v-model:filters="specialDefinedFilter" showGridlines v-model:expandedRows="expandedRows">
+                <DataTable  :value="specialDefined" :paginator="true" :rowHover="false" scrollable scrollHeight="55dvh" :rows="10" dataKey="id" stripedRows v-model:filters="specialDefinedFilter" showGridlines v-model:expandedRows="expandedRows">
                     <template #header>
                         <div class="flex justify-content-between align-items-center">
                             <div class="flex gap-3 align-items-center">
@@ -412,25 +412,27 @@ const bulkPriceUpdateTypes = ref()
                         </div>
                     </template>
                     <Column expander style="width: 3rem" />
-                    <Column field="id" header="id" sortable></Column>
                     <Column field="name" header="İsmi" sortable>
                         <template #body="slotProps">
-                            <i class="pi pi-user mr-2"> </i>{{ slotProps.data.name }}
+                            <i class="pi pi-user mr-2"> </i>{{ slotProps.data.name }} 
                         </template>
                     </Column>
+                    <Column field="id" header="id" sortable></Column>
                     <Column field="group" header="Bayi Tipi" sortable></Column>
                     <template #expansion="slotProps">
                         <div class="p-3">
                             <h5>{{ slotProps.data.name }} için tanımlanmış Fiyatları</h5>
-                            <DataTable :value="slotProps.data.specialPrice" showGridlines>
+                            <DataTable class="table-sm" :value="slotProps.data.specialPrice" showGridlines>
                                 <Column field="type" header="Türü" sortable class="font-bold"></Column>
                                 <Column field="period" header="Periyot (Yıl)" sortable></Column>
                                 <Column field="cost" header="Maliyet" sortable></Column>
                                 <Column field="resellerSale" header="Satış Fiyatı" sortable></Column>
+                                <Column field="startingDate" header="Başlangıç Tarihi" sortable></Column>
+                                <Column field="endDate" header="Bitiş Tarihi" sortable></Column>
                                 <Column :exportable="false">
                                     <template #body="">
                                         <div class="flex justify-content-center">
-                                            <Button icon="pi pi-pencil" rounded link size="small" v-tooltip.top="'Düzenle'" />
+                                            <Button icon="pi pi-pencil" rounded link size="small" v-tooltip.top="'Düzenle'" @click="addPriceModal = true" />
                                             <Button icon="pi pi-trash" rounded link size="small" v-tooltip.top="'Sil'" />
                                         </div>
                                     </template>

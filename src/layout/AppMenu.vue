@@ -38,6 +38,11 @@ const model = ref([
                         icon: 'pi pi-fw pi-plus',
                         to: '/uzanti/uzanti-ekle'
                     },
+                    {
+                        label:'Özel Tanımlanmış',
+                        icon: 'pi pi-fw pi-list',
+                        to: '/uzanti/ozel-tanimlanmis'
+                    }
                 ]
                 
             },

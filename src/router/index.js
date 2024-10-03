@@ -34,6 +34,14 @@ const router = createRouter({
                     },
                     component: () => import('@/views/domain/extension/AddExtension.vue')
                 },
+                {
+                    path: '/uzanti/ozel-tanimlanmis',
+                    name: 'special-defined',
+                    meta: {
+                        breadcrumb: ['Domain']
+                    },
+                    component: () => import('@/views/domain/extension/specialDefinedPrice.vue')
+                },
 
                 /* Domain */
                 {
@@ -159,8 +167,11 @@ const router = createRouter({
                     },
                     component: () => import('@/views/reports/SummaryDaily.vue')
                 },
-         
-
+                {
+                    path: '/user/change-profile',
+                    name: 'profil değiştir',
+                    component: () => import('@/views/user/ChangeProfile.vue')
+                },
 
                 {
                     path: '/dashboard-banking',
@@ -550,7 +561,8 @@ const router = createRouter({
                     path: '/pages/invoice',
                     name: 'invoice',
                     component: () => import('@/views/pages/Invoice.vue')
-                }
+                },
+    
             ]
         },
         {
@@ -558,6 +570,7 @@ const router = createRouter({
             name: 'login',
             component: () => import('@/views/auth/Login.vue')
         },
+ 
         {
             path: '/landing',
             name: 'landing',
