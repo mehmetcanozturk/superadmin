@@ -192,9 +192,10 @@ const priceTypes = ref([{ name: 'Yeni Kayıt' }, { name: 'Yenileme' }]);
                         <template #body="">
                             <div class="flex justify-content-center">
                                 <Button @click="priceListModal = true" icon="pi pi-dollar" v-tooltip.top="'Fiyatları'" rounded size="small" link />
-                                <router-link to="/ssl/ssl-detail" target="_blank">
+                                <!-- şimdilik düzenleme kaldırıldı -->
+                                <!-- <router-link to="/ssl/ssl-detail" target="_blank">
                                     <Button icon="pi pi-pencil" v-tooltip.top="'Düzenle'" rounded size="small" link />
-                                </router-link>
+                                </router-link> -->
                             </div>
                         </template>
                     </Column>

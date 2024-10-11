@@ -1,5 +1,5 @@
-.p-datatable.small{
-    .p-datatable-tbody td{
+.p-datatable.small {
+    .p-datatable-tbody td {
         padding: 0.75rem 1rem;
     }
 }
@@ -16,124 +16,167 @@
     box-shadow: rgb(255, 255, 255) 0px 10px 15px 0px;
 }
 
-p-dialog-content{
+p-dialog-content {
     position: relative;
 }
-.modal-plus-btn{
+
+.modal-plus-btn {
     position: absolute !important;
     top: 75px;
     right: 36px;
     z-index: 6;
 }
 
-.h-full-modal{
-    .p-dialog-content{
+.h-full-modal {
+    .p-dialog-content {
         height: 90dvh;
     }
 }
-.p-autocomplete-input{
+
+.p-autocomplete-input {
     width: 100%;
 }
 
 
-.p-input-icon-left{
-    .p-dropdown{
-        background:none;
+.p-input-icon-left {
+    .p-dropdown {
+        background: none;
         padding-left: 2.0rem;
     }
 }
 
-.header-center th .p-column-header-content{
+.header-center th .p-column-header-content {
     justify-content: center;
 }
 
-.custom-hover{
-    tr{
-        td{
+.custom-hover {
+    tr {
+        td {
 
             text-align: center !important;
         }
-        &:hover{
-            td{
-                background-color: #f1f5f9 ;
+
+        &:hover {
+            td {
+                background-color: #f1f5f9;
                 color: #000;
             }
-            td[class*="bluegray"]{
+
+            td[class*="bluegray"] {
                 background-color: #e9e9e9 !important;
             }
-            td[class*="bg-green"]{
+
+            td[class*="bg-green"] {
                 background-color: #9de9d3 !important;
             }
-            td[class*="bg-orange"]{
+
+            td[class*="bg-orange"] {
                 background-color: #ffd0ae !important;
             }
-            td[class*="bg-purple"]{
+
+            td[class*="bg-purple"] {
                 background-color: #e5c9ff !important;
             }
         }
-        &:focus{
+
+        &:focus {
             font-size: 120%;
             transition: 300ms;
             cursor: pointer;
             font-weight: bold;
             outline: 1px dashed #a0a0a0 !important;
-            outline-offset:0;
+            outline-offset: 0;
         }
 
     }
 }
 
-.p-password.p-component.p-inputwrapper{
-    .p-password-input{
+.p-password.p-component.p-inputwrapper {
+    .p-password-input {
         width: 100%;
     }
 }
 
-.p-input-filled{
+.p-input-filled {
     background-color: #f8fafc;
 }
 
-@media only screen and (max-width: 1440.01px){
-    .layout-sidebar .sidebar-header{
-        padding: 2.5rem 0 0 0 !important;
-        .app-logo{
-            img{
-                width: 150px;
-            }
-        }
-    }
-
-    .layout-sidebar{
-        width: 15rem !important;
-    }
-    .layout-container.layout-static .layout-content-wrapper{
-        margin-left: 15rem !important;
-    }
-}
-@media only screen and (max-width: 998px){
-    .layout-container.layout-static .layout-content-wrapper{
-        margin-left: 0 !important;
-    }
-}
-
-.table-sm{
-    td{
+.table-sm {
+    td {
         padding: 5px 10px;
-        .p-button.p-button-icon-only.p-button-rounded{
+
+        .p-button.p-button-icon-only.p-button-rounded {
             width: 2rem !important;
             height: 2rem !important;
         }
     }
 }
-.divader-list{
-    li{
+
+.divader-list {
+    li {
         padding: 10px 0;
         border-bottom: 1px dashed var(--surface-200);
-        &:nth-child(even){
+
+        &:nth-child(even) {
             background-color: var(--surface-100);
         }
-        &:last-child{
+
+        &:last-child {
             border: none;
         }
+    }
+}
+
+.double-input-group{
+    display: flex;
+    width: 100%;
+    .first-item{
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+    .last-item{
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        margin-left: -1px;
+        
+    }
+    &.phone{
+        .first-item{
+            width: 22%;
+            min-width: 80px;
+            input{
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+            }
+        }
+        .last-item{width: 100%;}
+    }
+
+
+} 
+
+@media only screen and (max-width: 1440.01px) {
+    .layout-sidebar .sidebar-header {
+        padding: 2.5rem 0 0 0 !important;
+
+        .app-logo {
+            img {
+                width: 150px;
+            }
+        }
+    }
+
+    .layout-sidebar {
+        width: 15rem !important;
+    }
+
+    .layout-container.layout-static .layout-content-wrapper {
+        margin-left: 15rem !important;
+    }
+}
+
+@media only screen and (max-width: 998px) {
+    .layout-container.layout-static .layout-content-wrapper {
+        margin-left: 0 !important;
     }
 }
