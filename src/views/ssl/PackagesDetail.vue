@@ -108,7 +108,7 @@ const confirm = (event) => {
 
 <template>
     <div class="card">
-        <h5>SSL Paketi Ekle</h5>
+        <h5>SSL Paketi Düzenleme</h5>
         <TabView>
             <TabPanel header="Genel Bilgiler">
                 <div class="grid gap-5">

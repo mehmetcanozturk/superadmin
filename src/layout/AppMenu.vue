@@ -74,16 +74,17 @@ const model = ref([
         label: 'SSL',
         icon: 'pi pi-shield',
         items: [
+        {
+                label: 'SSL Listesi',
+                icon: 'pi pi-fw pi-list',
+                to: '/ssl/ssl-list'
+            },
             {
                 label: 'SSL Paketleri',
                 icon: 'pi pi-fw pi-th-large',
                 to: '/ssl/packages'
-            },
-            {
-                label: 'SSL Paketi Ekle',
-                icon: 'pi pi-fw pi-plus',
-                to: '/ssl/add-packages'
             }
+           
 
         ]
     },

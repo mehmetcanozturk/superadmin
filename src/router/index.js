@@ -79,13 +79,22 @@ const router = createRouter({
                     component: () => import('@/views/ssl/SslPackages.vue')
                 },
                 {
-                    path: '/ssl/add-packages',
-                    name: 'add-packages',
+                    path: '/ssl/ssl-list',
+                    name: 'ssl-list',
                     meta: {
                         breadcrumb: ['SSL'],
-                        title: "project detail",
+                        title: "ssl list",
                     },
-                    component: () => import('@/views/ssl/AddPackages.vue'),
+                    component: () => import('@/views/ssl/SslList.vue'),
+                },
+                {
+                    path: '/ssl/ssl-detail',
+                    name: 'ssl-detail',
+                    meta: {
+                        breadcrumb: ['SSL'],
+                        title: "ssl list",
+                    },
+                    component: () => import('@/views/ssl/PackagesDetail.vue'),
                 },
 
                 /* Reseller */
