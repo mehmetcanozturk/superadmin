@@ -68,17 +68,17 @@ const value19 = ref()
                 </div>
 
                 <div class="field col-12 md:col-6  px-3 p-1">
-                    <label class="block" for="">Bayi Personelin Adı:</label>
+                    <label class="block" for="">Adı (Bayi Personelinin):</label>
                     <span class="p-input-icon-left w-full">
                         <i class="pi pi-user" />
-                        <InputText type="text" placeholder="Bayi Personelin Adı" class="w-full" />
+                        <InputText type="text" placeholder="Bayi Personelinin Adı" class="w-full" />
                     </span>
                 </div>
                 <div class="field col-12 md:col-6  px-3 p-1">
-                    <label class="block" for="">Bayi Personelin Soyadı:</label>
+                    <label class="block" for="">Soyadı (Bayi Personelinin):</label>
                     <span class="p-input-icon-left w-full">
                         <i class="pi pi-user" />
-                        <InputText type="text" placeholder="Bayi Personelin Soyadı" class="w-full" />
+                        <InputText type="text" placeholder="Bayi Personelinin Soyadı" class="w-full" />
                     </span>
                 </div>
 
