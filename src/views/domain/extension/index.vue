@@ -44,6 +44,19 @@ const filters = ref({
 });
 
 
+const selectedYear = ref();
+const selectedtype = ref();
+const typeList = ref([
+    { name: 'Kayıt' },
+    { name: 'Yenileme' },
+    { name: 'Transfer' },
+    { name: 'backorder' },
+    { name: 'Restore' },
+    { name: 'trade' },
+    { name: 'trustee' },
+])
+const yearList = ref(Array.from({ length: 10 }, (_, i) => ({ name: (i + 1).toString() + ' ' + 'yıl' })));
+
 
 onBeforeMount(() => {
     Extension.getDomainExtension().then((data) => {
@@ -384,7 +397,7 @@ const bulkPriceUpdateTypes = ref()
                     <Column :exportable="false">
                         <template #body="">
                             <div class="flex justify-content-center">
-                                <Button icon="pi pi-pencil" rounded link size="small" v-tooltip.top="'Düzenle'" />
+                                <Button icon="pi pi-pencil" rounded link size="small" v-tooltip.top="'Düzenle'" @click="addPriceModal = true;" />
                                 <Button icon="pi pi-trash" rounded link size="small" v-tooltip.top="'Sil'" />
                             </div>
                         </template>
@@ -445,36 +458,44 @@ const bulkPriceUpdateTypes = ref()
         </TabView>
     </Dialog>
 
-    <Dialog v-model:visible="addPriceModal" maximizable modal header="Yeni Fiyat Ekle" :position="'top'" :style="{ width: '500px' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-        <div class="field">
-            <label for="name">Bayi Türü:</label>
-            <Dropdown v-model="selectedCity" :options="cities" filter optionLabel="name" placeholder="Bayi türü seç" class="w-full" />
+    <Dialog v-model:visible="addPriceModal" maximizable modal header="Yeni Kampanya Ekle"
+    :style="{ width: '700px', maxWidth: '100%' }">
+    
+        <div class="grid mt-3">
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Yıl:</label>
+                <Dropdown v-model="selectedtype" :options="typeList" filter filterPlaceholder="Ara" optionLabel="name" placeholder="Fiyat Türü Seç" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Yıl:</label>
+                <MultiSelect v-model="selectedYear" display="chip" :options="yearList" optionLabel="name"
+                placeholder="Yıl Seç" class="w-full" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Maliyeti:</label>
+                <InputNumber mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$8.99" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name">Reseller Satış:</label>
+                <InputNumber mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$13.99" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name" class="text-green-600">Premium Satış:</label>
+                <InputNumber mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$12.99" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name" class="text-orange-600">Platium Satış:</label>
+                <InputNumber mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$11.49" />
+            </div>
+            <div class="field col-12 md:col-6 px-3 p-1">
+                <label for="name" class="text-purple-600">VIP Satış:</label>
+                <InputNumber mode="currency" currency="USD" locale="en-US" class="w-full" placeholder="$10.49" />
+            </div>
         </div>
-        <div class="field">
-            <label for="name">İşlem Türü:</label>
-            <Dropdown v-model="selectedCity" :options="cities" filter optionLabel="name" placeholder="İşlem türü seç" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Periyot (Yıl):</label>
-            <InputNumber v-model="value232" :useGrouping="false" max="10" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Maliyet:</label>
-            <InputNumber v-model="value123" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label for="name">Satış:</label>
-            <InputNumber v-model="value321" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="w-full" />
-        </div>
-        <div class="field">
-            <label class="block" for="name">Otomatik Fiyatlandırma:</label>
-            <InputSwitch v-model="switchValue" />
-        </div>
-        <Message severity="info" v-if="switchValue"><b>Otomatik Fiyatlandırma:</b> Bir işlem türünün bütün periyot fiyatlarını otomatik güncellemek için kullanılır.</Message>
         <template #footer>
             <ConfirmDialog group="headless"></ConfirmDialog>
             <Button label="Vazgeç" text @click="addPriceModal = false" />
-            <Button label="Kaydet" icon="pi pi-check" severity="success" @click="switchValue ? requireConfirmation() : addPriceModal = false" />
+            <Button label="Kaydet" icon="pi pi-check" severity="success" @click=" addPriceModal = false" />
         </template>
     </Dialog>
 

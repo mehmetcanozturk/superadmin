@@ -56,9 +56,9 @@ const model = ref([
                         to: '/domain'
                     },
                     {
-                        label:'Hatalı Domain Ekle',
-                        icon: 'pi pi-fw pi-exclamation-triangle',
-                        to: '/domain/hatali-domain-ekle'
+                        label:'Domain Ekle',
+                        icon: 'pi pi-fw pi-plus',
+                        to: '/domain/domain-ekle'
                     },
                     {
                         label:'Domain Bilgisi',

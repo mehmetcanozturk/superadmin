@@ -190,17 +190,13 @@ watch(selectedExtension, (newValue) => {
                             <ColumnGroup type="header">
                                 <Row>
                                     <Column header="Genel bilgiler" :colspan="3" />
-                                    <Column header="Maliyetler" :colspan="4" />
+                                    <Column header="Maliyetler" :colspan="5" />
 
-                                    <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Reseller"
-                                        :colspan="3" />
-                                    <Column class="bg-green-100 border-green-300 text-green-900" header="Premium"
-                                        :colspan="3" />
-                                    <Column class="bg-orange-100 border-orange-200 text-orange-900" header="Platinum"
-                                        :colspan="3" />
-                                    <Column class="bg-purple-100 border-purple-200 text-purple-900" header="VIP"
-                                        :colspan="3" />
-                                    <Column header="Diğer Fiyatlar" :colspan="3" />
+                                    <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Reseller" :colspan="3" />
+                                    <Column class="bg-green-100 border-green-300 text-green-900" header="Premium" :colspan="3" />
+                                    <Column class="bg-orange-100 border-orange-200 text-orange-900" header="Platinum" :colspan="3" />
+                                    <Column class="bg-purple-100 border-purple-200 text-purple-900" header="VIP" :colspan="3" />
+                                    <Column header="Diğer Fiyatlar" :colspan="4" />
                                 </Row>
                                 <Row>
                                     <Column header="Domain" field="domain" />
@@ -211,6 +207,7 @@ watch(selectedExtension, (newValue) => {
                                     <Column header="Yenileme" field="backorder" />
                                     <Column header="Trustee" field="trustee" />
                                     <Column header="Restore" field="backorder" />
+                                    <Column header="Trade" field="trustee" />
 
                                     <Column class="surface-100 border-bluegray-200 text-bluegray-900" header="Kayıt"
                                         field="reseller_register" />
@@ -243,6 +240,7 @@ watch(selectedExtension, (newValue) => {
                                     <Column header="restore" field="restore" />
                                     <Column header="backorder" field="backorder" />
                                     <Column header="trustee" field="trustee" />
+                                    <Column header="Trade" field="trustee" />
 
                                 </Row>
                             </ColumnGroup>
@@ -285,6 +283,7 @@ watch(selectedExtension, (newValue) => {
                             <Column field="cost" header="Default"></Column>
                             <Column field="cost" header="Default"></Column>
                             <Column field="cost" header="Default"></Column>
+                            <Column field="cost" header="Default"></Column>
 
 
                             <Column class="surface-100 border-bluegray-200 text-bluegray-900 text-center " field="" header="Default">
@@ -323,6 +322,8 @@ watch(selectedExtension, (newValue) => {
                             <Column class="text-center" field="restore" header="Default"></Column>
                             <Column class="text-center" field="backorder" header="Default"></Column>
                             <Column class="text-center" field="trustee" header="Default"></Column>
+                            <Column class="text-center" field="trustee" header="Default"></Column>
+
 
                         </DataTable>
                     </TabPanel>

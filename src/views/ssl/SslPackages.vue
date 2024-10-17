@@ -76,7 +76,7 @@ const specialDefined = ref([
 const specialDefinedFilter = ref({ global: { value: null, matchMode: FilterMatchMode.CONTAINS } });
 const collapseAll = () => { expandedRows.value = null; };
 
-const value111 = ref();
+const value111 = ref(1);
 const value112 = ref();
 const value113 = ref();
 const value114 = ref();
@@ -294,7 +294,7 @@ const priceTypes = ref([{ name: 'Yeni Kayıt' }, { name: 'Yenileme' }]);
         <div class="grid mt-3">
             <div class="field col-12 md:col-6 px-3 p-1">
                 <label for="name">Periyot (Yıl):</label>
-                <InputNumber v-model="value111" :useGrouping="false" max="10" class="w-full" placeholder="3" />
+                <InputNumber v-model="value111" :useGrouping="false" max="10" class="w-full p-input-filled" readonly="true" placeholder="1" />
             </div>
             <div class="field col-12 md:col-6 px-3 p-1">
                 <label for="name">Fiyat Türü</label>

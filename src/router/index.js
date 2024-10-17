@@ -53,12 +53,12 @@ const router = createRouter({
                     component: () => import('@/views/domain/domain/index.vue')
                 },
                 {
-                    path: '/domain/hatali-domain-ekle',
-                    name: 'hatali-domain-ekle',
+                    path: '/domain/domain-ekle',
+                    name: 'domain-ekle',
                     meta: {
                         breadcrumb: ['Domain']
                     },
-                    component: () => import('@/views/domain/domain/IncorrectDomain.vue')
+                    component: () => import('@/views/domain/domain/AddDomain.vue')
                 },
                 {
                     path: '/domain/info',
